@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrew Mish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --white: #f0ede8;
+    --dim: #6b6b6b;
+    --accent: #c8f060;
+    --rule: #1e1e1e;
+    --card: #0f0f0f;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2rem; }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 4rem;
+    border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .hero-index {
+    position: absolute;
+    top: 7rem;
+    right: 3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    writing-mode: vertical-rl;
+  }
+
+  .hero-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 14rem);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .hero-sub {
+    margin-top: 2.5rem;
+    max-width: 520px;
+    font-size: 1rem;
+    color: var(--dim);
+    line-height: 1.7;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s 0.55s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s 0.72s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    background: var(--accent);
+    padding: 0.7rem 1.6rem;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #d8ff70; transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dim);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--white); border-color: var(--dim); }
+
+  .hero-grid-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .hero-grid-line:nth-child(1) { left: 33.33%; }
+  .hero-grid-line:nth-child(2) { left: 66.66%; }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+  }
+
+  .about-headline span { color: var(--accent); }
+
+  .about-body {
+    font-size: 0.95rem;
+    color: var(--dim);
+    line-height: 1.8;
+  }
+
+  .about-body p + p { margin-top: 1rem; }
+
+  .about-stats {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat {
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-list { display: flex; flex-direction: column; gap: 0; }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: start;
+    gap: 2rem;
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .project-row:first-child { border-top: 1px solid var(--rule); }
+
+  .project-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--card);
+    opacity: 0;
+    transition: opacity 0.25s;
+    z-index: -1;
+  }
+
+  .project-row:hover::before { opacity: 1; }
+
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    padding-top: 0.35rem;
+  }
+
+  .project-body {}
+
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    transition: color 0.2s;
+  }
+
+  .project-row:hover .project-name { color: var(--accent); }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--dim);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .project-tags {
+    margin-top: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dim);
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.55rem;
+  }
+
+  .project-meta {
+    text-align: right;
+    padding-top: 0.35rem;
+  }
+
+  .project-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .project-row:hover .project-link {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── WORK ── */
+  .work-entry {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .work-entry:first-of-type { border-top: 1px solid var(--rule); }
+
+  .work-left {}
+
+  .work-company {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .work-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  .work-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    margin-top: 0.3rem;
+  }
+
+  .work-right ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .work-right li {
+    font-size: 0.875rem;
+    color: var(--dim);
+    line-height: 1.65;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .work-right li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rule);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .work-right li strong { color: var(--white); font-weight: 500; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+
+  .skill-block {
+    padding: 2rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-block:nth-child(3n) { border-right: none; }
+  .skill-block:nth-last-child(-n+3) { border-bottom: none; }
+
+  .skill-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .skill-item {
+    font-size: 0.85rem;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skill-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--rule);
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: none;
+  }
+
+  .contact-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-headline span { color: var(--accent); }
+
+  .contact-links {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-link::after { content: '↗'; font-size: 0.7rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .work-entry { grid-template-columns: 1fr; gap: 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-row { grid-template-columns: 2rem 1fr; }
+    .project-meta { display: none; }
+    .hero-grid-line { display: none; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">ANDREW MISH</a>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-line"></div>
+  <div class="hero-grid-line"></div>
+
+  <span class="hero-index">AM — 2026</span>
+
+  <div class="hero-kicker">LLM Engineer · Builder · 18</div>
+  <h1>Andrew<br><span>Mish</span></h1>
+  <p class="hero-sub">
+    I build AI systems that run in production. Voice agents, automated pipelines, and iOS apps —
+    shipped for real teams solving real problems. Based in Maryland, heading to Auburn.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View Work</a>
+    <a href="mailto:andrewmish@gmail.com" class="btn-ghost">Get in touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-headline reveal">I build things<br>that <span>actually</span><br>ship.</h2>
+      <div class="about-stats reveal">
+        <div class="stat">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">AI tools deployed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Hospital facilities</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1yr</div>
+          <div class="stat-label">Production AI work</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">18</div>
+          <div class="stat-label">Years old</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-body reveal">
+      <p>
+        At 17 I joined SilverStay as an LLM Implementation Engineer — not an intern, an engineer.
+        I built and deployed AI tools that case managers at MedStar, Northwest, Midtown, and Saint Agnes
+        use every day to manage patient discharges.
+      </p>
+      <p>
+        My stack is Claude API, ElevenLabs, Twilio, Google Apps Script, and Python. I've built
+        voice agents that make phone calls autonomously, automated PDF reporting pipelines,
+        and an agentic investing workflow that connects Robinhood to Claude via MCP.
+      </p>
+      <p>
+        I don't think credentials are the point. I think shipping is the point.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="projects-list">
+
+    <div class="project-row reveal">
+      <span class="project-num">01</span>
+      <div class="project-body">
+        <div class="project-name">DARt Pipeline</div>
+        <p class="project-desc">
+          End-to-end automated reporting system for hospital patient tiers.
+          Google Apps Script pulls CCT data → Claude API generates ReportLab Python →
+          Cloud Functions execute it → formatted 2-page PDFs land in Google Drive every morning.
+          Zero human involvement after setup.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Claude API</span>
+          <span class="tag">Google Apps Script</span>
+          <span class="tag">Python</span>
+          <span class="tag">Cloud Functions</span>
+          <span class="tag">ReportLab</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-year">2025</span>
+        <a href="https://github.com/andrewmish12" class="project-link" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <span class="project-num">02</span>
+      <div class="project-body">
+        <div class="project-name">Hospital Voice Agent</div>
+        <p class="project-desc">
+          AI agent that calls hospital transport and DME vendors autonomously on behalf of care navigators.
+          Built with ElevenLabs for voice synthesis and Twilio for telephony. Captures confirmation numbers
+          and returns structured summaries to screen. Planned HIPAA-compliant Phase 2 migration to Cartesia.
+        </p>
+        <div class="project-tags">
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">Twilio</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">HIPAA</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-year">2025</span>
+        <a href="https://github.com/andrewmish12" class="project-link" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <span class="project-num">03</span>
+      <div class="project-body">
+        <div class="project-name">Agentic Investing — Robinhood × Claude</div>
+        <p class="project-desc">
+          Personal project: connected Robinhood to Claude via Model Context Protocol (MCP),
+          enabling live portfolio reads, position analysis, and research-driven decision-making
+          in a single agentic loop. Built and operational in under a week.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Claude API</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Robinhood</span>
+          <span class="tag">Agentic AI</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-year">2026</span>
+        <a href="https://github.com/andrewmish12" class="project-link" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <span class="project-num">04</span>
+      <div class="project-body">
+        <div class="project-name">AI Barber Scheduling Bot</div>
+        <p class="project-desc">
+          Autonomous SMS and voice scheduling system for barber shops.
+          Handles appointment booking, reminders, and confirmations end-to-end
+          with no human involvement. Stack: Twilio, ElevenLabs, Claude API, Google Calendar.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Twilio</span>
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Google Calendar</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-year">2025 — Present</span>
+        <a href="https://github.com/andrewmish12" class="project-link" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <span class="project-num">05</span>
+      <div class="project-body">
+        <div class="project-name">Collabify</div>
+        <p class="project-desc">
+          iOS app connecting influencers with brands for sponsorship deals.
+          AI-powered matching engine, deal flow management, and dual dashboards
+          for both sides of the marketplace. Built in SwiftUI / Xcode.
+        </p>
+        <div class="project-tags">
+          <span class="tag">SwiftUI</span>
+          <span class="tag">iOS</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Marketplace</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-year">2024 — Present</span>
+        <a href="https://github.com/andrewmish12/Collabify" class="project-link" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Work Experience</div>
+
+  <div class="work-entry reveal">
+    <div class="work-left">
+      <div class="work-company">SilverStay</div>
+      <div class="work-role">LLM Implementation Engineer</div>
+      <div class="work-dates">June 2025 — Present</div>
+    </div>
+    <div class="work-right">
+      <ul>
+        <li><strong>15+ Claude AI Projects</strong> deployed to care teams across 4 hospital facilities — Case Note Assistant, SilverSearch, LTC Navigator, CM Progress Note Audit.</li>
+        <li><strong>DARt pipeline</strong> generates automated PDF patient reports daily with zero manual intervention.</li>
+        <li><strong>Voice agent POC</strong> (ElevenLabs + Twilio) autonomously makes transport and DME vendor calls on behalf of care navigators.</li>
+        <li><strong>10+ Apps Script workflows</strong> automating MRN screening, data sync, discharge tracking, and Slack reporting across CCT dashboards.</li>
+        <li>Built <strong>Post-call Insights</strong> tool using Claude API to score call quality against Jeremy Miner sales methodology.</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Stack</div>
+  <div class="skills-grid reveal">
+    <div class="skill-block">
+      <div class="skill-category">AI & APIs</div>
+      <div class="skill-items">
+        <span class="skill-item">Claude API (Anthropic)</span>
+        <span class="skill-item">ElevenLabs</span>
+        <span class="skill-item">Twilio</span>
+        <span class="skill-item">OpenAI</span>
+        <span class="skill-item">MCP (Model Context Protocol)</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">Programming</div>
+      <div class="skill-items">
+        <span class="skill-item">Google Apps Script (JS)</span>
+        <span class="skill-item">Python</span>
+        <span class="skill-item">SwiftUI / iOS</span>
+        <span class="skill-item">ReportLab</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">Platforms</div>
+      <div class="skill-items">
+        <span class="skill-item">Google Cloud Functions</span>
+        <span class="skill-item">Google Sheets / Drive</span>
+        <span class="skill-item">AppSheet</span>
+        <span class="skill-item">Slack API</span>
+        <span class="skill-item">Robinhood MCP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-headline reveal">Let's<br><span>Talk.</span></h2>
+  <div class="contact-links reveal">
+    <a href="mailto:andrewmish@gmail.com" class="contact-link">Email</a>
+    <a href="https://www.linkedin.com/in/andrewmish" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/andrewmish12" target="_blank" class="contact-link">GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Andrew Mish © 2026</span>
+  <span>Built without a degree.</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger reveal children in sections
+  document.querySelectorAll('.about-stats').forEach(grid => {
+    grid.querySelectorAll('.stat').forEach((stat, i) => {
+      stat.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+
+  document.querySelectorAll('.project-row.reveal').forEach((row, i) => {
+    row.style.transitionDelay = `${i * 0.06}s`;
+  });
+</script>
+</body>
+</html>
