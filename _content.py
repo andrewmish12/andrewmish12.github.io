@@ -55,7 +55,7 @@ PROJECTS = [
 ("Rollout survey site", "Before/after surveys measuring an AI rollout, on AWS (Route 53 → CloudFront → S3)"),
 ],
 "title": "SilverStay",
-"kicker": "LLM Implementation Engineer Intern. I build the AI tools and automations a hospital discharge team runs on.",
+"kicker": "I build the AI tools and automations a hospital discharge team runs on.",
 "card": "50+ automations, 15+ Claude tools, a voice agent, and the plumbing that keeps it all moving across 4 hospital sites.",
 "when": "June 2025 – Present", "role": "LLM Implementation Engineer Intern (remote)",
 "stack": ["Claude API", "Google Apps Script", "Python", "ElevenLabs", "AWS", "DocuSign", "Google Cloud"],
@@ -114,7 +114,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- BARBER BOT
 {
-"slug": "barber-bot", "cat": "build", "status": "proto", "featured": True,
+"slug": "barber-bot", "logo": "barber-bot-logo.svg", "cat": "build", "status": "proto", "featured": True,
 "title": "AI Barber Bot",
 "kicker": "A text-message scheduling assistant for barbershops. Text it like you'd text your barber, and Claude figures out what you want.",
 "card": "Twilio + Claude SMS bot that turns messy texts like \"can I get a fade fri after 3\" into structured booking requests.",
@@ -210,7 +210,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- SWEATBUDDIES
 {
-"slug": "sweatbuddies", "cat": "build", "status": "inuse", "featured": False,
+"slug": "sweatbuddies", "logo": "sweatbuddies-logo.svg", "cat": "build", "status": "inuse", "featured": False,
 "title": "SweatBuddies",
 "kicker": "A two-person workout accountability app with photo check-ins, weekly goals, and real stakes if you slack off.",
 "card": "Photo-proof workouts, streaks, weekly goals, and an IOU system: miss your goal and you owe your partner.",
@@ -336,7 +336,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- JOBS
 {
-"slug": "walden", "cat": "job", "status": "done", "featured": False,
+"slug": "walden", "logo": "https://cdn.cybergolf.com/images/1309/Walden-CC_logo-trans-web.png", "cat": "job", "status": "done", "featured": False,
 "title": "Walden Country Club",
 "kicker": "Golf Cart Attendant & Kitchen Assistant, Crofton, MD.",
 "card": "Trained 5 new hires and kept a 70-cart fleet running at peak tee times.",
@@ -351,7 +351,7 @@ PROJECTS = [
 "next": None,
 },
 {
-"slug": "wild-birds", "cat": "job", "status": "done", "featured": False,
+"slug": "wild-birds", "logo": "https://gambrills.wbu.com/templates/wbu3/staticresources/assets/images/logo.webp", "cat": "job", "status": "done", "featured": False,
 "title": "Wild Birds Unlimited",
 "kicker": "Sales Associate, Gambrills, MD.",
 "card": "Advised ~50 customers per shift and matched them with the right products.",
@@ -380,8 +380,8 @@ PROJECTS = [
 ]
 
 EDUCATION = [
-("Auburn University", "B.S. Business Administration · Pre-Business (Intended Finance) · Intended Real Estate minor", "Expected May 2030"),
-("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026"),
+("Auburn University", "B.S. Business Administration · Pre-Business (Intended Finance) · Intended Real Estate minor", "Expected May 2030", "https://ocm.auburn.edu/brand-center/logos/auburn/informal_horiz/fullcolor/auburn_informal_h_fullcolor_digital.png"),
+("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026", "https://bbk12e1-cdn.myschoolcdn.com/ftpimages/906/logo/60_logo_whitebackground.png"),
 ]
 
 HONORS = [

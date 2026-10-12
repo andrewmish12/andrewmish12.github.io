@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs><clipPath id="p"><rect x="50" y="30" width="20" height="50" rx="10"/></clipPath></defs>
+<path d="M22 20h76a12 12 0 0 1 12 12v46a12 12 0 0 1-12 12H52l-20 16v-16H22a12 12 0 0 1-12-12V32a12 12 0 0 1 12-12z" fill="#1b3a6b"/>
+<rect x="50" y="30" width="20" height="50" rx="10" fill="#fff"/>
+<g clip-path="url(#p)" fill="#c8102e"><path d="M40 34l40-16v8l-40 16z"/><path d="M40 50l40-16v8l-40 16z"/><path d="M40 66l40-16v8l-40 16z"/><path d="M40 82l40-16v8l-40 16z"/></g>
+<rect x="46" y="26" width="28" height="7" rx="3.5" fill="#dfe6f3"/><rect x="46" y="77" width="28" height="7" rx="3.5" fill="#dfe6f3"/></svg>

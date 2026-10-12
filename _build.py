@@ -101,9 +101,10 @@ def card(p, i):
                 f'<div class="wide-stats">{st}</div><div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</div>'
                 f'<p class="go mono" style="margin-top:16px">Read the full breakdown →</p></div>'
                 f'<ul class="hl">{hl}</ul></a>')
+    sl = f'<img class="slogo" src="{p["logo"]}" alt="" onerror="this.remove()">' if p.get("logo") else ""
     return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
-            f'<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
+            f'{sl}<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
             f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">Read more →</span></a>')
 
 def home():
@@ -113,9 +114,9 @@ def home():
         f'<button data-filter="{k}">{v}</button>' for k, v in CATS.items() if k != "job" and any(p["cat"] == k for p in feats))
     stats = "".join(f'<div class="stat rv" style="--d:{i*80}ms"><b>{a}</b><span>{E(b)}</span></div>' for i, (a, b) in enumerate(STATS))
     timeline = "".join(
-        f'<a class="tl rv" href="{p["slug"]}.html"><span class="mono small dim">{E(p["when"])}</span><div><h4>{E(p["title"])}</h4><p class="dim">{E(p["role"])}</p><p>{E(p["card"])}</p></div><span class="go mono">→</span></a>'
+        f'<a class="tl rv" href="{p["slug"]}.html"><span class="mono small dim">{E(p["when"])}</span><div>' + (f'<img class="tlogo" src="{p["logo"]}" alt="" onerror="this.remove()">' if p.get("logo") else '') + f'<h4>{E(p["title"])}</h4><p class="dim">{E(p["role"])}</p><p>{E(p["card"])}</p></div><span class="go mono">→</span></a>'
         for p in jobs)
-    edu = "".join(f'<div class="edu"><h4>{E(a)}</h4><p class="dim">{E(b)}</p><span class="mono small dim">{E(c)}</span></div>' for a, b, c in EDUCATION)
+    edu = "".join(f'<div class="edu"><img class="elogo" src="{d}" alt="{E(a)} logo" onerror="this.remove()"><h4>{E(a)}</h4><p class="dim">{E(b)}</p><span class="mono small dim">{E(c)}</span></div>' for a, b, c, d in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
     sk = "".join(f'<div><p class="mono small dim">{E(k)}</p><div class="tags">{"".join(f"<span>{E(x)}</span>" for x in v)}</div></div>' for k, v in SKILLS.items())
     body = f'''{nav(True)}
@@ -169,7 +170,7 @@ def project(p, i):
     body = f'''{nav()}
 <article class="wrap proj">
  <p class="mono dim crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; {CATS[p["cat"]]}</p>
- {f'<img class="plogo" src="{p["logo"]}" alt="{E(p["title"])} logo">' if p.get("logo") else ""}<h1>{E(p["title"])}</h1>
+ {f'<img class="plogo" src="{p["logo"]}" alt="{E(p["title"])} logo" onerror="this.remove()">' if p.get("logo") else ""}<h1>{E(p["title"])}</h1>
  <p class="lead">{E(p["kicker"])}</p>
  {spec}{res}
  <div class="pbody">{secs}{d}
