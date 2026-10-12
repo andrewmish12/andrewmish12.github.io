@@ -1,7 +1,7 @@
 """Builds the static site from content.py.  Run:  python3 _build.py  (from the site folder)"""
 import os, sys, html
 sys.path.insert(0, os.path.dirname(__file__))
-from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS
+from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
@@ -122,6 +122,7 @@ def home():
         return f'<span class="ecrop">{img}</span>' if len(x) > 4 and x[4] == "crop" else f'<span>{img}</span>'
     edu = "".join(f'<div class="edu">{elogo(x)}<h4>{E(x[0])}</h4><p class="dim">{E(x[1])}</p><span class="mono small dim">{E(x[2])}</span></div>' for x in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
+    inv = "".join(f"<li>{E(h)}</li>" for h in INVOLVEMENT)
     sk = "".join(f'<div><p class="mono small dim">{E(k)}</p><div class="tags">{"".join(f"<span>{E(x)}</span>" for x in v)}</div></div>' for k, v in SKILLS.items())
     body = f'''{nav(True)}
 <section class="hero wrap">
@@ -149,7 +150,7 @@ def home():
   <div class="about-txt rv"><p>I'm a freshman at Auburn studying business (intended finance, with a real estate minor). Before that I spent four years in PLTW engineering at Archbishop Spalding, which is where I got hooked on taking an idea from my head into the real world.</p>
   <p>At 17 I started at SilverStay building AI tools for hospital discharge teams, and I haven't stopped building since. I care less about credentials and more about whether the thing works and whether people use it.</p>
   <p>Outside of that: golf (2 years varsity, and one hole-in-one in a school match), guitar and piano, the gym, and whatever app I'm currently building.</p></div>
-  <div class="about-side rv"><p class="mono small dim">education</p>{edu}<p class="mono small dim" style="margin-top:1.6rem">honors</p><ul class="honors">{hon}</ul></div>
+  <div class="about-side rv"><p class="mono small dim">education</p>{edu}<p class="mono small dim" style="margin-top:1.6rem">honors</p><ul class="honors">{hon}</ul><p class="mono small dim" style="margin-top:1.6rem">involvement at auburn</p><ul class="honors">{inv}</ul></div>
  </div>
  <div class="skills rv">{sk}</div>
 </section>

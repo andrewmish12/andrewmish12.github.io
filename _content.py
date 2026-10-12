@@ -84,7 +84,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- EASY CLEAN
 {
-"slug": "easy-clean", "cat": "eng", "status": "done", "featured": True,
+"slug": "easy-clean", "logo": "easy-clean-logo.svg", "cat": "eng", "status": "done", "featured": True,
 "title": "EASy Clean",
 "kicker": "My PLTW capstone: a UV chair cover that sanitizes the clothes you're not sure are clean or dirty.",
 "card": "PLTW Engineering Design & Development capstone. 323 survey responses, 4 pivots, and one prototype built for ~$104.",
@@ -235,7 +235,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- COLLABIFY
 {
-"slug": "collabify", "cat": "venture", "status": "paused", "featured": False,
+"slug": "collabify", "logo": "collabify-logo.svg", "cat": "venture", "status": "paused", "featured": False,
 "title": "Collabify",
 "kicker": "An iOS app to match small businesses with influencers for paid promotions. It's like a dating app for brand deals.",
 "card": "Learned SwiftUI from scratch to prototype it, then pressure-tested the idea hard enough to pause it.",
@@ -284,7 +284,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- PLTW
 {
-"slug": "pltw", "cat": "eng", "status": "done", "featured": True,
+"slug": "pltw", "logo": "https://www.pltw.org/hubfs/mjtw-assets/logos/br26_PLTW%20Logo%20Primary%20Accent.svg", "cat": "eng", "status": "done", "featured": True,
 "title": "PLTW Engineering",
 "kicker": "Four years of Project Lead The Way engineering at Archbishop Spalding: CAD, prototyping, robotics, and a lot of trial and error.",
 "card": "IED, POE and an EDD capstone. Catapults, 3D-printed parts, a reverse-engineered product, automata, a self-driving robot and a VEX car.",
@@ -389,6 +389,15 @@ HONORS = [
 "National Honor Society",
 "Honor Roll, 8 semesters",
 "Auburn Ideas Jam competitor, Harbert College of Business",
+]
+
+INVOLVEMENT = [
+"Investment Club at Auburn",
+"Entrepreneurship Club at Auburn",
+"AI Experience Club",
+"College Republicans at Auburn",
+"Students for Life at Auburn",
+"Conservatives at Auburn (Turning Point USA)",
 ]
 
 SKILLS = {
