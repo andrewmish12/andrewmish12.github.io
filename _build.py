@@ -94,9 +94,10 @@ def card(p, i):
     if p.get("wide"):
         st = "".join(f'<div><b>{a}</b><span>{E(b)}</span></div>' for a, b in p.get("results", [])[:4])
         hl = "".join(f'<li><b>{E(a)}</b>{E(b)}</li>' for a, b in p["highlights"])
+        logo = f'<img class="clogo" src="{p["logo"]}" alt="{E(p["title"])} logo">' if p.get("logo") else ""
         return (f'<a class="card wide rv" data-cat="{p["cat"]}" href="{p["slug"]}.html">'
                 f'<div><div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
-                f'<h3>{E(p["title"])}</h3><p class="mono small dim">{E(p["role"])}</p><p class="lede">{E(p["kicker"])}</p>'
+                f'{logo}<h3>{E(p["title"])}</h3><p class="mono small dim">{E(p["role"])}</p><p class="lede">{E(p["kicker"])}</p>'
                 f'<div class="wide-stats">{st}</div><div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</div>'
                 f'<p class="go mono" style="margin-top:16px">Read the full breakdown →</p></div>'
                 f'<ul class="hl">{hl}</ul></a>')
@@ -168,7 +169,7 @@ def project(p, i):
     body = f'''{nav()}
 <article class="wrap proj">
  <p class="mono dim crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; {CATS[p["cat"]]}</p>
- <h1>{E(p["title"])}</h1>
+ {f'<img class="plogo" src="{p["logo"]}" alt="{E(p["title"])} logo">' if p.get("logo") else ""}<h1>{E(p["title"])}</h1>
  <p class="lead">{E(p["kicker"])}</p>
  {spec}{res}
  <div class="pbody">{secs}{d}

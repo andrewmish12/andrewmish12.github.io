@@ -43,7 +43,7 @@ STATUS = {
 PROJECTS = [
 # ---------------------------------------------------------------- SILVERSTAY
 {
-"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "wide": True,
+"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "wide": True, "logo": "silverstay-logo.png",
 "highlights": [
 ("Apps Script automation layer", "50+ automations for data sync, tracking, dashboards and Slack updates across 4 hospital sites"),
 ("Claude AI tools", "15+ tools built with care navigators: case-note assistant, progress-note auditor, resource search, placement navigator"),
@@ -75,7 +75,7 @@ PROJECTS = [
 "</div>"),
 ],
 "demo": "pipeline_ss",
-"results": [("50+","automations"),("15+","Claude tools"),("4","hospital sites"),("~$0.015","LLM cost per 2-min agent call")],
+"results": [("50+","automations"),("15+","Claude tools"),("4","hospital sites"),("8","tools & systems built")],
 "honest":
 "<p>The biggest thing I learned: the hard part isn't the code, it's figuring out what people actually need. A tool nobody opens is worthless, so the best builds came from sitting with navigators and watching what slowed them down.</p>"
 "<p>The voice agent taught me a weird lesson about prompting. The first model kept hanging up right after asking its own question, and every \"don't do X\" rule I added either got ignored or froze the agent. Switching to Claude Haiku 4.5 and rewriting everything as positive instructions (\"do Y\") fixed it. To be clear, the voice agent is still a proof of concept. It works in testing, but it isn't making real calls yet because phone service and the healthcare compliance paperwork still have to be finished. I'd rather say that than oversell it.</p>"

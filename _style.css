@@ -161,3 +161,4 @@ footer{background:var(--bg2)}
 .foot h2{font-weight:600}
 .panel figcaption{font-family:var(--sans)}
 .tag-now{left:16px;bottom:16px;border-radius:6px;box-shadow:0 6px 18px -10px rgba(11,13,18,.35)}
+.clogo{display:block;height:78px;width:auto;margin:16px 0 4px}.plogo{display:block;height:110px;width:auto;margin-bottom:14px}
