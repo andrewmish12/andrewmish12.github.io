@@ -8,7 +8,7 @@ CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
 E = html.escape
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">')
 
 JS = """<script>
 document.documentElement.classList.add('js');
@@ -29,16 +29,16 @@ def head(title, desc):
 
 def nav(home=False):
     p = "" if home else "index.html"
-    return (f'<header class="nav"><a class="logo" href="index.html"><span>AM</span>/ andrew mish</a>'
+    return (f'<header class="nav"><a class="logo" href="index.html">Andrew Mish</a>'
             f'<button class="menu-btn" aria-label="Menu">☰</button><nav>'
             f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#about">About</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
 
 def footer():
-    return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">// get in touch</p><h2>Let\'s build something.</h2>'
+    return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">Contact</p><h2>Let\'s build something.</h2>'
             f'<p class="dim">Internships, partnerships, or if you just want to argue about an idea. I\'m in.</p></div>'
             f'<div class="foot-links"><a href="tel:{PROFILE["phone_tel"]}">{PROFILE["phone"]} ↗</a><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
             f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a></div></div>'
-            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish</span><span>Built by me (and Claude) · hosted on GitHub Pages</span></div></footer>{JS}</body></html>')
+            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}</body></html>')
 
 def chip(status):
     lab, cls = STATUS[status]
@@ -98,12 +98,12 @@ def card(p, i):
                 f'<div><div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
                 f'<h3>{E(p["title"])}</h3><p class="mono small dim">{E(p["role"])}</p><p class="lede">{E(p["kicker"])}</p>'
                 f'<div class="wide-stats">{st}</div><div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</div>'
-                f'<p class="go mono" style="margin-top:16px">open the full breakdown →</p></div>'
+                f'<p class="go mono" style="margin-top:16px">Read the full breakdown →</p></div>'
                 f'<ul class="hl">{hl}</ul></a>')
     return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
             f'<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
-            f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">open →</span></a>')
+            f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">Read more →</span></a>')
 
 def home():
     feats = [p for p in PROJECTS if p["cat"] != "job"]
@@ -120,25 +120,25 @@ def home():
     body = f'''{nav(True)}
 <section class="hero wrap">
  <div class="hero-txt">
-  <p class="mono dim boot">&gt; LLM implementation engineer · founder · Auburn '30</p>
+  <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
   <h1>I'm Andrew.<br><span class="grad">I build things that actually get used.</span></h1>
-  <p class="lead">AI tools a hospital team runs on every day, apps I built because I needed them, and a running list of 90+ business ideas I'm working through. This site has all of it, with how each one works and my honest take on how it went.</p>
+  <p class="lead">AI tools a hospital team runs on every day, apps I built because I needed them, and a running list of 100+ business ideas I'm working through. This site has all of it, with how each one works and my honest take on how it went.</p>
   <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
  </div>
- <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"><div class="tag-now mono small"><i></i>Now: SilverStay · Auburn · Prereq</div></div>
+ <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"><div class="tag-now mono small"><i></i>Now: SilverStay · Auburn</div></div>
 </section>
 <section class="wrap stats">{stats}</section>
 <section id="work" class="wrap sec">
- <div class="sec-head"><p class="mono dim">// 01 — the work</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently.</p></div>
+ <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently.</p></div>
  <div class="filters mono">{chips}</div>
  <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats))}</div>
 </section>
 <section id="experience" class="wrap sec">
- <div class="sec-head"><p class="mono dim">// 02 — experience</p><h2>Where I've worked</h2></div>
+ <div class="sec-head"><p class="mono dim">Experience</p><h2>Where I've worked</h2></div>
  <div class="timeline">{timeline}</div>
 </section>
 <section id="about" class="wrap sec about">
- <div class="sec-head"><p class="mono dim">// 03 — about</p><h2>The short version</h2></div>
+ <div class="sec-head"><p class="mono dim">About</p><h2>The short version</h2></div>
  <div class="about-grid">
   <div class="about-txt rv"><p>I'm a freshman at Auburn studying business (intended finance, with a real estate minor). Before that I spent four years in PLTW engineering at Archbishop Spalding, which is where I got hooked on taking an idea from my head into the real world.</p>
   <p>At 17 I started at SilverStay building AI tools for hospital discharge teams, and I haven't stopped building since. I care less about credentials and more about whether the thing works and whether people use it.</p>
@@ -167,12 +167,12 @@ def project(p, i):
     nexts = f'<section class="psec rv"><h2>What\'s next</h2>{p["next"]}</section>' if p.get("next") else ""
     body = f'''{nav()}
 <article class="wrap proj">
- <p class="mono dim crumb"><a href="index.html">~</a> / {p["cat"]} / {p["slug"]}</p>
+ <p class="mono dim crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; {CATS[p["cat"]]}</p>
  <h1>{E(p["title"])}</h1>
  <p class="lead">{E(p["kicker"])}</p>
  {spec}{res}
  <div class="pbody">{secs}{d}
-  <section class="psec honest rv"><p class="mono small">// honest take</p>{p["honest"]}</section>
+  <section class="psec honest rv"><p class="mono small">My honest take</p>{p["honest"]}</section>
   {nexts}{links}
  </div>
  <nav class="pn mono"><a href="{prev["slug"]}.html">← {E(prev["title"])}</a><a href="index.html#work">all work</a><a href="{nxt["slug"]}.html">{E(nxt["title"])} →</a></nav>

@@ -17,7 +17,7 @@ STATS = [
     ("50+", "Apps Script automations shipped at SilverStay"),
     ("15+", "Claude AI tools built with care navigators"),
     ("4", "hospital sites using my workflows"),
-    ("90+", "business ideas pressure-tested"),
+    ("100+", "business ideas on my list"),
 ]
 
 CATS = {
@@ -258,13 +258,13 @@ PROJECTS = [
 {
 "slug": "ideas", "cat": "venture", "status": "idea", "featured": True,
 "title": "The Idea Pipeline",
-"kicker": "I keep a running list of business ideas, 90+ and counting. Here's how I decide which ones are worth building.",
-"card": "90+ ideas screened with six forcing questions. 73 killed, 12 need more info, 5 survived.",
+"kicker": "I keep a running list of business ideas, 100+ and counting. Here's how I decide which ones are worth building.",
+"card": "100+ ideas on the list. I ran a batch of 90 through six forcing questions: 73 killed, 12 need more info, 5 survived.",
 "when": "Ongoing", "role": "Founder, Entrepreneurship Club (Archbishop Spalding)",
 "stack": ["Customer surveys", "Competitive research", "Prototyping"],
 "sections": [
 ("How I filter ideas",
-"<p>Ideas are cheap. I've got a notes app full of them. Before pitching at Auburn's Ideas Jam, I ran 90 of them through a product diagnostic: six blunt questions about who has the problem, how badly they have it, what they use now, and whether anyone would pay.</p>"),
+"<p>Ideas are cheap. I've got a notes app with 100+ of them. Before pitching at Auburn's Ideas Jam, I ran 90 of them through a product diagnostic: six blunt questions about who has the problem, how badly they have it, what they use now, and whether anyone would pay.</p>"),
 ("The ones that survived",
 "<div class='builds'>"
 "<div class='build'><h4>Prereq</h4><p>Degree-planning answers you can trust. <a href='prereq.html'>See the project →</a></p></div>"
