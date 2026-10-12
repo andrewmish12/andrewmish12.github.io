@@ -365,7 +365,7 @@ PROJECTS = [
 "next": None,
 },
 {
-"slug": "waugh-chapel", "cat": "job", "status": "done", "featured": False,
+"slug": "waugh-chapel", "logo": "waugh-chapel-logo.png", "cat": "job", "status": "done", "featured": False,
 "title": "Waugh Chapel Swim Club",
 "kicker": "Snack Bar Attendant, Gambrills, MD.",
 "card": "Handled cash and served guests through peak summer rushes.",
@@ -380,8 +380,8 @@ PROJECTS = [
 ]
 
 EDUCATION = [
-("Auburn University", "B.S. Business Administration · Pre-Business (Intended Finance) · Intended Real Estate minor", "Expected May 2030", "https://ocm.auburn.edu/brand-center/logos/auburn/informal_horiz/fullcolor/auburn_informal_h_fullcolor_digital.png"),
-("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026", "https://bbk12e1-cdn.myschoolcdn.com/ftpimages/906/logo/60_logo_whitebackground.png"),
+("Auburn University", "B.S. Business Administration · Pre-Business (Intended Finance) · Intended Real Estate minor", "Expected May 2030", "https://ocm.auburn.edu/brand-center/logos/auburn/informal_horiz/fullcolor/auburn_informal_h_fullcolor_digital.png", "crop"),
+("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026", "", "plain"),
 ]
 
 HONORS = [

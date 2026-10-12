@@ -116,7 +116,11 @@ def home():
     timeline = "".join(
         f'<a class="tl rv" href="{p["slug"]}.html"><span class="mono small dim">{E(p["when"])}</span><div>' + (f'<img class="tlogo" src="{p["logo"]}" alt="" onerror="this.remove()">' if p.get("logo") else '') + f'<h4>{E(p["title"])}</h4><p class="dim">{E(p["role"])}</p><p>{E(p["card"])}</p></div><span class="go mono">→</span></a>'
         for p in jobs)
-    edu = "".join(f'<div class="edu"><img class="elogo" src="{d}" alt="{E(a)} logo" onerror="this.remove()"><h4>{E(a)}</h4><p class="dim">{E(b)}</p><span class="mono small dim">{E(c)}</span></div>' for a, b, c, d in EDUCATION)
+    def elogo(x):
+        if not x[3]: return ""
+        img = f'<img class="elogo" src="{x[3]}" alt="{E(x[0])} logo" onerror="this.parentNode.remove()">'
+        return f'<span class="ecrop">{img}</span>' if len(x) > 4 and x[4] == "crop" else f'<span>{img}</span>'
+    edu = "".join(f'<div class="edu">{elogo(x)}<h4>{E(x[0])}</h4><p class="dim">{E(x[1])}</p><span class="mono small dim">{E(x[2])}</span></div>' for x in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
     sk = "".join(f'<div><p class="mono small dim">{E(k)}</p><div class="tags">{"".join(f"<span>{E(x)}</span>" for x in v)}</div></div>' for k, v in SKILLS.items())
     body = f'''{nav(True)}
