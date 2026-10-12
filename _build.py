@@ -24,7 +24,7 @@ def head(title, desc):
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{E(title)}</title><meta name="description" content="{E(desc)}">'
             f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="andrew.jpg">'
-            f'<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23ff7a1a%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22monospace%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%230c0e12%22%3EAM%3C/text%3E%3C/svg%3E">'
+            f'<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230b0d12%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22monospace%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3EAM%3C/text%3E%3C/svg%3E">'
             f'{FONTS}<style>{CSS}</style></head><body>')
 
 def nav(home=False):
@@ -36,7 +36,7 @@ def nav(home=False):
 def footer():
     return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">// get in touch</p><h2>Let\'s build something.</h2>'
             f'<p class="dim">Internships, partnerships, or if you just want to argue about an idea. I\'m in.</p></div>'
-            f'<div class="foot-links"><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
+            f'<div class="foot-links"><a href="tel:{PROFILE["phone_tel"]}">{PROFILE["phone"]} ↗</a><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
             f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a></div></div>'
             f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish</span><span>Built by me (and Claude) · hosted on GitHub Pages</span></div></footer>{JS}</body></html>')
 
@@ -91,6 +91,15 @@ def demo(kind):
 
 # ------------------------------------------------------------------ pages
 def card(p, i):
+    if p.get("wide"):
+        st = "".join(f'<div><b>{a}</b><span>{E(b)}</span></div>' for a, b in p.get("results", [])[:4])
+        hl = "".join(f'<li><b>{E(a)}</b>{E(b)}</li>' for a, b in p["highlights"])
+        return (f'<a class="card wide rv" data-cat="{p["cat"]}" href="{p["slug"]}.html">'
+                f'<div><div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
+                f'<h3>{E(p["title"])}</h3><p class="mono small dim">{E(p["role"])}</p><p class="lede">{E(p["kicker"])}</p>'
+                f'<div class="wide-stats">{st}</div><div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</div>'
+                f'<p class="go mono" style="margin-top:16px">open the full breakdown →</p></div>'
+                f'<ul class="hl">{hl}</ul></a>')
     return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
             f'<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'

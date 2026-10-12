@@ -6,6 +6,8 @@
 PROFILE = {
     "name": "Andrew Mish",
     "email": "andrewmish@gmail.com",
+    "phone": "(410) 353-9119",
+    "phone_tel": "+14103539119",
     "linkedin": "https://www.linkedin.com/in/andrew-mish-324a7a228/",
     "github": "https://github.com/andrewmish12",
     "location": "Auburn, AL · Odenton, MD",
@@ -41,7 +43,17 @@ STATUS = {
 PROJECTS = [
 # ---------------------------------------------------------------- SILVERSTAY
 {
-"slug": "silverstay", "cat": "work", "status": "live", "featured": True,
+"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "wide": True,
+"highlights": [
+("Apps Script automation layer", "50+ automations for data sync, tracking, dashboards and Slack updates across 4 hospital sites"),
+("Claude AI tools", "15+ tools built with care navigators: case-note assistant, progress-note auditor, resource search, placement navigator"),
+("Daily PDF reports", "Apps Script + Claude + Cloud Functions put a formatted report in Drive every morning, hands-off"),
+("Voice AI agent", "Calls transport and equipment vendors, reads back bookings, and pulls 10 fields per call (proof of concept)"),
+("Referral intake rebuild", "Form submission → auto-generated referral PDF → emailed to the placement team"),
+("DocuSign web forms", "Digital paperwork, including a ~150-field benefits enrollment form with signer routing"),
+("Call-quality insights", "Claude scores recorded calls against a sales methodology and returns coaching notes"),
+("Rollout survey site", "Before/after surveys measuring an AI rollout, on AWS (Route 53 → CloudFront → S3)"),
+],
 "title": "SilverStay",
 "kicker": "LLM Implementation Engineer Intern. I build the AI tools and automations a hospital discharge team runs on.",
 "card": "50+ automations, 15+ Claude tools, a voice agent, and the plumbing that keeps it all moving across 4 hospital sites.",
@@ -58,6 +70,7 @@ PROJECTS = [
 "<div class='build'><h4>Automated daily PDF reports</h4><p>A pipeline where Apps Script pulls the day's data, Claude helps generate the report layout code, a Cloud Function runs it, and a formatted PDF lands in Drive every morning. Nobody has to touch it once it's set up.</p></div>"
 "<div class='build'><h4>Voice AI agent for vendor calls</h4><p>An AI phone agent that calls transport and medical-equipment vendors so navigators don't sit on hold. It discloses that it's an AI, refuses to share sensitive details, reads back what it booked, and pulls 10 structured fields out of every call (outcome, time, confirmation number, caveats, compliance flags).</p></div>"
 "<div class='build'><h4>Referral intake rebuild</h4><p>I replaced an add-on-based process with a custom Apps Script trigger: a form submission becomes a generated referral PDF that's emailed straight to the placement team. I also built DocuSign web forms for paperwork that used to be filled out by hand.</p></div>"
+"<div class='build'><h4>Call-quality insights</h4><p>A Claude-powered tool that reviews recorded calls, scores them against a sales methodology, and hands back specific coaching notes, so feedback doesn't depend on someone listening to every call.</p></div>"
 "<div class='build'><h4>Rollout survey site</h4><p>Before and after a new AI tool rolled out, leadership wanted to measure whether it actually saved time. I built custom survey forms feeding one Apps Script backend, and put them behind a branded short link using AWS (Route 53 → CloudFront → S3).</p></div>"
 "</div>"),
 ],

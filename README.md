@@ -11,4 +11,4 @@ Styling lives in `_style.css`. Files starting with `_` aren't served on the live
 
 ## Rules for this site
 - No patient info, hospital client names, or internal SilverStay screenshots, ever.
-- No phone number. Contact goes through email and LinkedIn.
+- Contact: phone, email, LinkedIn and GitHub in the footer.
