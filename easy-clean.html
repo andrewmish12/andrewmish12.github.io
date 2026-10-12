@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EASy Clean — Andrew Mish</title><meta name="description" content="My PLTW capstone: a UV chair cover that sanitizes the clothes you&#x27;re not sure are clean or dirty."><meta property="og:title" content="EASy Clean — Andrew Mish"><meta property="og:description" content="My PLTW capstone: a UV chair cover that sanitizes the clothes you&#x27;re not sure are clean or dirty."><meta property="og:image" content="andrew.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23ff7a1a%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22monospace%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%230c0e12%22%3EAM%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#0b0d11;--bg2:#10131a;--panel:#141821;--line:#232937;--line2:#2f3747;--text:#eceef2;--mute:#a1a9b8;--dim:#6f7889;
+--acc:#ff7a1a;--acc2:#ffb26b;--blue:#79aefc;--green:#4fd18b;--yellow:#f5c84c;
+--display:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;--sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;
+background-image:radial-gradient(ellipse 80% 50% at 85% -10%,rgba(255,122,26,.13),transparent 60%),radial-gradient(ellipse 60% 40% at -10% 30%,rgba(121,174,252,.08),transparent 60%),
+linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+background-size:auto,auto,44px 44px,44px 44px;background-attachment:fixed}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);letter-spacing:.01em}.small{font-size:.78rem}.dim{color:var(--mute)}
+h1,h2,h3,h4,h5{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,13,17,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--mono);font-size:.9rem;text-decoration:none;color:var(--mute)}.logo span{color:var(--bg);background:var(--acc);padding:2px 6px;border-radius:5px;font-weight:600;margin-right:4px}
+.nav nav{display:flex;gap:26px;font-size:.92rem}.nav nav a{text-decoration:none;color:var(--mute);transition:color .2s}.nav nav a:hover{color:var(--text)}
+.nav-cta{color:var(--acc)!important}.menu-btn{display:none;background:none;border:1px solid var(--line2);color:var(--text);border-radius:8px;padding:4px 10px;font-size:1rem}
+/* hero */
+.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:56px}
+.boot{font-size:.85rem;margin-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:800}
+.grad{background:linear-gradient(100deg,var(--acc) 0%,var(--acc2) 45%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.18rem;color:var(--mute);max-width:640px;margin-top:22px}
+.cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;background:var(--acc);color:#120800;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(255,122,26,.6)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.hero-img{position:relative}
+.hero-img img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:22px;border:1px solid var(--line2);filter:saturate(.92) contrast(1.03);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 0 0 8px rgba(255,255,255,.02)}
+.hero-img::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px dashed rgba(255,122,26,.35);border-radius:26px;z-index:-1}
+.tag-now{position:absolute;left:-18px;bottom:22px;background:var(--panel);border:1px solid var(--line2);padding:8px 13px;border-radius:999px;display:flex;align-items:center;gap:8px}
+.tag-now i,.status i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(79,209,139,.18);display:inline-block}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;background:rgba(20,24,33,.6);overflow:hidden}
+.stat{padding:26px 24px;border-right:1px solid var(--line)}.stat:last-child{border:0}
+.stat b{display:block;font-family:var(--display);font-size:2.4rem;font-weight:800;color:var(--acc);line-height:1}.stat span{font-size:.9rem;color:var(--mute);display:block;margin-top:8px}
+/* sections */
+.sec{padding-top:110px}.sec-head{margin-bottom:34px}.sec-head h2{font-size:clamp(2rem,3.6vw,2.9rem);margin:8px 0 10px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{font:inherit;font-size:.82rem;background:transparent;color:var(--mute);border:1px solid var(--line2);padding:7px 14px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--text)}.filters button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(20,24,33,.92),rgba(16,19,26,.92));text-decoration:none;transition:transform .25s,border-color .25s,box-shadow .25s;min-height:270px}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,122,26,.5);box-shadow:0 20px 50px -25px rgba(255,122,26,.35)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card h3{font-size:1.5rem}.card p{color:var(--mute);font-size:.96rem;flex:1}
+.go{font-size:.8rem;color:var(--acc);opacity:.75;transition:opacity .2s,transform .2s}.card:hover .go{opacity:1;transform:translateX(4px)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{font-family:var(--mono);font-size:.72rem;color:var(--mute);border:1px solid var(--line2);padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.02)}
+.status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px;border:1px solid var(--line2);white-space:nowrap}
+.s-proto i{background:var(--yellow);box-shadow:0 0 0 3px rgba(245,200,76,.18)}.s-idea i{background:var(--blue);box-shadow:0 0 0 3px rgba(121,174,252,.18)}
+.s-paused i{background:var(--dim);box-shadow:none}.s-done i{background:var(--acc);box-shadow:0 0 0 3px rgba(255,122,26,.18)}
+/* timeline */
+.timeline{border-left:1px solid var(--line2);margin-left:6px}
+.tl{display:grid;grid-template-columns:190px 1fr 30px;gap:24px;padding:24px 0 24px 28px;text-decoration:none;position:relative;border-bottom:1px solid var(--line);transition:background .2s}
+.tl::before{content:"";position:absolute;left:-6px;top:32px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
+.tl:hover{background:rgba(255,255,255,.02)}.tl h4{font-size:1.3rem}.tl p{font-size:.95rem;margin-top:4px}.tl .go{align-self:center}
+/* about */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}.about-txt p{margin-bottom:16px;color:#d5d9e0}
+.edu{padding:14px 0;border-bottom:1px solid var(--line)}.edu h4{font-size:1.1rem}.edu p{font-size:.92rem}
+.honors{list-style:none;margin-top:8px}.honors li{padding:6px 0 6px 18px;position:relative;font-size:.95rem}.honors li::before{content:"▹";position:absolute;left:0;color:var(--acc)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px;padding:26px;border:1px solid var(--line);border-radius:16px;background:rgba(20,24,33,.6)}.skills .tags{margin-top:10px}
+/* footer */
+footer{margin-top:130px;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(255,122,26,.05))}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:70px;padding-bottom:50px;flex-wrap:wrap}
+.foot h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:10px 0}
+.foot-links{display:flex;flex-direction:column;gap:12px;font-family:var(--mono);font-size:.95rem}.foot-links a{text-decoration:none;color:var(--text);border-bottom:1px solid var(--line2);padding-bottom:8px;transition:color .2s}.foot-links a:hover{color:var(--acc)}
+.foot-bottom{display:flex;justify-content:space-between;padding-bottom:30px;flex-wrap:wrap;gap:10px}
+/* project page */
+.proj{padding-top:60px;max-width:900px}.crumb{font-size:.82rem;margin-bottom:20px}.crumb a{color:var(--acc);text-decoration:none}
+.proj h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800}
+.spec{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:34px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(20,24,33,.7)}
+.spec>div{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}.spec>div:nth-child(odd){border-right:1px solid var(--line)}
+.spec>div:nth-last-child(-n+2){border-bottom:0}.spec .dim{text-transform:uppercase;letter-spacing:.08em;font-size:.68rem}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+.results div{padding:18px;border:1px solid var(--line);border-radius:12px;background:rgba(255,122,26,.04)}.results b{font-family:var(--display);font-size:1.9rem;color:var(--acc);display:block;line-height:1.1}.results span{font-size:.85rem;color:var(--mute)}
+.pbody{margin-top:20px}.psec{padding-top:46px}.psec h2{font-size:1.75rem;margin-bottom:14px}
+.psec p{margin-bottom:14px;color:#d5d9e0}.psec strong,.psec b{color:var(--text)}.psec a{color:var(--acc)}
+.note-sm{font-size:.86rem;color:var(--mute)!important;border-left:2px solid var(--line2);padding-left:12px}
+.builds{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.build{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}.build h4{font-size:1.1rem;margin-bottom:8px}.build p{font-size:.94rem;margin:0;color:var(--mute)!important}
+.feat{list-style:none}.feat li{padding:10px 0 10px 22px;border-bottom:1px solid var(--line);position:relative;color:#d5d9e0}.feat li::before{content:"→";position:absolute;left:0;color:var(--acc);font-family:var(--mono)}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.steps li{padding:14px;border:1px solid var(--line);border-radius:10px;font-size:.88rem;background:var(--panel)}.steps li:last-child{border-color:var(--acc);background:rgba(255,122,26,.07)}
+.steps b{display:block;font-family:var(--mono);color:var(--acc);font-size:.75rem;margin-bottom:4px}
+.honest{margin-top:46px;padding:28px 30px!important;border-left:3px solid var(--acc);background:linear-gradient(90deg,rgba(255,122,26,.08),transparent);border-radius:0 14px 14px 0}
+.honest>.mono{color:var(--acc);margin-bottom:12px}.honest p{font-size:1.05rem}
+.plinks{margin-top:30px;display:flex;flex-direction:column;gap:8px}.plinks a{font-family:var(--mono);font-size:.85rem;color:var(--blue)}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:70px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem}.pn a{color:var(--mute);text-decoration:none}.pn a:hover{color:var(--acc)}
+/* demo panels */
+.panel{border:1px solid var(--line2);border-radius:16px;padding:24px;background:linear-gradient(180deg,#121620,#0e1118);position:relative}
+.panel figcaption{font-size:.82rem;color:var(--dim);margin-top:16px;font-family:var(--mono)}
+.panel.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}.panel.split figcaption{grid-column:1/-1;margin-top:0}
+.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}.fnode{flex:1;min-width:130px;padding:14px;border:1px solid var(--line2);border-radius:10px;background:var(--bg2);display:flex;flex-direction:column;gap:4px}
+.fnode b{font-size:.95rem}.fnode:last-child{border-color:var(--acc)}.arrow{align-self:center;color:var(--acc);font-family:var(--mono)}
+.bar,.frow{display:grid;grid-template-columns:1.4fr 2fr 60px;gap:14px;align-items:center;padding:9px 0;font-size:.9rem}.bar b,.frow b{font-family:var(--mono);color:var(--acc);text-align:right}
+.track{height:10px;background:var(--bg2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}.fill{height:100%;width:var(--w);background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px}
+.js .rv .fill{width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1) .2s}.js .rv.in .fill{width:var(--w)}
+.phone{border:1px solid var(--line2);border-radius:26px;padding:18px 14px;background:#07090c;display:flex;flex-direction:column;gap:10px;min-height:240px}
+.bubble{max-width:85%;padding:10px 14px;border-radius:18px;font-size:.9rem;line-height:1.4}.bubble.in{background:#262b36;border-bottom-left-radius:4px}.bubble.out{background:var(--acc);color:#140900;align-self:flex-end;border-bottom-right-radius:4px}
+.code{font-family:var(--mono);font-size:.82rem;line-height:1.6;background:#07090c;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;color:#cfd5df}
+.code .c{color:var(--dim)}.code k{color:var(--blue)}.code s{color:var(--acc2);text-decoration:none}
+.ask{padding:14px 16px;border:1px solid var(--line2);border-radius:10px;background:var(--bg2);font-size:.88rem}
+.verdict{margin-top:12px;padding:18px;border:1px solid rgba(79,209,139,.4);border-radius:12px;background:rgba(79,209,139,.06)}.verdict p{margin:8px 0 0;font-size:.95rem}
+.vtag{font-family:var(--mono);font-size:.75rem;font-weight:600;background:var(--green);color:#03160b;padding:3px 10px;border-radius:6px}
+.ph-top{display:flex;justify-content:space-between;padding:0 4px}.ph-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}.ph-card h5{font-size:1.2rem;margin:4px 0 8px}
+.menu{list-style:none}.menu li{display:flex;flex-direction:column;padding:8px 0;border-top:1px solid var(--line);font-size:.86rem}.menu span{color:var(--mute);font-size:.78rem}.menu em{color:var(--green);font-style:normal}
+.tabs{display:flex;flex-direction:column;gap:8px}.tabs span{padding:8px 12px;border:1px solid var(--line2);border-radius:8px}.tabs span.on{border-color:var(--acc);color:var(--acc)}
+.ring{width:100%;max-width:220px;margin:auto}.r-bg{fill:none;stroke:var(--bg2);stroke-width:10}.r-fg{fill:none;stroke:var(--acc);stroke-width:10;stroke-linecap:round;stroke-dasharray:301.6;stroke-dashoffset:calc(301.6*(1 - var(--p)));transform:rotate(-90deg);transform-origin:center}
+.r-num{fill:var(--text);font-family:var(--display);font-size:24px;font-weight:800}.r-lab{fill:var(--mute);font-family:var(--mono);font-size:8px}
+.iou p{margin-bottom:8px}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease var(--d,0ms),transform .7s ease var(--d,0ms)}.js .rv.in{opacity:1;transform:none}
+.hero-txt>*{animation:up .8s both}.hero-txt>*:nth-child(2){animation-delay:.08s}.hero-txt>*:nth-child(3){animation-delay:.16s}.hero-txt>*:nth-child(4){animation-delay:.24s}.hero-img{animation:up 1s .2s both}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+/* responsive */
+@media (max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}.skills{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){body{font-size:16px}.wrap{padding:0 20px}.hero{grid-template-columns:1fr;gap:36px;padding-top:50px}.hero-img{max-width:340px}
+.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.grid,.builds,.about-grid,.panel.split{grid-template-columns:1fr}.tl{grid-template-columns:1fr;gap:6px}.tl .go{display:none}
+.spec{grid-template-columns:1fr}.spec>div{border-right:0!important;border-bottom:1px solid var(--line)!important}.spec>div:last-child{border-bottom:0!important}
+.nav nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line)}.nav nav a{padding:14px 20px;border-top:1px solid var(--line)}
+.nav-open .nav nav{display:flex}.menu-btn{display:block}.bar,.frow{grid-template-columns:1fr 60px}.bar .track,.frow .track{grid-column:1/-1;grid-row:2}.tag-now{left:10px}}
+</style></head><body><header class="nav"><a class="logo" href="index.html"><span>AM</span>/ andrew mish</a><button class="menu-btn" aria-label="Menu">☰</button><nav><a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="index.html#contact" class="nav-cta">Contact</a></nav></header>
+<article class="wrap proj">
+ <p class="mono dim crumb"><a href="index.html">~</a> / eng / easy-clean</p>
+ <h1>EASy Clean</h1>
+ <p class="lead">My PLTW capstone: a UV chair cover that sanitizes the clothes you&#x27;re not sure are clean or dirty.</p>
+ <div class="spec mono small"><div><span class="dim">status</span><span class="status s-done"><i></i>Completed</span></div><div><span class="dim">when</span>2025 – 2026 school year</div><div><span class="dim">role</span>Team of 3 (with Sebastian White &amp; Emily Paine)</div><div><span class="dim">stack</span><span class="tags"><span>Fusion 360 CAD</span><span>UV-A LEDs</span><span>Soldering</span><span>Survey research</span><span>Petri dish testing</span></span></div></div><div class="results rv"><div><b>323</b><span>survey responses</span></div><div><b>76.2%</b><span>re-wear clothes</span></div><div><b>6</b><span>concepts scored</span></div><div><b>$103.57</b><span>prototype cost</span></div></div>
+ <div class="pbody"><section class="psec rv"><h2>The problem</h2><p>Everybody has <em>the chair</em>, the one in your room covered in clothes you wore once. They're not dirty enough to wash and not clean enough to put away. Washing them anyway wastes water (about 41 gallons a load), and sprays like Febreze only cover up the smell.</p><p>We surveyed people to see if this was real. <strong>323 responses</strong> later, it was.</p></section><section class="psec rv"><h2>How it evolved</h2><p>This project changed direction more than anything else I've built. We started with UV light, switched to a heated-airflow cabinet, then a two-part heat-and-cool cabinet. After a design review, we realized we'd been designing a whole appliance when the problem was literally a chair. So we went back to UV and turned it into a <strong>chair cover</strong>.</p><ul class='steps'><li><b>01</b> UV cabinet idea</li><li><b>02</b> Heated airflow cabinet (won our decision matrix)</li><li><b>03</b> Top/bottom heat + cool cabinet</li><li><b>04</b> UV chair cover (final, Feb 2026)</li></ul></section><section class="psec rv"><h2>The final build</h2><p>A polyester cover that drapes over any desk chair, with UV-A LED strips attached by Velcro so you can pull the electronics off and wash the cover. We picked UV-A over UV-C on purpose: it's weaker at killing bacteria, but much safer for something sitting in your bedroom.</p><p>We wrote 8 design requirements, including at least 80% bacteria reduction, a cycle of 15 minutes or less, a footprint under 2 cubic feet, and more than 90% of the garment exposed to light. We compared 6 concepts in a decision matrix and benchmarked against washers, sprays, charcoal bags and an existing UV-cabinet patent. Budget was about $100; we came in at <strong>$103.57</strong>.</p></section><section class="psec rv"><h2>Testing</h2><p><strong>Durability:</strong> passed. We ripped the light strips off and put them back repeatedly, and neither the Velcro nor the adhesive lifted.</p><p><strong>Bacteria:</strong> our first round of petri dishes failed. Condensation built up under the lights and nothing grew, not even on the controls, so we got no data. We switched dish types and started over.</p></section><section class="psec rv"><h2>See it</h2><figure class="panel"><p class="mono small dim">survey · n = 323</p><div class="bar"><span>Re-wear clothes before washing</span><div class="track"><div class="fill" style="--w:76.2%"></div></div><b>76.2%</b></div><div class="bar"><span>…and have &quot;in-between&quot; clothes</span><div class="track"><div class="fill" style="--w:86.2%"></div></div><b>86.2%</b></div><div class="bar"><span>Put them on a chair</span><div class="track"><div class="fill" style="--w:46.3%"></div></div><b>46.3%</b></div><div class="bar"><span>Put them on the floor</span><div class="track"><div class="fill" style="--w:45.5%"></div></div><b>45.5%</b></div><figcaption>Real results from our market survey.</figcaption></figure></section>
+  <section class="psec honest rv"><p class="mono small">// honest take</p><p>We pivoted late, and it cost us. Changing to the chair cover in February meant relearning CAD, soldering and connectors on a deadline. But it was the right call. The cabinet was a cool engineering problem; the chair cover actually fits how people live.</p><p>The failed petri dish test stung, but it taught me more than a clean pass would have: control your test conditions <em>before</em> you trust your results. If I did it again, I'd sew the Velcro on instead of gluing it, and I'd run a tiny test batch before the real one.</p></section>
+  <section class="psec rv"><h2>What's next</h2><p>Finish the redo of the bacteria test, and figure out whether this could be a real product. A UV device that claims to kill bacteria counts as a regulated pesticide device under EPA rules, so that's the first wall to look at.</p></section><div class="plinks"><a href="https://sites.google.com/spaldinghs.org/sea/home" target="_blank" rel="noopener">Original team project site (school account) ↗</a></div>
+ </div>
+ <nav class="pn mono"><a href="silverstay.html">← SilverStay</a><a href="index.html#work">all work</a><a href="barber-bot.html">AI Barber Bot →</a></nav>
+</article>
+<footer id="contact"><div class="wrap foot"><div><p class="mono dim">// get in touch</p><h2>Let's build something.</h2><p class="dim">Internships, partnerships, or if you just want to argue about an idea. I'm in.</p></div><div class="foot-links"><a href="mailto:andrewmish@gmail.com">andrewmish@gmail.com ↗</a><a href="https://www.linkedin.com/in/andrew-mish-324a7a228/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/andrewmish12" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish</span><span>Built by me (and Claude) · hosted on GitHub Pages</span></div></footer><script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('on',x===b));
+ const f=b.dataset.filter;document.querySelectorAll('.card').forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'':'none'})}));
+const mb=document.querySelector('.menu-btn');if(mb)mb.addEventListener('click',()=>document.body.classList.toggle('nav-open'));
+</script></body></html>
