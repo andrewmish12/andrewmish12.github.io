@@ -381,7 +381,7 @@ PROJECTS = [
 
 EDUCATION = [
 ("Auburn University", "B.S. Business Administration · Pre-Business (Intended Finance) · Intended Real Estate minor", "Expected May 2030", "https://ocm.auburn.edu/brand-center/logos/auburn/informal_horiz/fullcolor/auburn_informal_h_fullcolor_digital.png", "crop"),
-("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026", "", "plain"),
+("Archbishop Spalding High School", "GPA 4.2 · PLTW Engineering · Golf (2-year varsity)", "2022 – 2026", "spalding-logo.png", "plain"),
 ]
 
 HONORS = [
