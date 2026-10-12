@@ -136,7 +136,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- PREREQ
 {
-"slug": "prereq", "cat": "venture", "status": "early", "featured": True,
+"slug": "prereq", "logo": "prereq-logo.png", "cat": "venture", "status": "early", "featured": True,
 "title": "Prereq",
 "kicker": "Degree planning that answers \"does this class count?\" in seconds, and shows you the exact catalog rule.",
 "card": "My Auburn Ideas Jam pitch. 65% of 20 surveyed students said they'd use it. Built so the AI explains answers but never makes them up.",
@@ -158,7 +158,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- AU DINING
 {
-"slug": "au-dining", "cat": "build", "status": "inuse", "featured": True,
+"slug": "au-dining", "logo": "au-dining-logo.png", "cat": "build", "status": "inuse", "featured": True,
 "title": "AU Dining",
 "kicker": "A web app that pulls Auburn's live dining menus and tells you where to eat between classes, based on your macros.",
 "card": "Live Auburn menu data, filters for calories and protein, \"Build My Plate,\" and a ranking of where to eat by walking distance.",
@@ -284,7 +284,7 @@ PROJECTS = [
 },
 # ---------------------------------------------------------------- PLTW
 {
-"slug": "pltw", "logo": "https://www.pltw.org/hubfs/mjtw-assets/logos/br26_PLTW%20Logo%20Primary%20Accent.svg", "cat": "eng", "status": "done", "featured": True,
+"slug": "pltw", "logo": "pltw-logo.png", "cat": "eng", "status": "done", "featured": True,
 "title": "PLTW Engineering",
 "kicker": "Four years of Project Lead The Way engineering at Archbishop Spalding: CAD, prototyping, robotics, and a lot of trial and error.",
 "card": "IED, POE and an EDD capstone. Catapults, 3D-printed parts, a reverse-engineered product, automata, a self-driving robot and a VEX car.",
