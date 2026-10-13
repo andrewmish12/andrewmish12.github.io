@@ -136,7 +136,7 @@ def home():
  <div class="hero-txt">
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
   <h1>I'm Andrew.<br><span class="grad">I love making my ideas a reality.</span></h1>
-  <p class="lead">I build things: automations a hospital team runs on every day, apps I made because I needed them, and a running list of 100+ business ideas. I don't write code by hand. I vibe code with AI, and I test everything until it works. This site has all of it, with how each one works and my honest take on how it went.</p>
+  <p class="lead">Freshman at Auburn. I automate hospital work at SilverStay, build apps I actually use, and have 100+ business ideas in my notes app. I don't code by hand. I vibe code with AI and test it until it works.</p>
   <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>

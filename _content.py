@@ -61,10 +61,10 @@ MOCK_SLACK = (
 PROJECTS = [
 # ================================================================ SILVERSTAY
 {
-"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "wide": True, "logo": "silverstay-logo.png",
+"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "logo": "silverstay-logo.png",
 "title": "SilverStay",
 "kicker": "I build the automations and AI tools a hospital discharge team runs on.",
-"card": "20+ tools, automations and fixes across 4+ hospital sites: nightly scripts, daily reports, AppSheet, Claude tools, a voice agent prototype, and more.",
+"card": "I automate the boring parts of hospital discharge work: nightly scripts, daily reports, Claude tools and more, across 4+ hospitals.",
 "when": "June 2025 – Present", "role": "LLM Implementation Engineer Intern (remote)",
 "stack": ["Claude", "Google Apps Script", "AppSheet", "Google Sheets", "AWS", "DocuSign", "ElevenLabs", "Slack"],
 "highlights": [
