@@ -32,13 +32,13 @@ def nav(home=False):
     p = "" if home else "index.html"
     return (f'<header class="nav"><a class="logo" href="index.html">Andrew Mish</a>'
             f'<button class="menu-btn" aria-label="Menu">☰</button><nav>'
-            f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#involvement">Involvement</a><a href="{p}#about">About</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
+            f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#involvement">Involvement</a><a href="{p}#about">About</a><a href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">Resume</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
 
 def footer():
     return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">Contact</p><h2>Let\'s build something.</h2>'
             f'<p class="dim">Internships, partnerships, or if you just want to argue about an idea. I\'m in.</p></div>'
             f'<div class="foot-links"><a href="tel:{PROFILE["phone_tel"]}">{PROFILE["phone"]} ↗</a><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
-            f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a></div></div>'
+            f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a><a href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a></div></div>'
             f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish · Last updated {UPDATED}</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}</body></html>')
 
 def chip(status):
@@ -146,7 +146,7 @@ def home():
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
   <h1>I’m Andrew Mish.</h1>
   <p class="lead">I love making my ideas real. I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
-  <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
+  <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume (PDF)</a></div>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
  <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"></div>
