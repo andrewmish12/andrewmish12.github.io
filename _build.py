@@ -24,7 +24,7 @@ const mb=document.querySelector('.menu-btn');if(mb)mb.addEventListener('click',(
 def head(title, desc):
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{E(title)}</title><meta name="description" content="{E(desc)}">'
-            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="andrew.jpg">'
+            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="https://andrewmish12.github.io/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="og:type" content="website"><meta property="og:url" content="https://andrewmish12.github.io/"><meta name="twitter:card" content="summary_large_image">'
             f'<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230b0d12%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22monospace%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3EAM%3C/text%3E%3C/svg%3E">'
             f'{FONTS}<style>{CSS}</style></head><body>')
 
