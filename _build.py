@@ -144,8 +144,8 @@ def home():
 <section class="hero wrap">
  <div class="hero-txt">
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
-  <h1>I’m Andrew Mish.<br><span class="grad">I love making my ideas real.</span></h1>
-  <p class="lead">I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
+  <h1>I’m Andrew Mish.</h1>
+  <p class="lead">I love making my ideas real. I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
   <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
