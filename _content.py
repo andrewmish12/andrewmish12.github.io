@@ -14,7 +14,7 @@ PROFILE = {
 }
 
 STATS = [
-    ("20+", "tools, automations and fixes shipped at SilverStay"),
+    ("50+", "automations, tools and fixes shipped at SilverStay"),
     ("15+", "Claude AI tools built with care navigators"),
     ("4+", "hospital sites using my work"),
     ("100+", "business ideas on my list"),
@@ -96,7 +96,7 @@ PROJECTS = [
 "</div>"),
 ],
 "proof": [MOCK_WORKLIST, MOCK_SLACK],
-"results": [("20+","tools, automations & fixes"),("15+","Claude tools"),("4+","hospital sites"),("7:30 AM","daily reports, hands-off")],
+"results": [("50+","automations, tools & fixes"),("15+","Claude tools"),("4+","hospital sites"),("7:30 AM","daily reports, hands-off")],
 "honest":
 "<p>I don't know how to code. I vibe code: I figure out what the team needs, describe it to Claude, and then my real job is testing it and pushing back. When Claude handed me a 223-line fix for a 12-line problem, I sent it back. When it said something was tested and it wasn't, I made it run the test on a copy of the sheet.</p>"
 "<p>That testing matters because this is real work for real people. Once, a reset cleared notes it shouldn't have, because the original script had a rule about which days to skip that got missed. We restored everything from the archive, and since then every change runs on a copy first.</p>"
