@@ -459,7 +459,7 @@ IDEAS_ALL = [
 "Google Earth with a history timeline", "Free Bible AI app", "AI real estate company", "Accent translator for calls", "Commercial-over notifier",
 "Invasive species removal", "Nearby firearm alert", "Magnetic guitar picks", "A \"RedZone\" for college football", "Quiet soda opener",
 "Better Bluetooth charging", "AI traffic lights", "Shareable birthday wish lists", "Minimal iPhone", "Microwave bulking dinners",
-"Phone for the elderly", "AI test grader", "Blockchain gift cards", "Bracelet-fastening aid", "Sauna salon", "Quiet vacuums",
+"Phone for the elderly", "AI test grader", "Blockchain gift cards", "Bracelet-fastening aid", "Sauna salon", "Some kind of arbitrage (I forgot what I meant)", "Quiet vacuums",
 "Spare-parts finder", "Traditional gender roles museum", "Legal immigrant resource hub", "Composting app", "Guitar tab generator",
 "Summer clothing line", "Color-by-numbers", "Designated driver service", "Robot barber", "Solar phone cases", "AI chord recognizer",
 "High school golf livestreams", "Hot-car death preventer", "Electronic voting software", "Snapchat-linked picture frame", "Elderly ride service",
@@ -484,12 +484,12 @@ HONORS = [
 CL = "https://se-images.campuslabs.com/clink/images/"
 INVOLVEMENT = [
 ("Auburn Ideas Jam", "Pitched Prereq · Harbert College of Business, Sept 2026", "https://harbert.auburn.edu/_resources/img/logos/logo-footer.png", "dark"),
-("Investment Club at Auburn", "Member", CL + "ca6cacb7-472c-4137-9b83-0a3a7b2d4a98caf8b9b5-e3ad-4a1e-b71b-903c574b449b.PNG", ""),
-("Entrepreneurs at Auburn", "Member", CL + "d6fd89fc-10c7-4a0a-b35e-c3fea4c06fbcbdcfb4c8-db04-4341-b254-f401ef680841.png", ""),
-("AI Experience at Auburn", "Member", CL + "02410c89-d28e-42bf-9ef2-7dd2a266f32639aaea47-a32d-4c3b-aa61-efe2e469274e.png", ""),
-("College Republicans at Auburn", "Member", CL + "420e4728-7d07-4b51-b83c-7f3e5fdc214a85f88b04-abb8-477c-a4a0-ecaeb47c500b.jpeg", ""),
-("Students for Life at Auburn", "Member", CL + "0f4aabf6-2857-4eb6-b1a8-af900d4602e29bfac61d-b601-49fb-94c6-1daf200c9806.jpg", ""),
-("Conservatives at Auburn (Turning Point USA)", "Member", CL + "3845cde7-b8c1-42ac-bdd9-387087b564d756700907-7df4-4204-93f6-34634d60e9c7.png", ""),
+("Investment Club at Auburn", "Member", CL + "ca6cacb7-472c-4137-9b83-0a3a7b2d4a98caf8b9b5-e3ad-4a1e-b71b-903c574b449b.PNG?preset=med-sq", ""),
+("Entrepreneurs at Auburn", "Member", CL + "d6fd89fc-10c7-4a0a-b35e-c3fea4c06fbcbdcfb4c8-db04-4341-b254-f401ef680841.png?preset=med-sq", ""),
+("AI Experience at Auburn", "Member", CL + "02410c89-d28e-42bf-9ef2-7dd2a266f32639aaea47-a32d-4c3b-aa61-efe2e469274e.png?preset=med-sq", ""),
+("College Republicans at Auburn", "Member", CL + "420e4728-7d07-4b51-b83c-7f3e5fdc214a85f88b04-abb8-477c-a4a0-ecaeb47c500b.jpeg?preset=med-sq", ""),
+("Students for Life at Auburn", "Member", CL + "0f4aabf6-2857-4eb6-b1a8-af900d4602e29bfac61d-b601-49fb-94c6-1daf200c9806.jpg?preset=med-sq", ""),
+("Conservatives at Auburn (Turning Point USA)", "Member", CL + "3845cde7-b8c1-42ac-bdd9-387087b564d756700907-7df4-4204-93f6-34634d60e9c7.png?preset=med-sq", ""),
 ]
 
 SKILLS = {
