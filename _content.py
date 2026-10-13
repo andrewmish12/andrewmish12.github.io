@@ -363,7 +363,7 @@ PROJECTS = [
 "slug": "pltw", "cat": "eng", "status": "done", "featured": True, "logo": "pltw-logo.png",
 "title": "PLTW Engineering",
 "kicker": "Four years of Project Lead The Way engineering at Archbishop Spalding: CAD, prototyping, robotics, and a lot of trial and error.",
-"card": "Four years, four PLTW courses: IED, POE, Digital Electronics and the EDD capstone. Catapults, 3D printing, robotics, circuits and EASy Clean.",
+"card": "Four years, four PLTW courses: IED, POE, Digital Electronics and the EDD capstone. Catapults, 3D printing, robotics, logic circuits and EASy Clean.",
 "when": "2022 – 2026", "role": "PLTW Engineering student (4 years)",
 "stack": ["Fusion 360", "3D printing", "Laser cutting", "VEX robotics", "Digital circuits", "Engineering design process"],
 "sections": [
@@ -382,12 +382,17 @@ PROJECTS = [
 "<div class='build'><h4>VEX gear-ratio car</h4><p>Designed and raced a VEX car optimized through gear ratios. Our parts didn't line up, so we pushed a long screw through two plates at an angle to make it work.</p></div>"
 "</div>"),
 ("Digital Electronics (DE), junior year",
-"<p>The circuits year: logic gates, Boolean algebra, and designing and building digital circuits. I stopped updating my class portfolio site after sophomore year, so there's no documentation from this one online.</p>"),
+"<div class='builds'>"
+"<div class='build'><h4>Random number generator</h4><p>Assembled and soldered a working circuit board. It didn't work at first because of one misaligned component, so I traced the connections, found it and fixed it.</p></div>"
+"<div class='build'><h4>Majority vote machine</h4><p>A four-person board voting machine where the president breaks ties, built using only AND, OR and inverter gates. Simplifying the circuit took my team many failed iterations before we got it.</p></div>"
+"<div class='build'><h4>Fireplace safety circuit</h4><p>Redesigned a gas fireplace's shut-off logic so it stays on when 3 of 4 flame sensors agree, using only NAND gates, plus a faulty-sensor indicator using only NOR gates. Truth tables, K-maps, Multisim, then a real breadboard.</p></div>"
+"<div class='build'><h4>Seven-segment date display</h4><p>A combinational circuit that counts through 8 states and drives a seven-segment display to show a date. Two segments were wrong until I went back and rechecked my K-map expressions.</p></div>"
+"</div>"),
 ("Engineering Design & Development (EDD), senior year",
 "<p>My senior capstone, <a href='easy-clean.html'>EASy Clean</a>: a full year taking a real problem from research to a working, tested prototype, documented across 9 design elements.</p>"),
 ],
 "demo": None,
-"results": [("4","PLTW courses, 4 years"),("17+","documented projects & design elements"),("1","year-long capstone")],
+"results": [("4","PLTW courses, 4 years"),("21+","documented projects & design elements"),("1","year-long capstone")],
 "honest":
 "<p>PLTW is where I learned how to build anything. Not the specific tools, but the process: define the problem, research what already exists, generate options, score them in a decision matrix, prototype, test, and change direction when the test tells you to. EASy Clean pivoted four times because of that process.</p>"
 "<p>I use the exact same loop now, just with software and business ideas instead of popsicle sticks and Fusion 360.</p>",
