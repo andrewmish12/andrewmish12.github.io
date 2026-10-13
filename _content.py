@@ -136,7 +136,7 @@ PROJECTS = [
 },
 # ================================================================ AU RECAPS
 {
-"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True,
+"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
 "title": "AU Recaps",
 "kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
 "card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
