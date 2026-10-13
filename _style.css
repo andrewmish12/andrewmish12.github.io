@@ -215,3 +215,4 @@ footer{background:var(--bg2)}
 .lock-over b{font-family:var(--display);font-size:2.6rem;font-weight:600;color:var(--text)}.lock-over span{font-size:.85rem;color:var(--mute);margin-top:4px;letter-spacing:.08em;text-transform:uppercase}
 .cta-grid{display:grid;grid-template-columns:auto auto;gap:12px;width:max-content}.cta-grid .btn{text-align:center}.cta-grid .email{grid-column:1/-1;background:#fff;color:var(--acc);border:1.5px solid var(--acc)}.cta-grid .email:hover{background:var(--bg2)}
 .li-link{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-weight:600;color:#0a66c2;text-decoration:none;font-size:.95rem}.li-link:hover{text-decoration:underline}.li-ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:5px;background:#0a66c2;color:#fff;font-weight:700;font-size:.85rem;font-family:Arial,sans-serif}
+.hero-img img{aspect-ratio:auto!important;height:auto}
