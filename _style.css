@@ -181,3 +181,6 @@ footer{background:var(--bg2)}
 .chat{display:flex;flex-direction:column;gap:10px;background:#07090c;border-radius:16px;padding:18px}
 .idea-list{columns:3;column-gap:28px;font-size:.88rem;color:#2a2f38;padding-left:22px}.idea-list li{padding:3px 0;break-inside:avoid}
 @media (max-width:760px){.idea-list{columns:1}}
+
+.ebox{display:block;height:60px;margin-bottom:10px}.ebox .elogo{height:60px!important;max-width:none;margin:0}
+.ebox.ecrop{width:74px;overflow:hidden;overflow:clip}

@@ -124,7 +124,8 @@ def home():
         for p in jobs)
     def elogo(x):
         if not x[3]: return ""
-        return f'<span><img class="elogo" src="{x[3]}" alt="{E(x[0])} logo" onerror="this.parentNode.remove()"></span>'
+        img = f'<img class="elogo" src="{x[3]}" alt="{E(x[0])} logo" onerror="this.parentNode.remove()">'
+        return f'<span class="ebox ecrop">{img}</span>' if len(x) > 4 and x[4] == "crop" else f'<span class="ebox">{img}</span>'
     edu = "".join(f'<div class="edu">{elogo(x)}<h4>{E(x[0])}</h4><p class="dim">{E(x[1])}</p><span class="mono small dim">{E(x[2])}</span></div>' for x in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
     inv = "".join(f'<div class="inv rv"><div class="inv-logo{" dark" if d else ""}"><img src="{l}" alt="{E(n)} logo" onerror="this.parentNode.classList.add(\'nologo\');this.remove()"></div><div><h4>{E(n)}</h4><p class="dim">{E(r)}</p></div></div>' for n, r, l, d in INVOLVEMENT)
@@ -176,7 +177,7 @@ def project(p, i):
         if bd == "__IDEAS_KEEP__":
             return '<div class="builds">' + "".join(f'<div class="build"><h4>{E(a)}</h4><p>{E(c)}</p></div>' for a, c in IDEAS_KEEP) + '</div>'
         if bd == "__IDEAS_ALL__":
-            return f'<p class="dim">All {len(IDEAS_ALL)} ideas from the batch I scored, in the order I wrote them down. The rest of the 100+ are still in my notes app.</p><ol class="idea-list">' + "".join(f"<li>{E(x)}</li>" for x in IDEAS_ALL) + '</ol>'
+            return f'<p class="dim">All {len(IDEAS_ALL)} of them, in the order I wrote them down in my notes app.</p><ol class="idea-list">' + "".join(f"<li>{E(x)}</li>" for x in IDEAS_ALL) + '</ol>'
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
     proof = f'<section class="psec rv"><h2>Proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
