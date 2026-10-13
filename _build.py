@@ -1,7 +1,7 @@
 """Builds the static site from content.py.  Run:  python3 _build.py  (from the site folder)"""
 import os, sys, html
 sys.path.insert(0, os.path.dirname(__file__))
-from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT
+from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_ALL
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
@@ -31,7 +31,7 @@ def nav(home=False):
     p = "" if home else "index.html"
     return (f'<header class="nav"><a class="logo" href="index.html">Andrew Mish</a>'
             f'<button class="menu-btn" aria-label="Menu">☰</button><nav>'
-            f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#about">About</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
+            f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#involvement">Involvement</a><a href="{p}#about">About</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
 
 def footer():
     return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">Contact</p><h2>Let\'s build something.</h2>'
@@ -66,6 +66,12 @@ def demo(kind):
                 '<div class="bubble out">Got it! We\'ll check availability and confirm your appointment shortly.</div></div>'
                 '<pre class="code"><span class="c">// what Claude hands back</span>\n{\n  <k>"name"</k>: <s>"Marcus"</s>,\n  <k>"requested_date"</k>: <s>"Friday"</s>,\n  <k>"requested_time"</k>: <s>"after 3"</s>,\n  <k>"service"</k>: <s>"fade"</s>,\n  <k>"intent"</k>: <s>"new_booking"</s>,\n  <k>"confidence"</k>: <s>"high"</s>\n}</pre>'
                 '<figcaption>An example text and the structured output. The bot replies based on <code>intent</code>.</figcaption></figure>')
+    if kind == "chat_prereq":
+        return ('<figure class="panel"><div class="chat">'
+                '<div class="bubble in">I\'m a finance major, I want to graduate in May 2030, and I want 15 credit hours in the spring. What should I take?</div>'
+                '<div class="bubble out">Here\'s a plan that keeps you on track for May 2030: 5 courses, 15 hours, all with open sections. I picked the CRNs that fit around your Tuesday/Thursday mornings. Want the one-page report for your advisor?</div>'
+                '<div class="bubble in">Yes, and swap out the 8 AM.</div></div>'
+                '<figcaption>Mockup of a Prereq conversation. Illustrative, not real course data.</figcaption></figure>')
     if kind == "verdict_prereq":
         return ('<figure class="panel"><div class="ask mono">Does <b>COURSE 1234</b> count toward my core requirement?</div>'
                 '<div class="verdict"><span class="vtag">COUNTS</span><p>Listed under the core requirement in the current Bulletin. You have no conflicting credit on file.</p>'
@@ -84,7 +90,7 @@ def demo(kind):
                 '<div class="iou"><p class="mono small dim">monday scoring</p><p><b>Missed goal → IOU created</b></p><p class="dim">Partner picks: ☕ coffee · $10 · 💐 flowers · custom</p><p class="mono small">claim → confirm → (dispute)</p></div>'
                 '<figcaption>Illustrative mockup of the weekly ring and IOU flow.</figcaption></figure>')
     if kind == "funnel_ideas":
-        rows = [("Screened", 90, 100), ("Worth a second look", 17, 19), ("Survived", 5, 6)]
+        rows = [("On the list", "100+", 100), ("Scored by AI", "96", 92), ("Still alive", "~12", 12), ("Pitched", "1", 2)]
         f = "".join(f'<div class="frow"><span>{a}</span><div class="track"><div class="fill" style="--w:{w}%"></div></div><b>{n}</b></div>' for a, n, w in rows)
         return f'<figure class="panel"><p class="mono small dim">idea funnel</p>{f}<figcaption>Most ideas should die early. That\'s the point.</figcaption></figure>'
     return ""
@@ -118,21 +124,21 @@ def home():
         for p in jobs)
     def elogo(x):
         if not x[3]: return ""
-        img = f'<img class="elogo" src="{x[3]}" alt="{E(x[0])} logo" onerror="this.parentNode.remove()">'
-        return f'<span class="ecrop">{img}</span>' if len(x) > 4 and x[4] == "crop" else f'<span>{img}</span>'
+        return f'<span><img class="elogo" src="{x[3]}" alt="{E(x[0])} logo" onerror="this.parentNode.remove()"></span>'
     edu = "".join(f'<div class="edu">{elogo(x)}<h4>{E(x[0])}</h4><p class="dim">{E(x[1])}</p><span class="mono small dim">{E(x[2])}</span></div>' for x in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
-    inv = "".join(f"<li>{E(h)}</li>" for h in INVOLVEMENT)
+    inv = "".join(f'<div class="inv rv"><div class="inv-logo{" dark" if d else ""}"><img src="{l}" alt="{E(n)} logo" onerror="this.parentNode.classList.add(\'nologo\');this.remove()"></div><div><h4>{E(n)}</h4><p class="dim">{E(r)}</p></div></div>' for n, r, l, d in INVOLVEMENT)
     sk = "".join(f'<div><p class="mono small dim">{E(k)}</p><div class="tags">{"".join(f"<span>{E(x)}</span>" for x in v)}</div></div>' for k, v in SKILLS.items())
     body = f'''{nav(True)}
 <section class="hero wrap">
  <div class="hero-txt">
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
-  <h1>I'm Andrew.<br><span class="grad">I build things that actually get used.</span></h1>
-  <p class="lead">AI tools a hospital team runs on every day, apps I built because I needed them, and a running list of 100+ business ideas I'm working through. This site has all of it, with how each one works and my honest take on how it went.</p>
+  <h1>I'm Andrew.<br><span class="grad">I love making my ideas a reality.</span></h1>
+  <p class="lead">I build things: automations a hospital team runs on every day, apps I made because I needed them, and a running list of 100+ business ideas. I don't write code by hand. I vibe code with AI, and I test everything until it works. This site has all of it, with how each one works and my honest take on how it went.</p>
   <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
+  <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
- <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"><div class="tag-now mono small"><i></i>Now: SilverStay · Auburn</div></div>
+ <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"></div>
 </section>
 <section class="wrap stats">{stats}</section>
 <section id="work" class="wrap sec">
@@ -144,13 +150,17 @@ def home():
  <div class="sec-head"><p class="mono dim">Experience</p><h2>Where I've worked</h2></div>
  <div class="timeline">{timeline}</div>
 </section>
+<section id="involvement" class="wrap sec">
+ <div class="sec-head"><p class="mono dim">Involvement</p><h2>At Auburn</h2><p class="dim">Clubs, competitions and communities I'm part of.</p></div>
+ <div class="inv-grid">{inv}</div>
+</section>
 <section id="about" class="wrap sec about">
  <div class="sec-head"><p class="mono dim">About</p><h2>The short version</h2></div>
  <div class="about-grid">
   <div class="about-txt rv"><p>I'm a freshman at Auburn studying business (intended finance, with a real estate minor). Before that I spent four years in PLTW engineering at Archbishop Spalding, which is where I got hooked on taking an idea from my head into the real world.</p>
-  <p>At 17 I started at SilverStay building AI tools for hospital discharge teams, and I haven't stopped building since. I care less about credentials and more about whether the thing works and whether people use it.</p>
+  <p>At 17 I started at SilverStay building AI tools and automations for hospital discharge teams, and I haven't stopped building since. I'm not a traditional programmer. I vibe code: I figure out what needs to exist, direct AI to build it, and test it until it actually works. I care less about credentials and more about whether the thing works and whether people use it.</p>
   <p>Outside of that: golf (2 years varsity, and one hole-in-one in a school match), guitar and piano, the gym, and whatever app I'm currently building.</p></div>
-  <div class="about-side rv"><p class="mono small dim">education</p>{edu}<p class="mono small dim" style="margin-top:1.6rem">honors</p><ul class="honors">{hon}</ul><p class="mono small dim" style="margin-top:1.6rem">involvement at auburn</p><ul class="honors">{inv}</ul></div>
+  <div class="about-side rv"><p class="mono small dim">education</p>{edu}<p class="mono small dim" style="margin-top:1.6rem">honors</p><ul class="honors">{hon}</ul></div>
  </div>
  <div class="skills rv">{sk}</div>
 </section>
@@ -162,7 +172,14 @@ def project(p, i):
     prev, nxt = order[i - 1], order[(i + 1) % len(order)]
     spec = (f'<div class="spec mono small"><div><span class="dim">status</span>{chip(p["status"])}</div><div><span class="dim">when</span>{E(p["when"])}</div>'
             f'<div><span class="dim">role</span>{E(p["role"])}</div><div><span class="dim">stack</span><span class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</span></div></div>')
-    secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{b}</section>' for h, b in p["sections"])
+    def fill(bd):
+        if bd == "__IDEAS_KEEP__":
+            return '<div class="builds">' + "".join(f'<div class="build"><h4>{E(a)}</h4><p>{E(c)}</p></div>' for a, c in IDEAS_KEEP) + '</div>'
+        if bd == "__IDEAS_ALL__":
+            return f'<p class="dim">All {len(IDEAS_ALL)} ideas from the batch I scored, in the order I wrote them down. The rest of the 100+ are still in my notes app.</p><ol class="idea-list">' + "".join(f"<li>{E(x)}</li>" for x in IDEAS_ALL) + '</ol>'
+        return bd
+    secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
+    proof = f'<section class="psec rv"><h2>Proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
     res = ""
     if p.get("results"):
         res = '<div class="results rv">' + "".join(f'<div><b>{a}</b><span>{E(b)}</span></div>' for a, b in p["results"]) + "</div>"
@@ -178,7 +195,7 @@ def project(p, i):
  {f'<img class="plogo" src="{p["logo"]}" alt="{E(p["title"])} logo" onerror="this.remove()">' if p.get("logo") else ""}<h1>{E(p["title"])}</h1>
  <p class="lead">{E(p["kicker"])}</p>
  {spec}{res}
- <div class="pbody">{secs}{d}
+ <div class="pbody">{secs}{d}{proof}
   <section class="psec honest rv"><p class="mono small">My honest take</p>{p["honest"]}</section>
   {nexts}{links}
  </div>
