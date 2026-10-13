@@ -108,8 +108,8 @@ def card(p, i):
                 f'<p class="go mono" style="margin-top:16px">Read the full breakdown →</p></div>'
                 f'<ul class="hl">{hl}</ul></a>')
     sl = f'<img class="slogo" src="{p["logo"]}" alt="" onerror="this.remove()">' if p.get("logo") else ""
-    if p.get("image"): sl = f'<img class="cimg" src="{p["image"]}" alt="{E(p["title"])}" loading="lazy">' + sl
-    return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">'
+    ci = f'<img class="cimg" src="{p["card_image"]}" alt="{E(p["title"])}" loading="lazy">' if p.get("card_image") else ""
+    return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">{ci}'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
             f'{sl}<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
             f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">Read more →</span></a>')

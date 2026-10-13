@@ -212,7 +212,7 @@ PROJECTS = [
 },
 # ================================================================ COMMAND CENTER
 {
-"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg",
+"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg", "card_image": "command-center-city.jpg",
 "title": "Automation Command Center",
 "kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
 "card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
