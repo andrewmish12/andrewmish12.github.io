@@ -61,7 +61,7 @@ MOCK_SLACK = (
 PROJECTS = [
 # ================================================================ SILVERSTAY
 {
-"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "logo": "silverstay-logo.png",
+"slug": "silverstay", "cat": "work", "status": "live", "featured": True, "strip": True, "logo": "silverstay-logo.png",
 "title": "SilverStay",
 "kicker": "I build the automations and AI tools a hospital discharge team runs on.",
 "card": "I automate the boring parts of hospital discharge work: nightly scripts, daily reports, Claude tools and more, across 4+ hospitals.",

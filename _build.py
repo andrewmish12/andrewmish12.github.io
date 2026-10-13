@@ -1,11 +1,12 @@
 """Builds the static site from content.py.  Run:  python3 _build.py  (from the site folder)"""
-import os, sys, html
+import os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(__file__))
 from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_ALL
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
 E = html.escape
+UPDATED = datetime.date.today().strftime("%B %-d, %Y")
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">')
@@ -38,7 +39,7 @@ def footer():
             f'<p class="dim">Internships, partnerships, or if you just want to argue about an idea. I\'m in.</p></div>'
             f'<div class="foot-links"><a href="tel:{PROFILE["phone_tel"]}">{PROFILE["phone"]} ↗</a><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
             f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a></div></div>'
-            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}</body></html>')
+            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish · Last updated {UPDATED}</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}</body></html>')
 
 def chip(status):
     lab, cls = STATUS[status]
@@ -115,7 +116,15 @@ def card(p, i):
             f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">Read more →</span></a>')
 
 def home():
-    feats = [p for p in PROJECTS if p["cat"] != "job"]
+    strip_p = next((p for p in PROJECTS if p.get("strip")), None)
+    feats = [p for p in PROJECTS if p["cat"] != "job" and not p.get("strip")]
+    strip = ""
+    if strip_p:
+        sp = strip_p
+        sst = "".join(f'<div><b>{a}</b><span>{E(c)}</span></div>' for a, c in sp.get("results", [])[:4])
+        strip = (f'<a class="strip rv" href="{sp["slug"]}.html"><div class="strip-l"><span class="strip-tag">Current role</span>'
+                 f'<img src="{sp["logo"]}" alt="{E(sp["title"])} logo"><div><h3>{E(sp["title"])}</h3><p>{E(sp["role"])} · {E(sp["when"])}</p></div></div>'
+                 f'<div class="strip-stats">{sst}</div><span class="strip-go">See everything I built →</span></a>')
     jobs = [p for p in PROJECTS if p["cat"] in ("work", "job")]
     chips = '<button class="on" data-filter="all">All</button>' + "".join(
         f'<button data-filter="{k}">{v}</button>' for k, v in CATS.items() if k != "job" and any(p["cat"] == k for p in feats))
@@ -135,8 +144,8 @@ def home():
 <section class="hero wrap">
  <div class="hero-txt">
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
-  <h1>I'm Andrew.<br><span class="grad">I love making my ideas a reality.</span></h1>
-  <p class="lead">Freshman at Auburn. I automate hospital work at SilverStay, build apps I actually use, and have 100+ business ideas in my notes app. I don't code by hand. I vibe code with AI and test it until it works.</p>
+  <h1>I’m Andrew Mish.<br><span class="grad">I love making my ideas real.</span></h1>
+  <p class="lead">I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
   <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="mailto:{PROFILE["email"]}">Email me</a></div>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
@@ -144,7 +153,8 @@ def home():
 </section>
 <section class="wrap stats">{stats}</section>
 <section id="work" class="wrap sec">
- <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently.</p></div>
+ <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently. <span class="upd">Last updated {UPDATED}</span></p></div>
+ {strip}
  <div class="filters mono">{chips}</div>
  <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats))}</div>
 </section>
