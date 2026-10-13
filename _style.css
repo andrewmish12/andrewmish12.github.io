@@ -184,3 +184,6 @@ footer{background:var(--bg2)}
 
 .ebox{display:block;height:60px;margin-bottom:10px}.ebox .elogo{height:60px!important;max-width:none;margin:0}
 .ebox.ecrop{width:74px;overflow:hidden;overflow:clip}
+
+.pimg{padding:14px}.pimg img{width:100%;height:auto;border-radius:6px;display:block}.pimg figcaption{margin-top:10px}
+.phone-shot{max-width:340px}
