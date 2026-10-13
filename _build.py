@@ -108,6 +108,7 @@ def card(p, i):
                 f'<p class="go mono" style="margin-top:16px">Read the full breakdown →</p></div>'
                 f'<ul class="hl">{hl}</ul></a>')
     sl = f'<img class="slogo" src="{p["logo"]}" alt="" onerror="this.remove()">' if p.get("logo") else ""
+    if p.get("image"): sl = f'<img class="cimg" src="{p["image"]}" alt="{E(p["title"])}" loading="lazy">' + sl
     return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
             f'{sl}<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
@@ -180,7 +181,7 @@ def project(p, i):
             return f'<p class="dim">All {len(IDEAS_ALL)} of them, in the order I wrote them down in my notes app.</p><ol class="idea-list">' + "".join(f"<li>{E(x)}</li>" for x in IDEAS_ALL) + '</ol>'
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
-    proof = f'<section class="psec rv"><h2>Proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
+    proof = f'<section class="psec rv"><h2>Photos & proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
     res = ""
     if p.get("results"):
         res = '<div class="results rv">' + "".join(f'<div><b>{a}</b><span>{E(b)}</span></div>' for a, b in p["results"]) + "</div>"
@@ -195,6 +196,7 @@ def project(p, i):
  <p class="mono dim crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; {CATS[p["cat"]]}</p>
  {f'<img class="plogo" src="{p["logo"]}" alt="{E(p["title"])} logo" onerror="this.remove()">' if p.get("logo") else ""}<h1>{E(p["title"])}</h1>
  <p class="lead">{E(p["kicker"])}</p>
+ {f'<img class="hero-shot" src="{p["image"]}" alt="{E(p["title"])}">' if p.get("image") else ""}
  {spec}{res}
  <div class="pbody">{secs}{d}{proof}
   <section class="psec honest rv"><p class="mono small">My honest take</p>{p["honest"]}</section>

@@ -212,7 +212,7 @@ PROJECTS = [
 },
 # ================================================================ COMMAND CENTER
 {
-"slug": "command-center", "cat": "build", "status": "live", "featured": False, "logo": "command-center.jpg",
+"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center.jpg",
 "title": "Automation Command Center",
 "kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
 "card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
@@ -307,7 +307,7 @@ PROJECTS = [
 },
 # ================================================================ EASY CLEAN
 {
-"slug": "easy-clean", "cat": "eng", "status": "done", "featured": True, "logo": "easy-clean-logo.svg",
+"slug": "easy-clean", "cat": "eng", "status": "done", "featured": True, "logo": "easy-clean-logo.svg", "image": "easy-clean-prototype.jpg",
 "title": "EASy Clean",
 "kicker": "My PLTW capstone: a UV chair cover that sanitizes the clothes you're not sure are clean or dirty.",
 "card": "PLTW Engineering Design & Development capstone. 323 survey responses, 4 design pivots, and a working prototype built for ~$104.",
