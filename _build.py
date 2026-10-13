@@ -147,6 +147,7 @@ def home():
   <h1>I’m Andrew Mish.</h1>
   <p class="lead">I love making my ideas real. I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
   <div class="cta cta-grid"><a class="btn" href="#work">See the work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}">Email me</a></div>
+  <a class="li-link" href="{PROFILE["linkedin"]}" target="_blank" rel="noopener"><span class="li-ico">in</span>Connect with me on LinkedIn →</a>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
  <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"></div>
