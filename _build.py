@@ -1,7 +1,7 @@
 """Builds the static site from content.py.  Run:  python3 _build.py  (from the site folder)"""
 import os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(__file__))
-from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_ALL
+from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_LIST_UPDATED, IDEAS_SCREENED, IDEAS_COUNT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
@@ -187,8 +187,11 @@ def project(p, i):
     def fill(bd):
         if bd == "__IDEAS_KEEP__":
             return '<div class="builds">' + "".join(f'<div class="build"><h4>{E(a)}</h4><p>{E(c)}</p></div>' for a, c in IDEAS_KEEP) + '</div>'
-        if bd == "__IDEAS_ALL__":
-            return f'<p class="dim">All {len(IDEAS_ALL)} of them, in the order I wrote them down in my notes app.</p><ol class="idea-list">' + "".join(f"<li>{E(x)}</li>" for x in IDEAS_ALL) + '</ol>'
+        if bd == "__IDEAS_LOCKED__":
+            rows = "".join(f'<li><span style="width:{40 + (k*37) % 50}%"></span></li>' for k in range(36))
+            return (f'<div class="locked"><ol class="idea-list fake">{rows}</ol>'
+                    f'<div class="lock-over"><b>{IDEAS_COUNT}+ ideas</b><span>Private for now</span></div></div>'
+                    f'<p class="mono small dim" style="margin-top:12px">List last updated {IDEAS_LIST_UPDATED} · Ideas screened {IDEAS_SCREENED}</p>')
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
     proof = f'<section class="psec rv"><h2>Photos & proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
