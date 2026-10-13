@@ -138,7 +138,7 @@ def home():
         return f'<span class="ebox ecrop">{img}</span>' if len(x) > 4 and x[4] == "crop" else f'<span class="ebox">{img}</span>'
     edu = "".join(f'<div class="edu">{elogo(x)}<h4>{E(x[0])}</h4><p class="dim">{E(x[1])}</p><span class="mono small dim">{E(x[2])}</span></div>' for x in EDUCATION)
     hon = "".join(f"<li>{E(h)}</li>" for h in HONORS)
-    inv = "".join(f'<div class="inv rv"><div class="inv-logo{" dark" if d else ""}"><img src="{l}" alt="{E(n)} logo" onerror="this.parentNode.classList.add(\'nologo\');this.remove()"></div><div><h4>{E(n)}</h4><p class="dim">{E(r)}</p></div></div>' for n, r, l, d in INVOLVEMENT)
+    inv = "".join(f'<div class="inv rv"><div class="inv-logo{(" " + d) if d else ""}"><img src="{l}" alt="{E(n)} logo" onerror="this.parentNode.classList.add(\'nologo\');this.remove()"></div><div><h4>{E(n)}</h4><p class="dim">{E(r)}</p></div></div>' for n, r, l, d in INVOLVEMENT)
     sk = "".join(f'<div><p class="mono small dim">{E(k)}</p><div class="tags">{"".join(f"<span>{E(x)}</span>" for x in v)}</div></div>' for k, v in SKILLS.items())
     body = f'''{nav(True)}
 <section class="hero wrap">
