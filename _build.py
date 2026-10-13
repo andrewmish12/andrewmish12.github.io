@@ -190,7 +190,7 @@ def project(p, i):
         if bd == "__IDEAS_LOCKED__":
             rows = "".join(f'<li><span style="width:{40 + (k*37) % 50}%"></span></li>' for k in range(36))
             return (f'<div class="locked"><ol class="idea-list fake">{rows}</ol>'
-                    f'<div class="lock-over"><b>{IDEAS_COUNT}+ ideas</b><span>Private for now</span></div></div>'
+                    f'<div class="lock-over"><b>100+ ideas</b><span>Private for now</span></div></div>'
                     f'<p class="mono small dim" style="margin-top:12px">List last updated {IDEAS_LIST_UPDATED} · Ideas screened {IDEAS_SCREENED}</p>')
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
