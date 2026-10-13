@@ -134,26 +134,6 @@ PROJECTS = [
 "<p>The hard truth: Degree Works and Stellic already exist, and selling to a university can take one to two years. Twenty-two survey responses is a signal, not proof. The thing I have to get right is trust. A confident wrong answer here costs somebody a semester, so it has to show its work every time.</p>",
 "next": "<p>Build a working version on real Bulletin data, survey a bigger group of students, and get it in front of actual advisors.</p>",
 },
-# ================================================================ COMMAND CENTER
-{
-"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg", "card_image": "command-center-city.jpg",
-"title": "Automation Command Center",
-"kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
-"card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
-"when": "2026", "role": "Solo builder (vibe coded)",
-"stack": ["Muse", "Google Apps Script", "Plaid", "Claude", "Python"],
-"sections": [
-("The idea",
-"<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
-("The districts",
-"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
-],
-"demo": None,
-"results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
-"honest":
-"<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
-"next": "<p>Wire real automation health into the map, then name the city.</p>",
-},
 # ================================================================ AU DINING
 {
 "slug": "au-dining", "cat": "build", "status": "inuse", "featured": True, "logo": "au-dining-logo.png",
@@ -185,27 +165,6 @@ PROJECTS = [
 "<p>Pulling Auburn's real data fixed a lot too. I had typed-in hours that were wrong, and breakfast and dinner items were getting mixed together. Lesson: never hard-code something that already exists as real data.</p>",
 "next": "<p>Sync meal swipe balances automatically (right now it's a manual counter), move it to its own hosting so it feels like a real app, and get it into more students' hands.</p>",
 },
-# ================================================================ AU RECAPS
-{
-"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
-"title": "AU Recaps",
-"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
-"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
-"when": "Fall 2026 – Present", "role": "Writer",
-"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
-"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
-"sections": [
-("What it is",
-"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
-("How I write it",
-"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
-],
-"demo": None,
-"results": [("1","recap per game"),("~1,200+","words each")],
-"honest":
-"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
-"next": "<p>Keep growing the list, one game at a time.</p>",
-},
 # ================================================================ TRADE TRACKER
 {
 "slug": "trade-tracker", "cat": "build", "status": "live", "featured": False,
@@ -229,6 +188,47 @@ PROJECTS = [
 "<p>The other reality: filings can show up as late as 45 days after the trade, so you're always copying old moves. It's a great automation project. I wouldn't call it an investing edge.</p>"
 "<p class='note-sm'>Personal project using public data. Not investment advice.</p>",
 "next": "<p>Let it run long enough to compare it against just holding an index fund.</p>",
+},
+# ================================================================ AU RECAPS
+{
+"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
+"title": "AU Recaps",
+"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
+"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
+"when": "Fall 2026 – Present", "role": "Writer",
+"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
+"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
+"sections": [
+("What it is",
+"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
+("How I write it",
+"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
+],
+"demo": None,
+"results": [("1","recap per game"),("~1,200+","words each")],
+"honest":
+"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
+"next": "<p>Keep growing the list, one game at a time.</p>",
+},
+# ================================================================ COMMAND CENTER
+{
+"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg", "card_image": "command-center-city.jpg",
+"title": "Automation Command Center",
+"kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
+"card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
+"when": "2026", "role": "Solo builder (vibe coded)",
+"stack": ["Muse", "Google Apps Script", "Plaid", "Claude", "Python"],
+"sections": [
+("The idea",
+"<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
+("The districts",
+"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
+],
+"demo": None,
+"results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
+"honest":
+"<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
+"next": "<p>Wire real automation health into the map, then name the city.</p>",
 },
 # ================================================================ SWEATBUDDIES
 {
@@ -295,7 +295,7 @@ PROJECTS = [
 "<li><b>The \"prop\" score</b>: it invented a criterion for whether you could bring a prop to the pitch. That isn't the point of the Ideas Jam, so we threw it out.</li>"
 "<li><b>EASy Clean</b>: it doubted the device would work, so I ran a petri dish test myself.</li>"
 "</ul>"),
-("The ones still alive", "__IDEAS_KEEP__"),
+("The ones still alive", "__IDEAS_KEEP_DATED__"),
 ("The full list", "__IDEAS_LOCKED__"),
 ],
 "demo": "funnel_ideas",

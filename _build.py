@@ -32,7 +32,7 @@ def nav(home=False):
     p = "" if home else "index.html"
     return (f'<header class="nav"><a class="logo" href="index.html">Andrew Mish</a>'
             f'<button class="menu-btn" aria-label="Menu">☰</button><nav>'
-            f'<a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#involvement">Involvement</a><a href="{p}#about">About</a><a href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">Resume</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
+            f'<a href="index.html">Home</a><a href="{p}#work">Work</a><a href="{p}#experience">Experience</a><a href="{p}#involvement">Involvement</a><a href="{p}#about">About</a><a href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">Resume</a><a href="{p}#contact" class="nav-cta">Contact</a></nav></header>')
 
 def footer():
     return (f'<footer id="contact"><div class="wrap foot"><div><p class="mono dim">Contact</p><h2>Let\'s build something.</h2>'
@@ -146,7 +146,7 @@ def home():
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
   <h1>I’m Andrew Mish.</h1>
   <p class="lead">I love making my ideas real. I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
-  <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume (PDF)</a></div>
+  <div class="cta cta-grid"><a class="btn" href="#work">See the work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}">Email me</a></div>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
  <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"></div>
@@ -185,13 +185,15 @@ def project(p, i):
     spec = (f'<div class="spec mono small"><div><span class="dim">status</span>{chip(p["status"])}</div><div><span class="dim">when</span>{E(p["when"])}</div>'
             f'<div><span class="dim">role</span>{E(p["role"])}</div><div><span class="dim">stack</span><span class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"])}</span></div></div>')
     def fill(bd):
+        if bd == "__IDEAS_KEEP_DATED__":
+            return f'<p class="mono small dim" style="margin-bottom:12px">Ideas screened {IDEAS_SCREENED}</p>' + fill("__IDEAS_KEEP__")
         if bd == "__IDEAS_KEEP__":
             return '<div class="builds">' + "".join(f'<div class="build"><h4>{E(a)}</h4><p>{E(c)}</p></div>' for a, c in IDEAS_KEEP) + '</div>'
         if bd == "__IDEAS_LOCKED__":
             rows = "".join(f'<li><span style="width:{40 + (k*37) % 50}%"></span></li>' for k in range(36))
             return (f'<div class="locked"><ol class="idea-list fake">{rows}</ol>'
-                    f'<div class="lock-over"><b>100+ ideas</b><span>Private for now</span></div></div>'
-                    f'<p class="mono small dim" style="margin-top:12px">List last updated {IDEAS_LIST_UPDATED} · Ideas screened {IDEAS_SCREENED}</p>')
+                    f'<div class="lock-over"><b>100+ ideas</b></div></div>'
+                    f'<p class="mono small dim" style="margin-top:12px">List last updated {IDEAS_LIST_UPDATED}</p>')
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
     proof = f'<section class="psec rv"><h2>Photos & proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
