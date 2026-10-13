@@ -510,6 +510,7 @@ CL = "https://se-images.campuslabs.com/clink/images/"
 INVOLVEMENT = [
 ("Auburn Ideas Jam", "Pitched Prereq · Harbert College of Business, Sept 2026", "ideas-jam-logo.png", ""),
 ("Investment Club at Auburn", "Member", CL + "ca6cacb7-472c-4137-9b83-0a3a7b2d4a98caf8b9b5-e3ad-4a1e-b71b-903c574b449b.PNG?preset=med-sq", ""),
+("Financial Literacy Club AU", "Member", "financial-literacy-logo.png", ""),
 ("Entrepreneurs at Auburn", "Member", CL + "d6fd89fc-10c7-4a0a-b35e-c3fea4c06fbcbdcfb4c8-db04-4341-b254-f401ef680841.png?preset=med-sq", ""),
 ("AI Experience at Auburn", "Member", CL + "02410c89-d28e-42bf-9ef2-7dd2a266f32639aaea47-a32d-4c3b-aa61-efe2e469274e.png?preset=med-sq", ""),
 ("College Republicans at Auburn", "Member", CL + "420e4728-7d07-4b51-b83c-7f3e5fdc214a85f88b04-abb8-477c-a4a0-ecaeb47c500b.jpeg?preset=med-sq", ""),
