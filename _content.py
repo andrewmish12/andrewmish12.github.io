@@ -411,7 +411,7 @@ PROJECTS = [
 "sections": [
 ("What happened",
 "<p>Right after Charlie Kirk was shot in September 2025, a group of my classmates and I wanted to start a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding. I took the leadership role and organized the effort.</p>"
-"<p>We got <b>35+ students and parents</b> to put their names down to join. The school wouldn't approve the club, and it was shut down before it got off the ground.</p>"),
+"<p>We got <b>35+ students and parents</b> to put their names down to help the club. The school wouldn't approve the club, and it was shut down before it got off the ground.</p>"),
 ],
 "demo": None,
 "results": [("35+","students and parents signed up")],
