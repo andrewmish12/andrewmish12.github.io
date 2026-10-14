@@ -405,18 +405,18 @@ PROJECTS = [
 "slug": "club-america", "cat": "lead", "status": "done", "featured": False, "logo": "https://www.clubamerica.com/images/menu/club-america-logo.webp",
 "title": "Club America (TPUSA) Chapter",
 "kicker": "I led a group of classmates in starting a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding.",
-"card": "Led the push to start a Club America (TPUSA) chapter at Archbishop Spalding and got 35+ students to sign up. The school wouldn't approve it.",
+"card": "Led the push to start a Club America (TPUSA) chapter at Archbishop Spalding and got 35+ students and parents to sign up. The school wouldn't approve it.",
 "when": "Sept 2025", "role": "Founder & student leader",
 "stack": ["Leadership", "Organizing", "Recruiting"],
 "sections": [
 ("What happened",
 "<p>Right after Charlie Kirk was shot in September 2025, a group of my classmates and I wanted to start a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding. I took the leadership role and organized the effort.</p>"
-"<p>We got <b>35+ students</b> to put their names down to join. The school wouldn't approve the club, and it was shut down before it got off the ground.</p>"),
+"<p>We got <b>35+ students and parents</b> to put their names down to join. The school wouldn't approve the club, and it was shut down before it got off the ground.</p>"),
 ],
 "demo": None,
-"results": [("35+","students signed up")],
+"results": [("35+","students and parents signed up")],
 "honest":
-"<p>It didn't end the way I wanted, but it showed me I can rally people around something fast. Getting 35+ students to commit in a short window is the same skill as getting early users for anything I build.</p>",
+"<p>It didn't end the way I wanted, but it showed me I can rally people around something fast. Getting 35+ students and parents to commit in a short window is the same skill as getting early users for anything I build.</p>",
 "next": "<p>I'm now involved with Conservatives at Auburn, Turning Point USA's college chapter.</p>",
 },
 # ================================================================ ENTREPRENEURSHIP CLUB
