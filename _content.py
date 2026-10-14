@@ -25,6 +25,7 @@ CATS = {
     "build": "Builds",
     "venture": "Ventures",
     "write": "Writing",
+    "lead": "Leadership",
     "eng": "Engineering",
     "job": "Jobs",
 }
@@ -108,8 +109,8 @@ PROJECTS = [
 "slug": "prereq", "cat": "venture", "status": "early", "featured": True, "logo": "prereq-logo.png",
 "title": "Prereq",
 "kicker": "A conversational AI that builds your class schedule for you, down to the exact CRNs.",
-"card": "A conversational AI that builds your Auburn schedule. Pitched at the Ideas Jam and submitted to the New Venture Accelerator. 73% of 22 students surveyed would use it.",
-"when": "Sept 2026 – Present", "role": "Founder · Auburn Ideas Jam pitch · New Venture Accelerator submission",
+"card": "A conversational AI that builds your Auburn schedule. Pitched at the Ideas Jam and accepted into the New Venture Accelerator. 73% of 22 students surveyed would use it.",
+"when": "Sept 2026 – Present", "role": "Founder · Auburn Ideas Jam pitch · Accepted into the New Venture Accelerator",
 "stack": ["Conversational AI", "Auburn Bulletin data", "Public course schedule", "Claude"],
 "sections": [
 ("The problem",
@@ -120,7 +121,7 @@ PROJECTS = [
 "<p>It runs on public data: the Auburn Bulletin for degree rules and the public course schedule for CRNs. You type in the classes you've taken, so it never touches student records. When it can't verify a rule, it says so instead of guessing.</p>"),
 ("Where it's been",
 "<ul class='feat'><li>Pitched at the <b>Auburn Ideas Jam</b> (Harbert College of Business), Sept 29, 2026</li>"
-"<li>Submitted to Auburn's <b>New Venture Accelerator</b></li>"
+"<li><b>Accepted into Auburn's New Venture Accelerator</b> (October 2026)</li>"
 "<li>Surveyed 22 Auburn students, freshman through grad: <b>73%</b> would use a free AI tool that builds their schedule, <b>68%</b> find DegreeWorks confusing, and 60% needed outside help just to plan a schedule</li>"
 "<li>Built a proof of concept as a Claude Project on real Auburn Finance degree requirements</li>"
 "<li>The model: free for students; universities pay a monthly subscription for advisor tools and course-demand insights</li>"
@@ -399,9 +400,28 @@ PROJECTS = [
 "next": None,
 "links": [("Original class portfolio (school account)", "https://sites.google.com/spaldinghs.org/andrewmish-engineeringportfoli/home")],
 },
+# ================================================================ CLUB AMERICA
+{
+"slug": "club-america", "cat": "lead", "status": "done", "featured": False,
+"title": "Club America (TPUSA) Chapter",
+"kicker": "I led a group of classmates in starting a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding.",
+"card": "Led the push to start a Club America (TPUSA) chapter at Spalding and got 35+ students to sign up. The school didn't approve it.",
+"when": "Sept 2025", "role": "Founder & student leader",
+"stack": ["Leadership", "Organizing", "Recruiting"],
+"sections": [
+("What happened",
+"<p>Right after Charlie Kirk was shot in September 2025, a group of my classmates and I wanted to start a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding. I took the leadership role and organized the effort.</p>"
+"<p>We got <b>35+ students</b> to put their names down to join. The school ultimately didn't approve the club, and it was shut down before it got off the ground.</p>"),
+],
+"demo": None,
+"results": [("35+","students signed up")],
+"honest":
+"<p>It didn't end the way I wanted, but it showed me I can rally people around something fast. Getting 35+ students to commit in a short window is the same skill as getting early users for anything I build.</p>",
+"next": "<p>I'm now involved with Conservatives at Auburn, Turning Point USA's college chapter.</p>",
+},
 # ================================================================ ENTREPRENEURSHIP CLUB
 {
-"slug": "entrepreneurship-club", "cat": "venture", "status": "done", "featured": False,
+"slug": "entrepreneurship-club", "cat": "lead", "status": "done", "featured": False,
 "title": "Entrepreneurship Club",
 "kicker": "I founded my high school's entrepreneurship club and recruited ~30 students to join.",
 "card": "Founded at Archbishop Spalding. ~30 student sign-ups through a simple Google Form.",
@@ -508,11 +528,13 @@ HONORS = [
 # (name, what I do / note, logo url)
 CL = "https://se-images.campuslabs.com/clink/images/"
 INVOLVEMENT = [
+("New Venture Accelerator", "Accepted with Prereq · Oct 2026", "https://nva.auburn.edu/files/2022/05/logo-newventure-white-icon2-01.png", "dark"),
 ("Auburn Ideas Jam", "Pitched Prereq · Harbert College of Business, Sept 2026", "ideas-jam-logo.png", ""),
 ("Investment Club at Auburn", "Member", CL + "ca6cacb7-472c-4137-9b83-0a3a7b2d4a98caf8b9b5-e3ad-4a1e-b71b-903c574b449b.PNG?preset=med-sq", ""),
 ("Financial Literacy Club", "Member", "financial-literacy-logo.png", "fill"),
 ("Entrepreneurs at Auburn", "Member", CL + "d6fd89fc-10c7-4a0a-b35e-c3fea4c06fbcbdcfb4c8-db04-4341-b254-f401ef680841.png?preset=med-sq", ""),
 ("AI Experience at Auburn", "Member", CL + "02410c89-d28e-42bf-9ef2-7dd2a266f32639aaea47-a32d-4c3b-aa61-efe2e469274e.png?preset=med-sq", ""),
+("AU Catholics", "Auburn Catholic Campus Ministry", "https://se-images.campuslabs.com/clink/images/2e6a3869-48df-4b28-8e76-4a3c1be4f96fb1da0333-d3f0-4918-9ba5-872aca162d06.png?preset=med-sq", ""),
 ("College Republicans at Auburn", "Member", CL + "420e4728-7d07-4b51-b83c-7f3e5fdc214a85f88b04-abb8-477c-a4a0-ecaeb47c500b.jpeg?preset=med-sq", ""),
 ("Students for Life at Auburn", "Member", CL + "0f4aabf6-2857-4eb6-b1a8-af900d4602e29bfac61d-b601-49fb-94c6-1daf200c9806.jpg?preset=med-sq", ""),
 ("Conservatives at Auburn (Turning Point USA)", "Member", CL + "3845cde7-b8c1-42ac-bdd9-387087b564d756700907-7df4-4204-93f6-34634d60e9c7.png?preset=med-sq", ""),

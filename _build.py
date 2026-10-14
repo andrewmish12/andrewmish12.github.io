@@ -144,8 +144,8 @@ def home():
 <section class="hero wrap">
  <div class="hero-txt">
   <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
-  <h1>I’m Andrew Mish.</h1>
-  <p class="lead">I love making my ideas real. I’m a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here’s all of my work:</p>
+  <h1>I'm Andrew Mish.</h1>
+  <p class="lead">I love making my ideas real. I'm a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here's all of my work:</p>
   <div class="cta cta-grid"><a class="btn" href="#work">See the work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}">Email me</a></div>
   <a class="li-link" href="{PROFILE["linkedin"]}" target="_blank" rel="noopener"><span class="li-ico">in</span>Connect with me on LinkedIn →</a>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
@@ -178,7 +178,7 @@ def home():
  <div class="skills rv">{sk}</div>
 </section>
 {footer()}'''
-    return head("Andrew Mish — Builder, LLM Engineer, Founder", "Andrew Mish's portfolio: AI tools, apps, engineering projects and business ventures.") + body
+    return head("Andrew Mish | Portfolio", "Andrew Mish's portfolio: AI tools, apps, engineering projects and business ventures.") + body
 
 def project(p, i):
     order = PROJECTS
@@ -221,7 +221,7 @@ def project(p, i):
  <nav class="pn mono"><a href="{prev["slug"]}.html">← {E(prev["title"])}</a><a href="index.html#work">all work</a><a href="{nxt["slug"]}.html">{E(nxt["title"])} →</a></nav>
 </article>
 {footer()}'''
-    return head(f'{p["title"]} — Andrew Mish', p["kicker"]) + body
+    return head(f'{p["title"]} | Andrew Mish', p["kicker"]) + body
 
 if __name__ == "__main__":
     open(os.path.join(ROOT, "index.html"), "w").write(home())
