@@ -405,7 +405,7 @@ PROJECTS = [
 "slug": "club-america", "cat": "lead", "status": "done", "featured": False, "logo": "https://www.clubamerica.com/images/menu/club-america-logo.webp",
 "title": "Club America (TPUSA) Chapter",
 "kicker": "I led a group of classmates in starting a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding.",
-"card": "Led the push to start a Club America (TPUSA) chapter at Spalding and got 35+ students to sign up. The school didn't approve it.",
+"card": "Led the push to start a Club America (TPUSA) chapter at Archbishop Spalding and got 35+ students to sign up. The school didn't approve it.",
 "when": "Sept 2025", "role": "Founder & student leader",
 "stack": ["Leadership", "Organizing", "Recruiting"],
 "sections": [
@@ -421,7 +421,7 @@ PROJECTS = [
 },
 # ================================================================ ENTREPRENEURSHIP CLUB
 {
-"slug": "entrepreneurship-club", "cat": "lead", "status": "done", "featured": False,
+"slug": "entrepreneurship-club", "cat": "lead", "status": "done", "featured": False, "proof": ["<figure class='panel pimg phone-shot'><img src='entrepreneurship-club-flyer.jpg' alt='Entrepreneurship Club recruiting flyer' loading='lazy'><figcaption>The flyer I made to recruit members. The QR code went to the sign-up form.</figcaption></figure>"],
 "title": "Entrepreneurship Club",
 "kicker": "I founded my high school's entrepreneurship club and recruited ~30 students to join.",
 "card": "Founded at Archbishop Spalding. ~30 student sign-ups through a simple Google Form.",
