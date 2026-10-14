@@ -402,7 +402,7 @@ PROJECTS = [
 },
 # ================================================================ CLUB AMERICA
 {
-"slug": "club-america", "cat": "lead", "status": "done", "featured": False,
+"slug": "club-america", "cat": "lead", "status": "done", "featured": False, "logo": "https://www.clubamerica.com/images/menu/club-america-logo.webp",
 "title": "Club America (TPUSA) Chapter",
 "kicker": "I led a group of classmates in starting a Club America chapter, Turning Point USA's high school program, at Archbishop Spalding.",
 "card": "Led the push to start a Club America (TPUSA) chapter at Spalding and got 35+ students to sign up. The school didn't approve it.",

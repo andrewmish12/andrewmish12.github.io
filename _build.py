@@ -223,8 +223,28 @@ def project(p, i):
 {footer()}'''
     return head(f'{p["title"]} | Andrew Mish', p["kicker"]) + body
 
+import re as _re
+def curly(h):
+    """Curly apostrophes in visible text only (not inside tags, <pre>, <script>, <style>)."""
+    out=[]; skip=0
+    for part in _re.split(r'(<[^>]+>)', h):
+        if part.startswith('<'):
+            tag=part[1:].split()[0].lower().rstrip('>') if len(part)>1 else ''
+            if tag in ('pre','script','style','title'): skip+=1
+            elif tag in ('/pre','/script','/style','/title'): skip=max(0,skip-1)
+            out.append(part)
+        elif skip:
+            out.append(part)
+        else:
+            p=part.replace('&#x27;',"'")
+            p=_re.sub(r"(?<=\w)'(?=\w)","\u2019",p)   # don't, it's
+            p=_re.sub(r"(?<=\w)'","\u2019",p)          # plural possessive / trailing
+            p=_re.sub(r"'(?=\w)","\u2018",p)          # opening quote
+            out.append(p)
+    return "".join(out)
+
 if __name__ == "__main__":
-    open(os.path.join(ROOT, "index.html"), "w").write(home())
+    open(os.path.join(ROOT, "index.html"), "w").write(curly(home()))
     for i, p in enumerate(PROJECTS):
-        open(os.path.join(ROOT, p["slug"] + ".html"), "w").write(project(p, i))
+        open(os.path.join(ROOT, p["slug"] + ".html"), "w").write(curly(project(p, i)))
     print("built", 1 + len(PROJECTS), "pages")
