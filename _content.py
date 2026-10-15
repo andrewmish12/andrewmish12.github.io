@@ -141,13 +141,14 @@ PROJECTS = [
 "proof": ["<figure class='panel pimg phone-shot'><img src='au-dining-screenshot.jpg' alt='The real app on my phone: all three halls, every meal and live hours' loading='lazy'><figcaption>The real app on my phone: all three halls, every meal and live hours</figcaption></figure>"],
 "title": "AU Dining",
 "kicker": "All three Auburn dining hall menus in one place, organized the way they should be, with calories and protein built in.",
-"card": "The Edge, Tiger Zone and Wellness Kitchen menus in one app, with calorie and protein filters and meal building.",
+"card": "The Edge, Tiger Zone and Wellness Kitchen menus in one app, with calorie and protein filters and meal building. Two beta testers are using it now.",
 "when": "2026 – Present", "role": "Solo builder (vibe coded)",
 "stack": ["Google Apps Script", "Auburn dining data", "Web app"],
 "sections": [
 ("Why I built it",
 "<p>I just wanted to see all three dining hall menus at once. The Edge, Tiger Zone and Wellness Kitchen were each on a different website, and they were organized in the worst way possible. So I built one place that shows all three, cleanly.</p>"
-"<p>Once that worked, I kept going: calories, protein, filters and building meals.</p>"),
+"<p>Once that worked, I kept going: calories, protein, filters and building meals.</p>"
+"<p>Now <b>two people are beta testing it</b> besides me, so I'm getting real feedback from people who aren't me.</p>"),
 ("What it does",
 "<ul class='feat'>"
 "<li><b>All three halls in one place</b>: The Edge, Tiger Zone and Wellness Kitchen, pulled live from Auburn's own dining data when you open the app</li>"
@@ -160,11 +161,11 @@ PROJECTS = [
 "<p>It's on my phone's home screen as an app, and everything saves on your phone with no account needed.</p>" + VIBE),
 ],
 "demo": None,
-"results": [("3","dining halls in one place"),("20g+","protein filter"),("Live","menus when you open it")],
+"results": [("3","dining halls in one place"),("2","beta testers using it"),("Live","menus when you open it")],
 "honest":
 "<p>Version one got way too crowded. I kept piling on features until it was overwhelming, so I redesigned it around four simple tabs: Menus, For You, Schedule and Profile. That redesign is what made it actually usable.</p>"
 "<p>Pulling Auburn's real data fixed a lot too. I had typed-in hours that were wrong, and breakfast and dinner items were getting mixed together. Lesson: never hard-code something that already exists as real data.</p>",
-"next": "<p>Sync meal swipe balances automatically (right now it's a manual counter), move it to its own hosting so it feels like a real app, and get it into more students' hands.</p>",
+"next": "<p>Sync meal swipe balances automatically (right now it's a manual counter), move it to its own hosting so it feels like a real app, and grow from two beta testers to more students.</p>",
 },
 # ================================================================ AU RECAPS
 {
