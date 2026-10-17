@@ -202,7 +202,8 @@ PROJECTS = [
 ("How it works",
 "<p>Every 6 hours, Apps Script checks the House Clerk's disclosure site for new filings and reads the PDFs with OCR. It figures out the proportional trades, logs everything to a sheet, and emails me.</p>"
 "<p>The email isn't just a summary. It's a set of instructions to copy and paste into Claude, which is connected to my brokerage account. Claude then does the work: it confirms every trade with me before placing it, sticks to common stock only (no options, no margin) and doesn't change anything based on its own opinion.</p>"
-"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
+"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>"
+"<p>In October 2026 I closed a real blind spot: filings with no readable trades used to be marked as seen without an email, so I'd never know they existed. Now every new filing produces either a trade email or a manual-review email with the PDF.</p>" + VIBE),
 ],
 "demo": "pipeline_trades",
 "results": [("6 hrs","between checks"),("100%","of trades confirmed by me"),("0","guesses on unreadable filings")],
@@ -224,7 +225,7 @@ PROJECTS = [
 ("The idea",
 "<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
 ("The districts",
-"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
+"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that reads real submission status through a read-only Canvas API connection and only pings me about genuinely outstanding assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
 ],
 "demo": None,
 "results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
