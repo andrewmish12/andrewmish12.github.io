@@ -167,26 +167,34 @@ PROJECTS = [
 "<p>Pulling Auburn's real data fixed a lot too. I had typed-in hours that were wrong, and breakfast and dinner items were getting mixed together. Lesson: never hard-code something that already exists as real data.</p>",
 "next": "<p>Sync meal swipe balances automatically (right now it's a manual counter), move it to its own hosting so it feels like a real app, and grow from two beta testers to more students.</p>",
 },
-# ================================================================ AU RECAPS
+# ================================================================ TIGER TRANSIT+
 {
-"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
-"title": "AU Recaps",
-"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
-"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
-"when": "Fall 2026 – Present", "role": "Writer",
-"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
-"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
+"slug": "tiger-transit", "cat": "build", "status": "proto", "featured": True, "logo": "tiger-transit-logo.svg",
+"title": "Tiger Transit+",
+"kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
+"card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
+"when": "2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
+"stack": ["Claude Code", "Node.js", "Claude API", "Live bus data", "OpenStreetMap"],
 "sections": [
-("What it is",
-"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
-("How I write it",
-"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
+("Why I built it",
+"<p>Auburn's official bus app, ETA Spot, is almost impossible to make sense of. It shows dots on a map and a pile of route names, but it never answers the question you actually have: <i>which bus do I take, and when do I need to leave?</i></p>"
+"<p>Yesterday I took the wrong bus and wasted 45 minutes to an hour getting where I was going. It's not just me, either. My friends have the same problem all the time. So I built the app I wish existed: type where you're going like you'd text a friend, and get a straight answer.</p>"),
+("What it does",
+"<ul class='feat'>"
+"<li><b>Ask in plain English</b>: \"take me to Walmart\" or \"I'm at Haley Center, need to get to the Village.\" Buildings, dorms, stores and bus stops all work, and it uses your location if you leave out where you are.</li>"
+"<li><b>A countdown to leave</b>: the top line says \"Leave in 3 min\" and counts down. Bus times re-check every 30 seconds.</li>"
+"<li><b>Real trip math</b>: walk time + when the next bus actually reaches your stop + ride time, including trips where you have to change buses.</li>"
+"<li><b>Live map</b>: real bus positions, tap a stop for arrivals, and \"Show on map\" highlights your bus, where to get on, and where to get off.</li>"
+"<li><b>Works like an app</b>: add it to your iPhone home screen.</li>"
+"</ul>"
+"<p>The AI never makes up a time. Regular code does all the timing math from the live bus data, and Claude only reads what you typed and explains the answer.</p>" + VIBE),
 ],
 "demo": None,
-"results": [("1","recap per game"),("~1,200+","words each")],
+"results": [("Live","Auburn bus data"),("Any","building, dorm, store or stop"),("30s","bus times re-check")],
 "honest":
-"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
-"next": "<p>Keep growing the list, one game at a time.</p>",
+"<p>The app itself works. The hardest part has been getting it onto a live web page. Right now it runs on my laptop, and I share it with friends through a temporary link that changes every time. Turning that into a real, always-on site is the step I'm working through now.</p>"
+"<p>It's an unofficial project, not affiliated with Auburn.</p>",
+"next": "<p>Get it hosted on a real web page so anyone can open it, then take the working prototype to Auburn Transportation Services.</p>",
 },
 # ================================================================ TRADE TRACKER
 {
@@ -232,33 +240,26 @@ PROJECTS = [
 "<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
 "next": "<p>Wire real automation health into the map, then name the city.</p>",
 },
-# ================================================================ TIGER TRANSIT+
+# ================================================================ AU RECAPS
 {
-"slug": "tiger-transit", "cat": "build", "status": "proto", "featured": True, "logo": "tiger-transit-logo.svg",
-"title": "Tiger Transit+",
-"kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
-"card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
-"when": "2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
-"stack": ["Claude Code", "Node.js", "Claude API", "Live bus data", "OpenStreetMap"],
+"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
+"title": "AU Recaps",
+"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
+"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
+"when": "Fall 2026 – Present", "role": "Writer",
+"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
+"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
 "sections": [
-("Why I built it",
-"<p>The official Tiger Transit app shows you where the buses are, but it doesn't answer the question you actually have: <i>which bus do I take, and when do I need to leave?</i> I wanted to type where I'm going like I'd text a friend and get a straight answer.</p>"),
-("What it does",
-"<ul class='feat'>"
-"<li><b>Ask in plain English</b>: \"take me to Walmart\" or \"I'm at Haley Center, need to get to the Village.\" Buildings, dorms, stores and bus stops all work, and it uses your location if you leave out where you are.</li>"
-"<li><b>A countdown to leave</b>: the top line says \"Leave in 3 min\" and counts down. Bus times re-check every 30 seconds.</li>"
-"<li><b>Real trip math</b>: walk time + when the next bus actually reaches your stop + ride time, including trips with up to two transfers.</li>"
-"<li><b>Live map</b>: real bus positions, tap a stop for arrivals, and \"Show on map\" highlights your bus, where to get on, and where to get off.</li>"
-"<li><b>Works like an app</b>: add it to your iPhone home screen.</li>"
-"</ul>"
-"<p>The AI never makes up a time. Regular code does all the timing math from the live bus data, and Claude only reads what you typed and explains the answer.</p>" + VIBE),
+("What it is",
+"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
+("How I write it",
+"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
 ],
 "demo": None,
-"results": [("Live","Auburn bus data"),("2","transfers it can plan"),("30s","bus times re-check")],
+"results": [("1","recap per game"),("~1,200+","words each")],
 "honest":
-"<p>This is the first project I built with Claude Code instead of Cowork, and it was the right call. The hardest part was the live bus data: the feed has no public documentation, so the first version was built on educated guesses and had to be fixed against real buses during service hours.</p>"
-"<p>It's a prototype that runs on my laptop. It reads the bus system's data feed without official permission, which is fine for me and a few friends but not for a public launch. It's also an unofficial project, not affiliated with Auburn.</p>",
-"next": "<p>Get it hosted so it runs without my laptop, then take the working prototype to Auburn Transportation Services and ask for official data access.</p>",
+"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
+"next": "<p>Keep growing the list, one game at a time.</p>",
 },
 # ================================================================ SWEATBUDDIES
 {
