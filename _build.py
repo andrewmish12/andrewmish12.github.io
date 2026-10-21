@@ -29,7 +29,8 @@ try{if(ref==='andrew'){localStorage.setItem('am_skip','1')}
 if(localStorage.getItem('am_skip')==='1')return;
 if(ref)sessionStorage.setItem('am_ref',ref);else ref=sessionStorage.getItem('am_ref')||'';}catch(e){}
 var vid='';try{vid=localStorage.getItem('am_vid');if(!vid){vid=Math.random().toString(36).slice(2,10);localStorage.setItem('am_vid',vid)}}catch(e){}
-var t0=Date.now(),b={page:location.pathname,ref:ref,referrer:document.referrer,screen:screen.width+'x'+screen.height,ua:navigator.userAgent,vid:vid};
+var sid='';try{sid=sessionStorage.getItem('am_sid');if(!sid){sid=Math.random().toString(36).slice(2,10);sessionStorage.setItem('am_sid',sid)}}catch(e){}
+var t0=Date.now(),b={page:location.pathname,ref:ref,referrer:document.referrer,ua:navigator.userAgent,vid:vid,sid:sid,pid:Math.random().toString(36).slice(2,12)};
 function send(o){var d=JSON.stringify(Object.assign({},b,o));try{if(navigator.sendBeacon&&navigator.sendBeacon(EP,d))return}catch(e){}
 try{fetch(EP,{method:'POST',mode:'no-cors',body:d,keepalive:true})}catch(e){}}
 function tryGeo(list){if(!list.length)return Promise.resolve();var s=list[0];
