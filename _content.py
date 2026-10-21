@@ -202,8 +202,7 @@ PROJECTS = [
 ("How it works",
 "<p>Every 6 hours, Apps Script checks the House Clerk's disclosure site for new filings and reads the PDFs with OCR. It figures out the proportional trades, logs everything to a sheet, and emails me.</p>"
 "<p>The email isn't just a summary. It's a set of instructions to copy and paste into Claude, which is connected to my brokerage account. Claude then does the work: it confirms every trade with me before placing it, sticks to common stock only (no options, no margin) and doesn't change anything based on its own opinion.</p>"
-"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>"
-"<p>In October 2026 I closed a real blind spot: filings with no readable trades used to be marked as seen without an email, so I'd never know they existed. Now every new filing produces either a trade email or a manual-review email with the PDF.</p>" + VIBE),
+"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
 ],
 "demo": "pipeline_trades",
 "results": [("6 hrs","between checks"),("100%","of trades confirmed by me"),("0","guesses on unreadable filings")],
@@ -225,13 +224,41 @@ PROJECTS = [
 ("The idea",
 "<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
 ("The districts",
-"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that reads real submission status through a read-only Canvas API connection and only pings me about genuinely outstanding assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
+"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
 ],
 "demo": None,
 "results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
 "honest":
 "<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
 "next": "<p>Wire real automation health into the map, then name the city.</p>",
+},
+# ================================================================ TIGER TRANSIT+
+{
+"slug": "tiger-transit", "cat": "build", "status": "proto", "featured": True, "logo": "tiger-transit-logo.svg",
+"title": "Tiger Transit+",
+"kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
+"card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
+"when": "2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
+"stack": ["Claude Code", "Node.js", "Claude API", "Live bus data", "OpenStreetMap"],
+"sections": [
+("Why I built it",
+"<p>The official Tiger Transit app shows you where the buses are, but it doesn't answer the question you actually have: <i>which bus do I take, and when do I need to leave?</i> I wanted to type where I'm going like I'd text a friend and get a straight answer.</p>"),
+("What it does",
+"<ul class='feat'>"
+"<li><b>Ask in plain English</b>: \"take me to Walmart\" or \"I'm at Haley Center, need to get to the Village.\" Buildings, dorms, stores and bus stops all work, and it uses your location if you leave out where you are.</li>"
+"<li><b>A countdown to leave</b>: the top line says \"Leave in 3 min\" and counts down. Bus times re-check every 30 seconds.</li>"
+"<li><b>Real trip math</b>: walk time + when the next bus actually reaches your stop + ride time, including trips with up to two transfers.</li>"
+"<li><b>Live map</b>: real bus positions, tap a stop for arrivals, and \"Show on map\" highlights your bus, where to get on, and where to get off.</li>"
+"<li><b>Works like an app</b>: add it to your iPhone home screen.</li>"
+"</ul>"
+"<p>The AI never makes up a time. Regular code does all the timing math from the live bus data, and Claude only reads what you typed and explains the answer.</p>" + VIBE),
+],
+"demo": None,
+"results": [("Live","Auburn bus data"),("2","transfers it can plan"),("30s","bus times re-check")],
+"honest":
+"<p>This is the first project I built with Claude Code instead of Cowork, and it was the right call. The hardest part was the live bus data: the feed has no public documentation, so the first version was built on educated guesses and had to be fixed against real buses during service hours.</p>"
+"<p>It's a prototype that runs on my laptop. It reads the bus system's data feed without official permission, which is fine for me and a few friends but not for a public launch. It's also an unofficial project, not affiliated with Auburn.</p>",
+"next": "<p>Get it hosted so it runs without my laptop, then take the working prototype to Auburn Transportation Services and ask for official data access.</p>",
 },
 # ================================================================ SWEATBUDDIES
 {
