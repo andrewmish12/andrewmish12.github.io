@@ -21,6 +21,29 @@ document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click'
 const mb=document.querySelector('.menu-btn');if(mb)mb.addEventListener('click',()=>document.body.classList.toggle('nav-open'));
 </script>"""
 
+TRACK = """<script>
+(function(){
+var EP='https://script.google.com/macros/s/AKfycbxcPo8eeXoKq7z_eFuxh8H2ztD0Uw-StdVecJKjhIJnc-S9vvM1ctE3_5L66Tela_tbvw/exec';
+var q=new URLSearchParams(location.search),ref=q.get('ref')||'';
+try{if(ref==='andrew'){localStorage.setItem('am_skip','1')}
+if(localStorage.getItem('am_skip')==='1')return;
+if(ref)sessionStorage.setItem('am_ref',ref);else ref=sessionStorage.getItem('am_ref')||'';}catch(e){}
+var vid='';try{vid=localStorage.getItem('am_vid');if(!vid){vid=Math.random().toString(36).slice(2,10);localStorage.setItem('am_vid',vid)}}catch(e){}
+var t0=Date.now(),b={page:location.pathname,ref:ref,referrer:document.referrer,screen:screen.width+'x'+screen.height,ua:navigator.userAgent,vid:vid};
+function send(o){var d=JSON.stringify(Object.assign({},b,o));try{if(navigator.sendBeacon&&navigator.sendBeacon(EP,d))return}catch(e){}
+try{fetch(EP,{method:'POST',mode:'no-cors',body:d,keepalive:true})}catch(e){}}
+function tryGeo(list){if(!list.length)return Promise.resolve();var s=list[0];
+var c=new AbortController();var t=setTimeout(function(){c.abort()},2500);
+return fetch(s.u,{signal:c.signal}).then(function(r){return r.json()}).then(function(g){clearTimeout(t);var m=s.f(g);if(!m.ip)throw 0;Object.assign(b,m)}).catch(function(){clearTimeout(t);return tryGeo(list.slice(1))})}
+var geo=[
+{u:'https://ipwho.is/',f:function(g){return{ip:g.ip,city:g.city,region:g.region,country:g.country,org:(g.connection&&(g.connection.org||g.connection.isp))||''}}},
+{u:'https://ipapi.co/json/',f:function(g){return{ip:g.ip,city:g.city,region:g.region,country:g.country_name,org:g.org||''}}},
+{u:'https://get.geojs.io/v1/ip/geo.json',f:function(g){return{ip:g.ip,city:g.city,region:g.region,country:g.country,org:g.organization_name||''}}}];
+tryGeo(geo).then(function(){send({event:'view'})});
+var done=false;document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&!done){done=true;send({event:'leave',seconds:Math.round((Date.now()-t0)/1000)})}});
+})();
+</script>"""
+
 def head(title, desc):
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{E(title)}</title><meta name="description" content="{E(desc)}">'
@@ -39,7 +62,7 @@ def footer():
             f'<p class="dim">Internships, partnerships, or if you just want to argue about an idea. I\'m in.</p></div>'
             f'<div class="foot-links"><a href="tel:{PROFILE["phone_tel"]}">{PROFILE["phone"]} ↗</a><a href="mailto:{PROFILE["email"]}">{PROFILE["email"]} ↗</a><a href="{PROFILE["linkedin"]}" target="_blank" rel="noopener">LinkedIn ↗</a>'
             f'<a href="{PROFILE["github"]}" target="_blank" rel="noopener">GitHub ↗</a><a href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a></div></div>'
-            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish · Last updated {UPDATED}</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}</body></html>')
+            f'<div class="wrap mono dim small foot-bottom"><span>© 2026 Andrew Mish · Last updated {UPDATED} · This site uses basic analytics.</span><span>Auburn, AL · Odenton, MD</span></div></footer>{JS}{TRACK}</body></html>')
 
 def chip(status):
     lab, cls = STATUS[status]
