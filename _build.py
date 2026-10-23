@@ -25,10 +25,10 @@ TRACK = """<script>
 (function(){
 var EP='https://script.google.com/macros/s/AKfycbxcPo8eeXoKq7z_eFuxh8H2ztD0Uw-StdVecJKjhIJnc-S9vvM1ctE3_5L66Tela_tbvw/exec';
 var q=new URLSearchParams(location.search),ref=q.get('ref')||'';
-try{if(ref==='andrew'){localStorage.setItem('am_skip','1')}
-if(localStorage.getItem('am_skip')==='1')return;
-if(ref)sessionStorage.setItem('am_ref',ref);else ref=sessionStorage.getItem('am_ref')||'';}catch(e){}
+try{if(ref)sessionStorage.setItem('am_ref',ref);else ref=sessionStorage.getItem('am_ref')||'';}catch(e){}
 var vid='';try{vid=localStorage.getItem('am_vid');if(!vid){vid=Math.random().toString(36).slice(2,10);localStorage.setItem('am_vid',vid)}}catch(e){}
+var me=false;try{if(ref==='andrew'||q.get('me')==='1'){localStorage.setItem('am_skip','1');try{navigator.sendBeacon(EP,JSON.stringify({event:'me',vid:vid}))}catch(e){}}me=localStorage.getItem('am_skip')==='1'}catch(e){}
+if(me)return;
 var sid='';try{sid=sessionStorage.getItem('am_sid');if(!sid){sid=Math.random().toString(36).slice(2,10);sessionStorage.setItem('am_sid',sid)}}catch(e){}
 var t0=Date.now(),b={page:location.pathname,ref:ref,referrer:document.referrer,ua:navigator.userAgent,vid:vid,sid:sid,pid:Math.random().toString(36).slice(2,12)};
 function send(o){var d=JSON.stringify(Object.assign({},b,o));try{if(navigator.sendBeacon&&navigator.sendBeacon(EP,d))return}catch(e){}
