@@ -261,6 +261,36 @@ PROJECTS = [
 "<p class='note-sm'>Personal project using public data. Not investment advice.</p>",
 "next": "<p>Let it run long enough to compare it against just holding an index fund.</p>",
 },
+# ================================================================ AU GRADES
+{
+"slug": "au-grades", "cat": "build", "status": "inuse", "featured": True,
+"title": "AU Grades",
+"kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
+"card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
+"when": "2026 – Present", "role": "Solo builder (vibe coded)",
+"stack": ["Google Apps Script", "Canvas API", "Gemini", "Google Calendar"],
+"sections": [
+("Why I built it",
+"<p>Canvas makes you click into every class to see where you stand. Some of my instructors don't turn on letter grades, so a 99 just shows up as \"99.\" One hides the course total completely. I wanted one page that tells me my grades, my GPA, and what's due, without digging.</p>"),
+("What it does",
+"<ul class='feat'>"
+"<li><b>Grades tab</b>: every class on one row with its grade and letter. If an instructor hides the total, it calculates it from the scores I can see, using the class's category weights, and labels it \"Estimated · not official.\"</li>"
+"<li><b>Unofficial GPA</b>: a GPA card that updates live from my current grades, plus a projected cumulative GPA.</li>"
+"<li><b>What do I need?</b>: the average I need on the rest of the class for an A, B or C, or the score I need on one assignment, including a final that isn't posted yet.</li>"
+"<li><b>Next 7 Days and Calendar</b>: everything due, starting today. Assignments posted in the last 2 days get a <b>New</b> badge.</li>"
+"<li><b>Ask AI</b>: a chat that reads my syllabi, assignment instructions, rubrics, modules and PDFs. It explains, quizzes me and makes checklists. It's set up to tutor, not to do the work.</li>"
+"<li><b>Practice</b>: turns a module into flashcards or a quiz, and cards I miss come back the next day.</li>"
+"<li><b>Google Calendar sync</b>: every due date goes on my calendar, and it schedules study blocks before exams in my open evening time.</li>"
+"<li><b>Alerts</b>: it checks Canvas every 15 minutes and emails me or pings my phone when a new assignment posts. There's also a morning digest email.</li>"
+"</ul>" + VIBE),
+],
+"demo": None,
+"results": [("1","dashboard for every class"),("15 min","checks for new assignments"),("Live","unofficial GPA")],
+"honest":
+"<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
+"<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>",
+"next": "<p>Speed up the AI, and figure out how other Auburn students could use it with their own Canvas accounts.</p>",
+},
 # ================================================================ SWEATBUDDIES
 {
 "slug": "sweatbuddies", "cat": "build", "status": "inuse", "featured": False, "logo": "sweatbuddies-logo.svg",
