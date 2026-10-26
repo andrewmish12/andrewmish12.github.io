@@ -196,71 +196,6 @@ PROJECTS = [
 "<p>It's an unofficial project, not affiliated with Auburn.</p>",
 "next": "<p>Get it hosted on a real web page so anyone can open it, then take the working prototype to Auburn Transportation Services.</p>",
 },
-# ================================================================ AU RECAPS
-{
-"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
-"title": "AU Recaps",
-"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
-"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
-"when": "Fall 2026 – Present", "role": "Writer",
-"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
-"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
-"sections": [
-("What it is",
-"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
-("How I write it",
-"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
-],
-"demo": None,
-"results": [("1","recap per game"),("~1,200+","words each")],
-"honest":
-"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
-"next": "<p>Keep growing the list, one game at a time.</p>",
-},
-# ================================================================ COMMAND CENTER
-{
-"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg", "card_image": "command-center-city.jpg",
-"title": "Automation Command Center",
-"kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
-"card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
-"when": "2026", "role": "Solo builder (vibe coded)",
-"stack": ["Muse", "Google Apps Script", "Plaid", "Claude", "Python"],
-"sections": [
-("The idea",
-"<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
-("The districts",
-"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
-],
-"demo": None,
-"results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
-"honest":
-"<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
-"next": "<p>Wire real automation health into the map, then name the city.</p>",
-},
-# ================================================================ TRADE TRACKER
-{
-"slug": "trade-tracker", "cat": "build", "status": "live", "featured": False,
-"title": "Congressional Trade Tracker",
-"kicker": "An automated system that watches public congressional stock-trade filings and emails me instructions to hand to Claude.",
-"card": "Checks House disclosure filings every 6 hours, reads the PDFs, and emails me a prompt to paste into Claude, which handles the trade after I confirm.",
-"when": "2026", "role": "Solo builder (vibe coded)",
-"stack": ["Google Apps Script", "OCR", "Google Sheets", "Claude"],
-"sections": [
-("The idea",
-"<p>Members of Congress have to publicly disclose their stock trades. Paid apps copy those trades for you. I wanted to see if I could build the same thing myself for free.</p>"),
-("How it works",
-"<p>Every 6 hours, Apps Script checks the House Clerk's disclosure site for new filings and reads the PDFs with OCR. It figures out the proportional trades, logs everything to a sheet, and emails me.</p>"
-"<p>The email isn't just a summary. It's a set of instructions to copy and paste into Claude, which is connected to my brokerage account. Claude then does the work: it confirms every trade with me before placing it, sticks to common stock only (no options, no margin) and doesn't change anything based on its own opinion.</p>"
-"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
-],
-"demo": "pipeline_trades",
-"results": [("6 hrs","between checks"),("100%","of trades confirmed by me"),("0","guesses on unreadable filings")],
-"honest":
-"<p>My first plan was to have the script place trades directly through the brokerage. I spent days fighting login and permission restrictions before giving up on that and switching to \"email me instructions, Claude executes, I confirm.\" It turned out to be the better design anyway, because I stay in the loop on every trade.</p>"
-"<p>The other reality: filings can show up as late as 45 days after the trade, so you're always copying old moves. It's a great automation project. I wouldn't call it an investing edge.</p>"
-"<p class='note-sm'>Personal project using public data. Not investment advice.</p>",
-"next": "<p>Let it run long enough to compare it against just holding an index fund.</p>",
-},
 # ================================================================ AU GRADES
 {
 "slug": "au-grades", "cat": "build", "status": "inuse", "featured": True,
@@ -290,6 +225,71 @@ PROJECTS = [
 "<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
 "<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>",
 "next": "<p>Speed up the AI, and figure out how other Auburn students could use it with their own Canvas accounts.</p>",
+},
+# ================================================================ COMMAND CENTER
+{
+"slug": "command-center", "cat": "build", "status": "live", "featured": False, "image": "command-center-city.jpg", "card_image": "command-center-city.jpg",
+"title": "Automation Command Center",
+"kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
+"card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
+"when": "2026", "role": "Solo builder (vibe coded)",
+"stack": ["Muse", "Google Apps Script", "Plaid", "Claude", "Python"],
+"sections": [
+("The idea",
+"<p>A friend showed me a 3D dashboard of all his automations and I wanted one of my own. Not a spreadsheet of scheduled jobs, but a city. So I built one: a night-time SimCity-style map where each district is an automation and clicking a building opens its dashboard.</p>"),
+("The districts",
+"<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
+],
+"demo": None,
+"results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
+"honest":
+"<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
+"next": "<p>Wire real automation health into the map, then name the city.</p>",
+},
+# ================================================================ AU RECAPS
+{
+"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
+"title": "AU Recaps",
+"kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
+"card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
+"when": "Fall 2026 – Present", "role": "Writer",
+"stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
+"links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
+"sections": [
+("What it is",
+"<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
+("How I write it",
+"<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
+],
+"demo": None,
+"results": [("1","recap per game"),("~1,200+","words each")],
+"honest":
+"<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
+"next": "<p>Keep growing the list, one game at a time.</p>",
+},
+# ================================================================ TRADE TRACKER
+{
+"slug": "trade-tracker", "cat": "build", "status": "live", "featured": False,
+"title": "Congressional Trade Tracker",
+"kicker": "An automated system that watches public congressional stock-trade filings and emails me instructions to hand to Claude.",
+"card": "Checks House disclosure filings every 6 hours, reads the PDFs, and emails me a prompt to paste into Claude, which handles the trade after I confirm.",
+"when": "2026", "role": "Solo builder (vibe coded)",
+"stack": ["Google Apps Script", "OCR", "Google Sheets", "Claude"],
+"sections": [
+("The idea",
+"<p>Members of Congress have to publicly disclose their stock trades. Paid apps copy those trades for you. I wanted to see if I could build the same thing myself for free.</p>"),
+("How it works",
+"<p>Every 6 hours, Apps Script checks the House Clerk's disclosure site for new filings and reads the PDFs with OCR. It figures out the proportional trades, logs everything to a sheet, and emails me.</p>"
+"<p>The email isn't just a summary. It's a set of instructions to copy and paste into Claude, which is connected to my brokerage account. Claude then does the work: it confirms every trade with me before placing it, sticks to common stock only (no options, no margin) and doesn't change anything based on its own opinion.</p>"
+"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
+],
+"demo": "pipeline_trades",
+"results": [("6 hrs","between checks"),("100%","of trades confirmed by me"),("0","guesses on unreadable filings")],
+"honest":
+"<p>My first plan was to have the script place trades directly through the brokerage. I spent days fighting login and permission restrictions before giving up on that and switching to \"email me instructions, Claude executes, I confirm.\" It turned out to be the better design anyway, because I stay in the loop on every trade.</p>"
+"<p>The other reality: filings can show up as late as 45 days after the trade, so you're always copying old moves. It's a great automation project. I wouldn't call it an investing edge.</p>"
+"<p class='note-sm'>Personal project using public data. Not investment advice.</p>",
+"next": "<p>Let it run long enough to compare it against just holding an index fund.</p>",
 },
 # ================================================================ SWEATBUDDIES
 {
