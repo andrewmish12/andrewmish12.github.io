@@ -198,7 +198,7 @@ PROJECTS = [
 },
 # ================================================================ AU GRADES
 {
-"slug": "au-grades", "cat": "build", "status": "inuse", "featured": True,
+"slug": "au-grades", "cat": "build", "status": "inuse", "featured": True, "logo": "au-grades-logo.png",
 "title": "AU Grades",
 "kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
 "card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
