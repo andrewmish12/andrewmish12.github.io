@@ -46,6 +46,12 @@ STATUS_LEGEND = "Live = in real use now · Building = in progress, not in regula
 VIBE = ("<p class='note-sm'>How I build: I don't write code by hand. I vibe code. I decide what to build, describe it to Claude, "
         "test everything it gives me, and push back until it actually works.</p>")
 
+def SHOT(src, cap, phone=True):
+    return (f"<figure class='panel pimg{' phone-shot' if phone else ''}'><img src='{src}' alt='{cap}' loading='lazy'>"
+            f"<figcaption>{cap}</figcaption></figure>")
+def PHONES(*shots):
+    return "<div class='phones'>" + "".join(SHOT(a, b) for a, b in shots) + "</div>"
+
 MOCK_WORKLIST = (
 "<figure class='panel'><p class='mono small dim'>daily worklist · sample</p>"
 "<table class='wl'><tr><th>Tier</th><th>Patient</th><th>Days</th><th>Next step</th></tr>"
@@ -173,6 +179,7 @@ PROJECTS = [
 # ================================================================ TIGER TRANSIT+
 {
 "slug": "tiger-transit", "cat": "build", "status": "live", "featured": True, "logo": "tiger-transit-logo.svg",
+"proof": [PHONES(("tiger-transit-trip.jpg", "Trip tab: ask where you’re going, plus the night shuttle and buses leaving near you"), ("tiger-transit-map.jpg", "Live map: every running route and bus"), ("tiger-transit-routes.jpg", "Routes running right now, with how many buses are out"))],
 "title": "Tiger Transit+",
 "kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
 "card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
@@ -202,6 +209,7 @@ PROJECTS = [
 # ================================================================ AU GRADES
 {
 "slug": "au-grades", "cat": "build", "status": "live", "featured": True, "logo": "au-grades-logo.png",
+"proof": [PHONES(("au-grades-dashboard.jpg", "The Grades tab and unofficial GPA card. I blurred my actual grades."), ("au-grades-ai.jpg", "The Ask AI tab, which reads my syllabi and course files"))],
 "title": "AU Grades",
 "kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
 "card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
@@ -252,6 +260,7 @@ PROJECTS = [
 # ================================================================ AU RECAPS
 {
 "slug": "au-recaps", "cat": "write", "status": "live", "featured": True, "logo": "au-recaps-logo.png",
+"proof": [SHOT("au-recaps-substack.jpg", "My AU Recaps on Substack, one post per game")],
 "title": "AU Recaps",
 "kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
 "card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
@@ -273,6 +282,7 @@ PROJECTS = [
 # ================================================================ TRADE TRACKER
 {
 "slug": "trade-tracker", "cat": "build", "status": "live", "featured": False,
+"proof": [SHOT("trade-tracker-email.jpg", "A real alert email: the trades to copy, sized to my account, with instructions for Claude", phone=False)],
 "title": "Congressional Trade Tracker",
 "kicker": "An automated system that watches public congressional stock-trade filings and emails me instructions to hand to Claude.",
 "card": "Checks House disclosure filings every 6 hours, reads the PDFs, and emails me a prompt to paste into Claude, which handles the trade after I confirm.",
@@ -297,6 +307,7 @@ PROJECTS = [
 # ================================================================ SWEATBUDDIES
 {
 "slug": "sweatbuddies", "cat": "build", "status": "live", "featured": False, "logo": "sweatbuddies-logo.svg",
+"proof": [PHONES(("sweatbuddies-login.jpg", "Sign-in screen"), ("sweatbuddies-home.jpg", "This week’s goals, streaks and IOUs for both of us"))],
 "title": "SweatBuddies",
 "kicker": "A two-person workout accountability app with photo check-ins, weekly goals, and real stakes if you slack off.",
 "card": "Photo-proof workouts, streaks, weekly goals, and an IOU system: miss your goal and you owe your partner.",
@@ -313,7 +324,7 @@ PROJECTS = [
 "<li><b>Thursday nudge</b> if you're behind, plus comments and likes on each other's workouts</li>"
 "</ul>" + VIBE),
 ],
-"demo": "ring_sweat",
+"demo": None,
 "results": [("2","users (on purpose)"),("Daily","actual use"),("14","max workouts / week")],
 "honest":
 "<p>This is the one I actually use every day, and that's what made it good. Every bug I found came from real use. Two workouts in one day only counted once. The progress ring stayed at zero because Google Sheets was quietly converting my dates. Small bugs, but you only find them by using your own product.</p>",
@@ -322,6 +333,7 @@ PROJECTS = [
 # ================================================================ BARBER BOT
 {
 "slug": "lineup", "cat": "venture", "status": "building", "featured": True, "logo": "barber-bot-logo.svg",
+"proof": [SHOT("lineup-whatsapp.jpg", "A real test booking over WhatsApp: the client asks for a time, and Lineup books it on the calendar")],
 "title": "Lineup",
 "kicker": "Text-message booking for barbers. A client texts like they'd text their barber, and Lineup books them into an open slot on the barber's calendar.",
 "card": "AI booking for barbers. Clients text “can I get a fade Saturday at 2?” and Lineup checks the barber’s calendar, books it, or offers the closest open times.",
@@ -340,7 +352,7 @@ PROJECTS = [
 "<li><b>It tells clients apart by phone number</b> and puts their name on the calendar event, like “Andrew - Fade,” so the barber can read it at a glance.</li>"
 "</ul>" + VIBE),
 ],
-"demo": "sms_barber",
+"demo": None,
 "results": [("End to end","text → calendar booking working"),("5","services with set lengths"),("0","double bookings allowed")],
 "honest":
 "<p>The first version only understood texts; a human still had to book. Getting it to book for real meant splitting the job: Claude reads the message, and plain code decides what’s open. That split is why it can’t double-book.</p>"
