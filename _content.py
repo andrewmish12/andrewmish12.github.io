@@ -30,17 +30,18 @@ CATS = {
     "job": "Jobs",
 }
 
+# Four statuses, used everywhere:
+#   Live      = in real use right now (by me or other people)
+#   Building  = actively being built and tested, not in regular use yet
+#   Paused    = on hold
+#   Completed = finished, or a past role
 STATUS = {
     "live": ("Live", "s-live"),
-    "inuse": ("In daily use", "s-live"),
-    "poc": ("Proof of concept", "s-proto"),
-    "proto": ("Prototype", "s-proto"),
-    "early": ("Early build", "s-proto"),
-    "idea": ("Idea pipeline", "s-idea"),
+    "building": ("Building", "s-proto"),
     "paused": ("Paused", "s-paused"),
     "done": ("Completed", "s-done"),
-    "ongoing": ("Ongoing", "s-live"),
 }
+STATUS_LEGEND = "Live = in real use now · Building = in progress, not in regular use yet · Paused = on hold · Completed = finished"
 
 VIBE = ("<p class='note-sm'>How I build: I don't write code by hand. I vibe code. I decide what to build, describe it to Claude, "
         "test everything it gives me, and push back until it actually works.</p>")
@@ -73,6 +74,7 @@ PROJECTS = [
 ("Daily PDF worklists", "Morning reports emailed at 7:30 AM. I adapted the set for a second hospital"),
 ("Claude AI tools", "15+ tools built with care navigators for notes, audits and search"),
 ("AppSheet app", "Mobile data-entry app on top of a tracking sheet, built for a care manager"),
+("Freshdesk ticket router", "Standalone Apps Script that pulls from Freshdesk and Freshcaller and routes voicemail tickets to the right case manager"),
 ("Referral intake", "Form submission → auto-generated referral PDF → emailed to the placement team. Live"),
 ("Report data-quality fixes", "Tracked down duplicate and missing patients in a daily report and added dedupe"),
 ("Contract app ID fix", "Gave 774 records permanent IDs so the contract-closing app stopped crashing on duplicate IDs"),
@@ -82,14 +84,14 @@ PROJECTS = [
 "sections": [
 ("What SilverStay does",
 "<p>SilverStay helps hospitals get patients discharged to the right place (rehab, a nursing facility, home) faster. Care navigators and care managers do a lot of manual work: charting notes, tracking every patient's status, chasing vendors, filling out forms. My job is to find the parts that shouldn't be manual and automate them.</p>"
-"<p class='note-sm'>Everything on this page is described at the workflow level. No patient data, hospital names or real internal screenshots appear on this site, on purpose. The examples below are mockups with made-up data.</p>"),
+"<p class='note-sm'>Everything on this page is described at the workflow level. No patient data, hospital names or real internal screenshots appear on this site, on purpose. The illustrations on this page are mockups with made-up data.</p>"),
 ("What I built",
 "<div class='builds'>"
 "<div class='build'><h4>Nightly archive & reset scripts</h4><p>Apps Script jobs that save each day's charting notes to an archive and clear the input columns for the next day, across several hospital sites. I rewrote one site's archive to skip inactive patients and unchanged notes. For another site, I built a reset that keeps one tier's notes, plus a test that runs on a copy of the sheet (12 of 12 checks passed) and a one-click restore from the archive. Later I caught a second bug: the reset was running on weekends and wiping Friday's notes. I fixed it and restored the rows from the archive.</p></div>"
 "<div class='build'><h4>Daily PDF worklists</h4><p>Morning worklist PDFs, emailed automatically at 7:30 AM. I adapted an existing set of reports for a second hospital. The test runs covered 28 patients.</p></div>"
 "<div class='build'><h4>Claude AI tools</h4><p>15+ Claude tools built with care navigators: a case-note assistant, a progress-note auditor, a search tool for internal resources and a long-term-care placement navigator.</p></div>"
 "<div class='build'><h4>AppSheet data-entry app</h4><p>A mobile app on top of a care-coordination sheet: a list of active patients, a notes form, a one-tap discharge button, and a new-patient form that checks for duplicate IDs. It's a working prototype; it's not rolled out yet.</p></div>"
-"<div class='build'><h4>Referral intake automation</h4><p>A form submission becomes a generated referral PDF, emailed straight to the placement team. It replaced an add-on that was sending emails twice. Live.</p></div>"
+"<div class='build'><h4>Freshdesk ticket router</h4><p>A standalone Apps Script, not attached to any sheet, that pulls from both Freshdesk and Freshcaller and sorts incoming tickets, like voicemails, to the right case manager. It runs on its own and works with multiple API keys at once, which made it one of my favorite builds.</p></div><div class='build'><h4>Referral intake automation</h4><p>A form submission becomes a generated referral PDF, emailed straight to the placement team. It replaced an add-on that was sending emails twice. Live.</p></div>"
 "<div class='build'><h4>Daily report data-quality fixes</h4><p>A daily tiered patient report (green, yellow and red tiers) had duplicates and a missing patient. I traced it to patients moving between care managers' lists and a tier with no group for it, and I added dedupe to the script that feeds the report's next-steps column.</p></div>"
 "<div class='build'><h4>Contract app ID fix</h4><p>The app the team uses to close contracts kept crashing with \"duplicate ID\" errors, three times in six weeks. The cause: it used the spreadsheet's row number as each record's ID, so IDs shifted whenever rows moved. With the ops lead's sign-off, I gave all 774 existing records a permanent ID and switched the app to create a new unique ID for every contract.</p></div><div class='build'><h4>Form-link repair</h4><p>22 rows on a tracking sheet had a pre-filled form link that opened the wrong person's form. I traced it to a copy-paste, not a script bug, rebuilt all 22 links, and checked them afterward.</p></div><div class='build'><h4>Formula & metrics repairs</h4><p>Fixed a contracts sheet where a script only checked new rows, so old broken formulas never got fixed. The first version Claude gave me was 223 lines; I sent it back and we landed on 12. I also fixed a metrics script that shifted 10 days of values one column over.</p></div>"
 "<div class='build'><h4>Rollout surveys + AWS short link</h4><p>Pre- and post-rollout surveys for care navigators (custom HTML on Google Sites, one Apps Script backend, QR codes), behind a branded short link on AWS. The pre-rollout survey is live and collecting responses.</p></div>"
@@ -97,7 +99,7 @@ PROJECTS = [
 "<div class='build'><h4>DocuSign forms & more</h4><p>A ~150-field benefits enrollment web form with signer routing (in progress), Slack error alerts on nightly scripts, a Slack PTO bot that adds time off to the calendar and invites only the manager and coverage (written, waiting on admin access), and plain-English reviews of existing scripts.</p></div>"
 "</div>"),
 ],
-"proof": [MOCK_WORKLIST, MOCK_SLACK],
+"mock": [MOCK_WORKLIST, MOCK_SLACK],
 "results": [("50+","automations, tools & fixes"),("15+","Claude tools"),("4+","hospital sites")],
 "honest":
 "<p>I don't know how to code. I vibe code: I figure out what the team needs, describe it to Claude, and then my real job is testing it and pushing back. When Claude handed me a 223-line fix for a 12-line problem, I sent it back. When it said something was tested and it wasn't, I made it run the test on a copy of the sheet.</p>"
@@ -107,7 +109,7 @@ PROJECTS = [
 },
 # ================================================================ PREREQ
 {
-"slug": "prereq", "cat": "venture", "status": "early", "featured": True, "logo": "prereq-logo.png",
+"slug": "prereq", "cat": "venture", "status": "building", "featured": True, "logo": "prereq-logo.png",
 "title": "Prereq",
 "kicker": "A conversational AI that builds your class schedule for you, down to the exact CRNs.",
 "card": "A conversational AI that builds your Auburn schedule. Pitched at the Ideas Jam and accepted into the New Venture Accelerator. 73% of 22 students surveyed would use it.",
@@ -138,7 +140,7 @@ PROJECTS = [
 },
 # ================================================================ AU DINING
 {
-"slug": "au-dining", "cat": "build", "status": "inuse", "featured": True, "logo": "au-dining-logo.png",
+"slug": "au-dining", "cat": "build", "status": "live", "featured": True, "logo": "au-dining-logo.png",
 "proof": ["<figure class='panel pimg phone-shot'><img src='au-dining-screenshot.jpg' alt='The real app on my phone: all three halls, every meal and live hours' loading='lazy'><figcaption>The real app on my phone: all three halls, every meal and live hours</figcaption></figure>"],
 "title": "AU Dining",
 "kicker": "All three Auburn dining hall menus in one place, organized the way they should be, with calories and protein built in.",
@@ -170,7 +172,7 @@ PROJECTS = [
 },
 # ================================================================ TIGER TRANSIT+
 {
-"slug": "tiger-transit", "cat": "build", "status": "proto", "featured": True, "logo": "tiger-transit-logo.svg",
+"slug": "tiger-transit", "cat": "build", "status": "live", "featured": True, "logo": "tiger-transit-logo.svg",
 "title": "Tiger Transit+",
 "kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
 "card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
@@ -199,7 +201,7 @@ PROJECTS = [
 },
 # ================================================================ AU GRADES
 {
-"slug": "au-grades", "cat": "build", "status": "inuse", "featured": True, "logo": "au-grades-logo.png",
+"slug": "au-grades", "cat": "build", "status": "live", "featured": True, "logo": "au-grades-logo.png",
 "title": "AU Grades",
 "kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
 "card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
@@ -249,7 +251,7 @@ PROJECTS = [
 },
 # ================================================================ AU RECAPS
 {
-"slug": "au-recaps", "cat": "write", "status": "ongoing", "featured": True, "logo": "au-recaps-logo.png",
+"slug": "au-recaps", "cat": "write", "status": "live", "featured": True, "logo": "au-recaps-logo.png",
 "title": "AU Recaps",
 "kicker": "My own Auburn football game recaps, written after every game and sent to a growing email list.",
 "card": "Game-by-game Auburn football recaps with Three Stars and The Good, the Bad & the Ugly. On Substack and emailed to a growing list.",
@@ -294,7 +296,7 @@ PROJECTS = [
 },
 # ================================================================ SWEATBUDDIES
 {
-"slug": "sweatbuddies", "cat": "build", "status": "inuse", "featured": False, "logo": "sweatbuddies-logo.svg",
+"slug": "sweatbuddies", "cat": "build", "status": "live", "featured": False, "logo": "sweatbuddies-logo.svg",
 "title": "SweatBuddies",
 "kicker": "A two-person workout accountability app with photo check-ins, weekly goals, and real stakes if you slack off.",
 "card": "Photo-proof workouts, streaks, weekly goals, and an IOU system: miss your goal and you owe your partner.",
@@ -319,29 +321,36 @@ PROJECTS = [
 },
 # ================================================================ BARBER BOT
 {
-"slug": "barber-bot", "cat": "build", "status": "poc", "featured": True, "logo": "barber-bot-logo.svg",
-"title": "AI Barber Bot",
-"kicker": "A text-message scheduling assistant for barbershops. Text it like you'd text your barber, and Claude figures out what you want.",
-"card": "Twilio + Claude SMS bot that turns messy texts like \"can I get a fade fri after 3\" into structured booking requests. Proof of concept.",
-"when": "2025 – Present", "role": "Solo builder (vibe coded)",
-"stack": ["Twilio Functions", "Claude API", "SMS"],
+"slug": "lineup", "cat": "venture", "status": "building", "featured": True, "logo": "barber-bot-logo.svg",
+"title": "Lineup",
+"kicker": "Text-message booking for barbers. A client texts like they'd text their barber, and Lineup books them into an open slot on the barber's calendar.",
+"card": "AI booking for barbers. Clients text “can I get a fade Saturday at 2?” and Lineup checks the barber’s calendar, books it, or offers the closest open times.",
+"when": "2025 – Present", "role": "Founder, solo builder (vibe coded)",
+"stack": ["Twilio", "WhatsApp", "Claude API", "Google Apps Script", "Google Calendar", "Google Sheets"],
 "sections": [
-("Why I built it",
-"<p>Most barbers book appointments by text, between cuts, with their hands full. Clients send things like \"yo can I get in friday after 3 for a fade.\" That's easy for a person to read and annoying for software, which is exactly what AI is good at.</p>"),
+("Why I’m building it",
+"<p>Most barbers book appointments by text, between cuts, with their hands full. Clients send things like “yo can I get in friday after 3 for a fade.” That’s easy for a person to read and annoying for software, which is exactly what AI is good at. Lineup started as the AI Barber Bot; I renamed it once it could actually book.</p>"),
 ("How it works",
-"<p>A client texts the shop's Twilio number. A Twilio Function sends the message to Claude with a strict prompt: pull out the name, date, time, service and intent (new booking, cancel, reschedule or question), plus a confidence level, and return <strong>only JSON</strong>. The bot replies based on the intent, so cancellations and reschedules get different responses than new bookings.</p>"
-"<p>If anything breaks (bad JSON, an API error), it falls back to a friendly \"we'll get back to you\" instead of leaving the client hanging.</p>" + VIBE),
+"<ul class='feat'>"
+"<li><b>The client texts.</b> The message hits a Twilio number and goes to Claude, along with today’s date and the barber’s hours, so “Saturday at 2” becomes Sat, Oct 31 at 2:00 PM, not 2 AM.</li>"
+"<li><b>Claude only reads the message.</b> It pulls out the day, time, service and what the client wants. A Google Apps Script does the scheduling math against the barber’s Google Calendar, so Claude can’t double-book anyone.</li>"
+"<li><b>The barber sets the rules in a Google Sheet:</b> working hours by day, time off, and each service with how long it takes (a fade is 45 minutes, a lineup is 15).</li>"
+"<li><b>It books or offers options.</b> If the time is open, it books it. If not, it offers the closest open times, spaced at least an hour apart. A reply like “1 o’clock works” books the time it offered.</li>"
+"<li><b>It knows the rules.</b> Closed days, times outside working hours, too-short notice, and “I can’t do Tuesday, any other times this week?” all work.</li>"
+"<li><b>It tells clients apart by phone number</b> and puts their name on the calendar event, like “Andrew - Fade,” so the barber can read it at a glance.</li>"
+"</ul>" + VIBE),
 ],
 "demo": "sms_barber",
-"results": [("6","fields pulled from each text"),("4","intents handled")],
+"results": [("End to end","text → calendar booking working"),("5","services with set lengths"),("0","double bookings allowed")],
 "honest":
-"<p>Honestly, I haven't gotten this fully working end to end yet. The proof of concept is there: it understands requests really well. But it doesn't check a calendar or lock in the appointment, so a human still confirms.</p>"
-"<p>The interesting lesson was forcing the AI to answer in JSON only. Once the output is structured, everything after it is just normal logic, and that's how I build almost everything now.</p>",
-"next": "<p>Connect it to a real calendar so it can check availability and confirm on its own, add reminder texts, and get one real barbershop to pilot it.</p>",
+"<p>The first version only understood texts; a human still had to book. Getting it to book for real meant splitting the job: Claude reads the message, and plain code decides what’s open. That split is why it can’t double-book.</p>"
+"<p>Testing turned up real bugs. The bot was calling an AI model that no longer existed, so every reply fell back to a generic message. “Saturday at 2” didn’t become a real date. One time-zone setting was off by an hour. I tested it like a client would, found each one, and fixed it.</p>"
+"<p>It’s still in testing on a WhatsApp test number with me as the client. No barber is using it yet.</p>",
+"next": "<p>Add a one-tap OK so the barber approves bookings before they’re confirmed, switch from WhatsApp to regular texting, build a simple dashboard of today’s appointments, and find a pilot barber. First I need to ask barbers which booking apps they already use, because that decides whether Lineup connects to their app or replaces it.</p>",
 },
 # ================================================================ IDEAS
 {
-"slug": "ideas", "cat": "venture", "status": "idea", "featured": True,
+"slug": "ideas", "cat": "venture", "status": "live", "featured": True,
 "title": "The Idea Pipeline",
 "kicker": "I keep a running list of business ideas, 100+ and counting. Here's every one, and how I decide which are worth building.",
 "card": "100+ ideas on the list. I ran a batch of 96 through an AI-scored diagnostic, pushed back where it got things wrong, and picked Prereq to pitch.",
@@ -563,7 +572,7 @@ IDEAS_KEEP = [
 ("Sidewalk gum removal", "A service for a gross, expensive problem nobody wants to deal with."),
 ("Designated driver service", "Two drivers come to you, so you and your car both get home."),
 ("EASy Clean", "The UV chair cover from my PLTW capstone."),
-("AI barber booking bot", "Text-message booking for barbershops."),
+("Lineup", "Text-message booking for barbers. Now in testing."),
 ("Elderly ride service", "Reliable rides for older adults."),
 ("Dining-hall delivery", "Dining hall food delivered, funded by a meal-plan markup."),
 ("High school golf livestreams", "Streaming high school golf matches."),

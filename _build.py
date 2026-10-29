@@ -1,7 +1,7 @@
 """Builds the static site from content.py.  Run:  python3 _build.py  (from the site folder)"""
 import os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(__file__))
-from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_LIST_UPDATED, IDEAS_SCREENED, IDEAS_COUNT
+from _content import PROFILE, STATS, CATS, STATUS, PROJECTS, EDUCATION, HONORS, SKILLS, INVOLVEMENT, IDEAS_KEEP, IDEAS_LIST_UPDATED, IDEAS_SCREENED, IDEAS_COUNT, STATUS_LEGEND
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(os.path.dirname(__file__), "_style.css")).read()
@@ -73,6 +73,8 @@ def chip(status):
 def flow(nodes, caption):
     items = '<span class="arrow">→</span>'.join(f'<div class="fnode"><span class="mono small dim">{E(a)}</span><b>{E(b)}</b></div>' for a, b in nodes)
     return f'<figure class="panel"><div class="flow">{items}</div><figcaption>{caption}</figcaption></figure>'
+
+FAKE_DEMOS = {"sms_barber", "chat_prereq", "ring_sweat"}
 
 def demo(kind):
     if not kind: return ""
@@ -178,7 +180,7 @@ def home():
 </section>
 <section class="wrap stats">{stats}</section>
 <section id="work" class="wrap sec">
- <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently. <span class="upd">Last updated {UPDATED}</span></p></div>
+ <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently. <span class="upd">Last updated {UPDATED}</span></p><p class="mono small dim legend">{E(STATUS_LEGEND)}</p></div>
  {strip}
  <div class="filters mono">{chips}</div>
  <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats))}</div>
@@ -221,12 +223,16 @@ def project(p, i):
                     f'<p class="mono small dim" style="margin-top:12px">List last updated {IDEAS_LIST_UPDATED}</p>')
         return bd
     secs = "".join(f'<section class="psec rv"><h2>{E(h)}</h2>{fill(b)}</section>' for h, b in p["sections"])
-    proof = f'<section class="psec rv"><h2>Photos & proof</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
+    proof = f'<section class="psec rv"><h2>Artifacts</h2><div class="proof">{"".join(p["proof"])}</div></section>' if p.get("proof") else ""
+    if p.get("mock"):
+        proof += '<section class="psec rv"><h2>Illustrations</h2><p class="note-sm">Mockups with made-up data, not real screenshots.</p><div class="proof">' + "".join(p["mock"]) + '</div></section>'
     res = ""
     if p.get("results"):
         res = '<div class="results rv">' + "".join(f'<div><b>{a}</b><span>{E(b)}</span></div>' for a, b in p["results"]) + "</div>"
     d = demo(p.get("demo"))
-    d = f'<section class="psec rv"><h2>See it</h2>{d}</section>' if d else ""
+    fake = p.get("demo") in FAKE_DEMOS
+    note = '<p class="note-sm">A mockup with sample data, not a real screenshot.</p>' if fake else ""
+    d = ('<section class="psec rv"><h2>' + ("Illustration" if fake else "See it") + '</h2>' + note + d + '</section>') if d else ""
     links = ""
     if p.get("links"):
         links = '<div class="plinks">' + "".join(f'<a href="{u}" target="_blank" rel="noopener">{E(t)} ↗</a>' for t, u in p["links"]) + "</div>"
