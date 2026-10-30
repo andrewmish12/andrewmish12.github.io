@@ -423,6 +423,7 @@ PROJECTS = [
 # ================================================================ COLLABIFY
 {
 "slug": "collabify", "cat": "venture", "status": "paused", "featured": False, "logo": "collabify-logo.png",
+"proof": ["<p class='note-sm'>Running in the iPhone simulator. The creators, deals and numbers are sample data.</p>" + PHONES(("collabify-welcome.jpg", "Welcome screen"), ("collabify-role.jpg", "Pick a side: business or creator"), ("collabify-discover.jpg", "Discover: swipe through local creators"), ("collabify-profile.jpg", "A creator’s profile, rate and past collaborations"), ("collabify-match.jpg", "It’s a match: both sides liked each other"), ("collabify-dashboard.jpg", "A business’s dashboard: active deals, reach and spend"))],
 "title": "Collabify",
 "kicker": "An iOS app to match small businesses with influencers for paid promotions. It's like a dating app for brand deals.",
 "card": "An iOS app prototype I vibe coded in Xcode, then pressure-tested hard enough to pause.",
