@@ -208,6 +208,39 @@ PROJECTS = [
 "<p>It's an unofficial project, not affiliated with Auburn.</p>",
 "next": "<p>Lock down the AI key before sharing it widely, get more students using it, then take it to Auburn Transportation Services.</p>",
 },
+# ================================================================ AU GRADES
+{
+"slug": "au-grades", "cat": "build", "status": "live", "featured": True, "logo": "au-grades-logo.png",
+"proof": [PHONES(("au-grades-dashboard.jpg", "The Grades tab and unofficial GPA card. I blurred my actual grades."), ("au-grades-ai.jpg", "The Ask AI tab, which reads my syllabi and course files"))],
+"title": "AU Grades",
+"kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
+"card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
+"when": "2026 – Present", "role": "Solo builder (vibe coded)",
+"stack": ["Google Apps Script", "Canvas API", "Gemini", "Google Calendar"],
+"sections": [
+("Why I built it",
+"<p>Canvas makes you click into every class to see where you stand. Some of my instructors don't turn on letter grades, so a 99 just shows up as \"99.\" One hides the course total completely. I wanted one page that tells me my grades, my GPA, and what's due, without digging.</p>"),
+("What it does",
+"<ul class='feat'>"
+"<li><b>Grades tab</b>: every class on one row with its grade and letter. If an instructor hides the total, it calculates it from the scores I can see, using the class's category weights, and labels it \"Estimated · not official.\"</li>"
+"<li><b>Unofficial GPA</b>: a GPA card that updates live from my current grades, plus a projected cumulative GPA.</li>"
+"<li><b>What do I need?</b>: the average I need on the rest of the class for an A, B or C, or the score I need on one assignment, including a final that isn't posted yet.</li>"
+"<li><b>Next 7 Days and Calendar</b>: everything due, starting today. Assignments posted in the last 2 days get a <b>New</b> badge, and I can add my own events that aren’t in Canvas.</li>"
+"<li><b>Missing work, done right</b>: tap the missing count to see what’s actually past due. Canvas sometimes flags things as missing before they’re due, so those don’t count until the due date passes.</li>"
+"<li><b>Ask AI</b>: a chat that reads my syllabi, assignment instructions, rubrics, modules, announcements and PDFs. Each class keeps its own saved chats, and a class chat can only see that class. I can talk to it with my voice. It explains, quizzes me and makes checklists. It's set up to tutor, not to do the work.</li>"
+"<li><b>Study sets</b>: turns a module into flashcards or a quiz, and cards I miss come back the next day. I can also just ask the AI to “make me flashcards.”</li>"
+"<li><b>Google Calendar sync</b>: every due date goes on my calendar, and it schedules study blocks before exams in my open evening time.</li>"
+"<li><b>Alerts</b>: it checks Canvas every 15 minutes and emails me or pings my phone when a new assignment posts. There's also a morning digest email.</li>"
+"</ul>" + VIBE),
+],
+"demo": None,
+"results": [("1","dashboard for every class"),("15 min","checks for new assignments"),("Live","unofficial GPA")],
+"honest":
+"<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
+"<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>"
+"<p>One bug taught me something: a chat about one class pulled in material from a different class. I locked each chat to its own class so that can’t happen.</p>",
+"next": "<p>Speed up the AI, and figure out how other Auburn students could use it with their own Canvas accounts.</p>",
+},
 # ================================================================ CLEARLECTURE
 {
 "slug": "clearlecture", "cat": "build", "status": "building", "featured": True, "logo": "clearlecture-logo.svg",
@@ -270,7 +303,7 @@ PROJECTS = [
 "slug": "claude-door", "cat": "build", "status": "live", "featured": True,
 "title": "Claude Door",
 "kicker": "My own 24/7 AI assistant on Telegram. It knows my projects and priorities, and it texts me first.",
-"card": "A personal AI assistant I text on Telegram. It knows my projects and priorities, sends me a 7 AM brief, and works with my laptop closed. About $1 a month.",
+"card": "A personal AI assistant I text on Telegram. It knows my projects and priorities, sends me a 7 AM brief, and works with my laptop closed. It costs me $0.",
 "when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
 "stack": ["Google Apps Script", "Telegram Bot API", "Claude API", "Google Calendar", "Gmail"],
 "sections": [
@@ -283,47 +316,14 @@ PROJECTS = [
 "<li><b>Simple commands</b>: /brief, /pause, /resume, /status, /refresh.</li>"
 "</ul>"),
 ("How it’s built",
-"<p>Google Apps Script checks Telegram for new messages every minute and answers with Claude Haiku, on my own API key. It costs about $1 a month.</p>"
+"<p>Google Apps Script checks Telegram for new messages every minute and answers with Claude Haiku, on my own API key. It costs me $0 to run.</p>"
 "<p><b>Security was part of the design.</b> It only answers my Telegram account, and anyone else who messages it gets logged. Keys live in Script Properties, not in the code. My SilverStay work stays out of it completely, because that data doesn’t belong in a chat app.</p>" + VIBE),
 ],
 "demo": None,
-"results": [("24/7","even with my laptop closed"),("~$1","a month"),("1","person it answers: me")],
+"results": [("24/7","even with my laptop closed"),("$0","to run"),("1","person it answers: me")],
 "honest":
 "<p>The first version used a webhook, where Telegram pushes each message to my script. Apps Script answers those with a redirect, Telegram treated that as a failure and retried forever, and every new message got stuck behind it. I switched to checking for messages every minute instead. It’s free and reliable, and replies take up to a minute. Good enough for now.</p>",
 "next": "<p>Text it ideas and decisions to save, add deadline nudges, and have it run my weekly portfolio update.</p>",
-},
-# ================================================================ AU GRADES
-{
-"slug": "au-grades", "cat": "build", "status": "live", "featured": True, "logo": "au-grades-logo.png",
-"proof": [PHONES(("au-grades-dashboard.jpg", "The Grades tab and unofficial GPA card. I blurred my actual grades."), ("au-grades-ai.jpg", "The Ask AI tab, which reads my syllabi and course files"))],
-"title": "AU Grades",
-"kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
-"card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
-"when": "2026 – Present", "role": "Solo builder (vibe coded)",
-"stack": ["Google Apps Script", "Canvas API", "Gemini", "Google Calendar"],
-"sections": [
-("Why I built it",
-"<p>Canvas makes you click into every class to see where you stand. Some of my instructors don't turn on letter grades, so a 99 just shows up as \"99.\" One hides the course total completely. I wanted one page that tells me my grades, my GPA, and what's due, without digging.</p>"),
-("What it does",
-"<ul class='feat'>"
-"<li><b>Grades tab</b>: every class on one row with its grade and letter. If an instructor hides the total, it calculates it from the scores I can see, using the class's category weights, and labels it \"Estimated · not official.\"</li>"
-"<li><b>Unofficial GPA</b>: a GPA card that updates live from my current grades, plus a projected cumulative GPA.</li>"
-"<li><b>What do I need?</b>: the average I need on the rest of the class for an A, B or C, or the score I need on one assignment, including a final that isn't posted yet.</li>"
-"<li><b>Next 7 Days and Calendar</b>: everything due, starting today. Assignments posted in the last 2 days get a <b>New</b> badge, and I can add my own events that aren’t in Canvas.</li>"
-"<li><b>Missing work, done right</b>: tap the missing count to see what’s actually past due. Canvas sometimes flags things as missing before they’re due, so those don’t count until the due date passes.</li>"
-"<li><b>Ask AI</b>: a chat that reads my syllabi, assignment instructions, rubrics, modules, announcements and PDFs. Each class keeps its own saved chats, and a class chat can only see that class. I can talk to it with my voice. It explains, quizzes me and makes checklists. It's set up to tutor, not to do the work.</li>"
-"<li><b>Study sets</b>: turns a module into flashcards or a quiz, and cards I miss come back the next day. I can also just ask the AI to “make me flashcards.”</li>"
-"<li><b>Google Calendar sync</b>: every due date goes on my calendar, and it schedules study blocks before exams in my open evening time.</li>"
-"<li><b>Alerts</b>: it checks Canvas every 15 minutes and emails me or pings my phone when a new assignment posts. There's also a morning digest email.</li>"
-"</ul>" + VIBE),
-],
-"demo": None,
-"results": [("1","dashboard for every class"),("15 min","checks for new assignments"),("Live","unofficial GPA")],
-"honest":
-"<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
-"<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>"
-"<p>One bug taught me something: a chat about one class pulled in material from a different class. I locked each chat to its own class so that can’t happen.</p>",
-"next": "<p>Speed up the AI, and figure out how other Auburn students could use it with their own Canvas accounts.</p>",
 },
 # ================================================================ COMMAND CENTER
 {
