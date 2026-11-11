@@ -84,6 +84,7 @@ PROJECTS = [
 ("Referral intake", "Form submission → auto-generated referral PDF → emailed to the placement team. Live"),
 ("Report data-quality fixes", "Tracked down duplicate and missing patients in a daily report and added dedupe"),
 ("Contract app ID fix", "Gave 774 records permanent IDs so the contract-closing app stopped crashing on duplicate IDs"),
+("App adoption dashboard", "Mixpanel dashboard showing leadership how much navigators use the census app, by hospital"),
 ("Surveys + AWS short link", "Before/after rollout surveys behind a branded link (Route 53 → CloudFront → S3)"),
 ("And more", "Voice agent prototype, DocuSign forms, form-link repairs, formula fixes, Slack alerts, a PTO bot…"),
 ],
@@ -99,7 +100,7 @@ PROJECTS = [
 "<div class='build'><h4>AppSheet data-entry app</h4><p>A mobile app on top of a care-coordination sheet: a list of active patients, a notes form, a one-tap discharge button, and a new-patient form that checks for duplicate IDs. It's a working prototype; it's not rolled out yet.</p></div>"
 "<div class='build'><h4>Freshdesk ticket router</h4><p>A standalone Apps Script, not attached to any sheet, that pulls from both Freshdesk and Freshcaller and sorts incoming tickets, like voicemails, to the right case manager. It runs on its own and works with multiple API keys at once, which made it one of my favorite builds.</p></div><div class='build'><h4>Referral intake automation</h4><p>A form submission becomes a generated referral PDF, emailed straight to the placement team. It replaced an add-on that was sending emails twice. Live.</p></div>"
 "<div class='build'><h4>Daily report data-quality fixes</h4><p>A daily tiered patient report (green, yellow and red tiers) had duplicates and a missing patient. I traced it to patients moving between care managers' lists and a tier with no group for it, and I added dedupe to the script that feeds the report's next-steps column.</p></div>"
-"<div class='build'><h4>Contract app ID fix</h4><p>The app the team uses to close contracts kept crashing with \"duplicate ID\" errors, three times in six weeks. The cause: it used the spreadsheet's row number as each record's ID, so IDs shifted whenever rows moved. With the ops lead's sign-off, I gave all 774 existing records a permanent ID and switched the app to create a new unique ID for every contract.</p></div><div class='build'><h4>Form-link repair</h4><p>22 rows on a tracking sheet had a pre-filled form link that opened the wrong person's form. I traced it to a copy-paste, not a script bug, rebuilt all 22 links, and checked them afterward.</p></div><div class='build'><h4>Formula & metrics repairs</h4><p>Fixed a contracts sheet where a script only checked new rows, so old broken formulas never got fixed. The first version Claude gave me was 223 lines; I sent it back and we landed on 12. I also fixed a metrics script that shifted 10 days of values one column over.</p></div>"
+"<div class='build'><h4>Contract app ID fix</h4><p>The app the team uses to close contracts kept crashing with \"duplicate ID\" errors, three times in six weeks. The cause: it used the spreadsheet's row number as each record's ID, so IDs shifted whenever rows moved. With the ops lead's sign-off, I gave all 774 existing records a permanent ID and switched the app to create a new unique ID for every contract.</p></div><div class='build'><h4>Form-link repair</h4><p>22 rows on a tracking sheet had a pre-filled form link that opened the wrong person's form. I traced it to a copy-paste, not a script bug, rebuilt all 22 links, and checked them afterward.</p></div><div class='build'><h4>App adoption dashboard</h4><p>An executive dashboard in Mixpanel that shows leadership how much navigators actually use the team’s census app: logins, census printouts and notes added, broken out by hospital.</p></div><div class='build'><h4>Formula & metrics repairs</h4><p>Fixed a contracts sheet where a script only checked new rows, so old broken formulas never got fixed. The first version Claude gave me was 223 lines; I sent it back and we landed on 12. I also fixed a metrics script that shifted 10 days of values one column over.</p></div>"
 "<div class='build'><h4>Rollout surveys + AWS short link</h4><p>Pre- and post-rollout surveys for care navigators (custom HTML on Google Sites, one Apps Script backend, QR codes), behind a branded short link on AWS. The pre-rollout survey is live and collecting responses.</p></div>"
 "<div class='build'><h4>Voice agent prototype</h4><p>An ElevenLabs agent that calls transport and equipment vendors for navigators. It says it's an AI, refuses to share patient info, reads back the booking and logs 10 fields per call, plus two compliance checks: did it say it's an AI, and did it give the recording notice. It passed tests where a fake vendor pushed for patient info and asked if it was a bot. Switching its model fixed a bug where it hung up before the vendor answered. Tested in text mode only; it hasn't made a real call yet.</p></div>"
 "<div class='build'><h4>DocuSign forms & more</h4><p>A ~150-field benefits enrollment web form with signer routing (in progress), Slack error alerts on nightly scripts, a Slack PTO bot that adds time off to the calendar and invites only the manager and coverage (written, waiting on admin access), and plain-English reviews of existing scripts.</p></div>"
@@ -202,9 +203,94 @@ PROJECTS = [
 "demo": None,
 "results": [("Live","Auburn bus data"),("Any","building, dorm, store or stop"),("30s","bus times re-check")],
 "honest":
-"<p>The app itself works. The hardest part has been getting it onto a live web page. Right now it runs on my laptop, and I share it with friends through a temporary link that changes every time. Turning that into a real, always-on site is the step I'm working through now.</p>"
+"<p>The app itself worked early. The hardest part was getting it onto a live web page. For a while it ran on my laptop, and I shared it with friends through a temporary link that changed every time. Now it’s on a real, always-on link.</p>"
+"<p>Getting real riders also meant fixing how people actually talk. Students use nicknames for campus buildings, so I had to teach it to match those.</p>"
 "<p>It's an unofficial project, not affiliated with Auburn.</p>",
-"next": "<p>Get it hosted on a real web page so anyone can open it, then take the working prototype to Auburn Transportation Services.</p>",
+"next": "<p>Lock down the AI key before sharing it widely, get more students using it, then take it to Auburn Transportation Services.</p>",
+},
+# ================================================================ CLEARLECTURE
+{
+"slug": "clearlecture", "cat": "build", "status": "building", "featured": True, "logo": "clearlecture-logo.svg",
+"title": "ClearLecture",
+"kicker": "Live captions for lectures when your professor has a strong accent. Miss a line? Tap it and hear it again in your AirPods.",
+"card": "Live lecture captions for students with accented professors. Tap any line or hit “Replay last” and it reads it into your AirPods. Free, no install.",
+"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
+"stack": ["Web app", "Browser speech recognition", "Whisper (in-browser)", "Text-to-speech", "GitHub Pages"],
+"links": [("Try ClearLecture", "https://andrewmish12.github.io/clearlecture/"), ("See the code", "https://github.com/andrewmish12/clearlecture")],
+"sections": [
+("Why I’m building it",
+"<p>A lot of students have a hard time following professors with strong accents. You miss one sentence, then you’re lost for the next five minutes. ClearLecture shows live captions on your phone or laptop, and if you miss a line, you tap it and it plays back in your AirPods.</p>"),
+("How it works",
+"<ul class='feat'>"
+"<li><b>Two engines</b>: Quick uses the browser’s built-in speech recognition. Accurate runs Whisper, an open-source speech model, right in the browser, so it stays free. Accurate is built for laptops.</li>"
+"<li><b>Replay any line</b>: tap a caption or hit “Replay last” to hear it read aloud in your AirPods.</li>"
+"<li><b>Read aloud live</b>: it can read every line as it comes in, and skips ahead so it never falls behind the professor.</li>"
+"<li><b>Accent setting</b>, saved right in the link, plus course vocabulary highlighting, caption size, a mic level check and a transcript download.</li>"
+"<li><b>No install, no account.</b> Works in Chrome, Edge and Safari.</li>"
+"</ul>" + VIBE),
+],
+"demo": None,
+"results": [("$0","to use, on purpose"),("2","speech engines"),("0","installs or accounts")],
+"honest":
+"<p>Accents are the whole problem, and they’re hard. On a test with an Indian accent, the default US setting did badly. Switching the accent setting to India did much better. In a real lecture, accuracy was still weak and the read-aloud voice was too fast and robotic.</p>"
+"<p>I want it to stay free, so instead of paying for a speech API, I added Whisper running in the browser, ranked the most natural voices first and slowed the default speed down. The Accurate engine still needs a real lecture test. On iPhone, it also stops listening when the screen locks.</p>",
+"next": "<p>Test the Accurate engine in a real lecture with AirPods, get it in front of students who need it, and build a native app if people use it. Always check a class’s recording policy first.</p>",
+},
+# ================================================================ FINANCE HUB
+{
+"slug": "finance-hub", "cat": "build", "status": "building", "featured": True, "logo": "finance-hub-logo.svg",
+"title": "Finance Hub",
+"kicker": "All my money in one private dashboard, with live net worth, built for $0.",
+"card": "All my money in one private dashboard: brokerages, bank, credit card and 401(k), with net worth that re-prices live while it’s open. Built for $0.",
+"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
+"stack": ["Google Apps Script", "SnapTrade API", "Plaid", "Finnhub", "clasp", "Claude Code"],
+"sections": [
+("Why I built it",
+"<p>I was checking four different apps to know where I stood. Paid tools like Monarch exist, but I wanted my own views, I wanted to learn how it works, and it had to cost $0. Now I open one link.</p>"),
+("How it works",
+"<ul class='feat'>"
+"<li><b>Private by design</b>: a Google Apps Script web app locked so only my Google account can open it. Keys live in Script Properties, never in the code.</li>"
+"<li><b>Brokerages</b> connect read-only through SnapTrade. Every request is signed with HMAC-SHA256.</li>"
+"<li><b>Bank and credit card</b> connect through Plaid’s hosted login, so my bank login never runs inside my code. My 401(k) provider isn’t supported, so that one is a balance I type in, with a “last updated” reminder.</li>"
+"<li><b>Live net worth</b>: it pulls holdings when I open it, then re-prices them every 60 seconds with free live quotes. Shares × latest price = live net worth, without paying for real-time account data. It only runs while the tab is open.</li>"
+"<li><b>Drill down</b>: Investments, Banking and Retirement sections. Tap an institution, then an account, then its holdings or transactions, with no page reloads.</li>"
+"<li><b>Demo mode</b> with fake data, so I can show it without showing my money.</li>"
+"</ul>"
+"<p>Every service is on a free tier, and the code blocks paid API calls entirely so it can’t spend money by accident. I wrote the spec in Cowork, then directed Claude Code to build it step by step.</p>" + VIBE),
+],
+"demo": None,
+"results": [("$0","to run"),("60s","live re-pricing"),("0","real numbers on this page")],
+"honest":
+"<p>SnapTrade retired an endpoint in the middle of my build, and it started returning “410 Gone.” Next time I’ll check API changelogs before building, not after.</p>"
+"<p>An Apps Script quirk also made the live app quietly show demo data. I fixed it and learned to test the real-data path, not just the demo. And free account data only refreshes once a day, so live net worth is really yesterday’s shares × today’s prices. Fine for me, wrong for day trading.</p>",
+"next": "<p>A net-worth-over-time chart, and a one-click re-login when a bank connection expires.</p>",
+},
+# ================================================================ CLAUDE DOOR
+{
+"slug": "claude-door", "cat": "build", "status": "live", "featured": True,
+"title": "Claude Door",
+"kicker": "My own 24/7 AI assistant on Telegram. It knows my projects and priorities, and it texts me first.",
+"card": "A personal AI assistant I text on Telegram. It knows my projects and priorities, sends me a 7 AM brief, and works with my laptop closed. About $1 a month.",
+"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
+"stack": ["Google Apps Script", "Telegram Bot API", "Claude API", "Google Calendar", "Gmail"],
+"sections": [
+("Why I built it",
+"<p>My biggest time sink with AI was re-explaining myself in every new chat. So I wrote down everything an assistant would need to know: my projects, priorities, school and how I like to work. Claude Door puts that on my phone, and it works even when my laptop is closed.</p>"),
+("What it does",
+"<ul class='feat'>"
+"<li><b>Answers questions</b> using my own context files, so I never start from zero.</li>"
+"<li><b>Texts me first</b>: a 7 AM brief with my calendar, personal email, top priority and a daily nudge, plus a Sunday evening reminder to update this portfolio.</li>"
+"<li><b>Simple commands</b>: /brief, /pause, /resume, /status, /refresh.</li>"
+"</ul>"),
+("How it’s built",
+"<p>Google Apps Script checks Telegram for new messages every minute and answers with Claude Haiku, on my own API key. It costs about $1 a month.</p>"
+"<p><b>Security was part of the design.</b> It only answers my Telegram account, and anyone else who messages it gets logged. Keys live in Script Properties, not in the code. My SilverStay work stays out of it completely, because that data doesn’t belong in a chat app.</p>" + VIBE),
+],
+"demo": None,
+"results": [("24/7","even with my laptop closed"),("~$1","a month"),("1","person it answers: me")],
+"honest":
+"<p>The first version used a webhook, where Telegram pushes each message to my script. Apps Script answers those with a redirect, Telegram treated that as a failure and retried forever, and every new message got stuck behind it. I switched to checking for messages every minute instead. It’s free and reliable, and replies take up to a minute. Good enough for now.</p>",
+"next": "<p>Text it ideas and decisions to save, add deadline nudges, and have it run my weekly portfolio update.</p>",
 },
 # ================================================================ AU GRADES
 {
@@ -223,9 +309,10 @@ PROJECTS = [
 "<li><b>Grades tab</b>: every class on one row with its grade and letter. If an instructor hides the total, it calculates it from the scores I can see, using the class's category weights, and labels it \"Estimated · not official.\"</li>"
 "<li><b>Unofficial GPA</b>: a GPA card that updates live from my current grades, plus a projected cumulative GPA.</li>"
 "<li><b>What do I need?</b>: the average I need on the rest of the class for an A, B or C, or the score I need on one assignment, including a final that isn't posted yet.</li>"
-"<li><b>Next 7 Days and Calendar</b>: everything due, starting today. Assignments posted in the last 2 days get a <b>New</b> badge.</li>"
-"<li><b>Ask AI</b>: a chat that reads my syllabi, assignment instructions, rubrics, modules and PDFs. It explains, quizzes me and makes checklists. It's set up to tutor, not to do the work.</li>"
-"<li><b>Practice</b>: turns a module into flashcards or a quiz, and cards I miss come back the next day.</li>"
+"<li><b>Next 7 Days and Calendar</b>: everything due, starting today. Assignments posted in the last 2 days get a <b>New</b> badge, and I can add my own events that aren’t in Canvas.</li>"
+"<li><b>Missing work, done right</b>: tap the missing count to see what’s actually past due. Canvas sometimes flags things as missing before they’re due, so those don’t count until the due date passes.</li>"
+"<li><b>Ask AI</b>: a chat that reads my syllabi, assignment instructions, rubrics, modules, announcements and PDFs. Each class keeps its own saved chats, and a class chat can only see that class. I can talk to it with my voice. It explains, quizzes me and makes checklists. It's set up to tutor, not to do the work.</li>"
+"<li><b>Study sets</b>: turns a module into flashcards or a quiz, and cards I miss come back the next day. I can also just ask the AI to “make me flashcards.”</li>"
 "<li><b>Google Calendar sync</b>: every due date goes on my calendar, and it schedules study blocks before exams in my open evening time.</li>"
 "<li><b>Alerts</b>: it checks Canvas every 15 minutes and emails me or pings my phone when a new assignment posts. There's also a morning digest email.</li>"
 "</ul>" + VIBE),
@@ -234,7 +321,8 @@ PROJECTS = [
 "results": [("1","dashboard for every class"),("15 min","checks for new assignments"),("Live","unofficial GPA")],
 "honest":
 "<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
-"<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>",
+"<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>"
+"<p>One bug taught me something: a chat about one class pulled in material from a different class. I locked each chat to its own class so that can’t happen.</p>",
 "next": "<p>Speed up the AI, and figure out how other Auburn students could use it with their own Canvas accounts.</p>",
 },
 # ================================================================ COMMAND CENTER
@@ -255,7 +343,7 @@ PROJECTS = [
 "results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
 "honest":
 "<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
-"next": "<p>Wire real automation health into the map, then name the city.</p>",
+"next": "<p>Wire real automation health into the map, swap the weak money view for my new <a href='finance-hub.html'>Finance Hub</a>, then name the city.</p>",
 },
 # ================================================================ AU RECAPS
 {
@@ -267,6 +355,7 @@ PROJECTS = [
 "when": "Fall 2026 – Present", "role": "Writer",
 "stack": ["Writing", "Substack", "Claude Projects", "ESPN box scores"],
 "links": [("Read AU Recaps on Substack", "https://substack.com/@andrewmish")],
+"card_link": ("Read on Substack", "https://substack.com/@andrewmish"),
 "sections": [
 ("What it is",
 "<p>After every Auburn game, I write a recap: what happened, who showed up, and what I actually think. Every recap has <b>Three Stars</b> and a <b>Good, Bad & Ugly</b> section. It goes out to an email list that keeps growing, and it's on <a href='https://substack.com/@andrewmish' target='_blank' rel='noopener'>my Substack</a>.</p>"),
@@ -274,7 +363,7 @@ PROJECTS = [
 "<p>I talk through my notes and reactions right after the game. Claude checks my facts against the ESPN play-by-play and box score, asks me questions, and drafts it. Then I rewrite it heavily in my own voice. I set it up as a Claude Project called AU RECAP, with my style rules saved, so every week starts from the same place.</p>"),
 ],
 "demo": None,
-"results": [("1","recap per game"),("~1,200+","words each")],
+"results": [("9","games recapped this season"),("1","recap per game"),("~1,200+","words each")],
 "honest":
 "<p>This is the most fun thing on this page. It's the same skill as everything else I do: take what's in my head and turn it into something real that people read, on a deadline.</p>",
 "next": "<p>Keep growing the list, one game at a time.</p>",
@@ -294,12 +383,13 @@ PROJECTS = [
 ("How it works",
 "<p>Every 6 hours, Apps Script checks the House Clerk's disclosure site for new filings and reads the PDFs with OCR. It figures out the proportional trades, logs everything to a sheet, and emails me.</p>"
 "<p>The email isn't just a summary. It's a set of instructions to copy and paste into Claude, which is connected to my brokerage account. Claude then does the work: it confirms every trade with me before placing it, sticks to common stock only (no options, no margin) and doesn't change anything based on its own opinion.</p>"
-"<p>Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
+"<p>These trades go into a separate brokerage account that only exists for this project, so it never touches my main investments. Tiny trades under the $1 minimum build up until they're big enough. There's a cap on trade size, and anything it can't read gets flagged for me instead of guessed.</p>" + VIBE),
 ],
 "demo": "pipeline_trades",
 "results": [("6 hrs","between checks"),("100%","of trades confirmed by me"),("0","guesses on unreadable filings")],
 "honest":
 "<p>My first plan was to have the script place trades directly through the brokerage. I spent days fighting login and permission restrictions before giving up on that and switching to \"email me instructions, Claude executes, I confirm.\" It turned out to be the better design anyway, because I stay in the loop on every trade.</p>"
+"<p>Later, the House site started blocking my script as a bot. I fixed how it requests filings, and it’s been running again since.</p>"
 "<p>The other reality: filings can show up as late as 45 days after the trade, so you're always copying old moves. It's a great automation project. I wouldn't call it an investing edge.</p>"
 "<p class='note-sm'>Personal project using public data. Not investment advice.</p>",
 "next": "<p>Let it run long enough to compare it against just holding an index fund.</p>",
@@ -322,6 +412,7 @@ PROJECTS = [
 "<li><b>Weekly goal ring + streaks</b> that track your progress</li>"
 "<li><b>IOUs</b>: every Monday it scores the week, and whoever missed owes the other person a coffee, $10, flowers or a custom penalty, with claim, confirm and dispute steps</li>"
 "<li><b>Thursday nudge</b> if you're behind, plus comments and likes on each other's workouts</li>"
+"<li><b>Usage tracking</b>: sessions and a usage summary, so I can see how the app actually gets used</li>"
 "</ul>" + VIBE),
 ],
 "demo": None,

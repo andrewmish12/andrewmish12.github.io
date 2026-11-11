@@ -139,7 +139,16 @@ def card(p, i):
     return (f'<a class="card rv" data-cat="{p["cat"]}" href="{p["slug"]}.html" style="--d:{(i%3)*70}ms">{ci}'
             f'<div class="card-top"><span class="mono small dim">{CATS[p["cat"]]} · {E(p["when"])}</span>{chip(p["status"])}</div>'
             f'{sl}<h3>{E(p["title"])}</h3><p>{E(p["card"])}</p>'
-            f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div><span class="go mono">Read more →</span></a>')
+            f'<div class="tags">{"".join(f"<span>{E(s)}</span>" for s in p["stack"][:4])}</div>'
+            f'<div class="card-foot"><span class="go mono">Read more →</span>{card_link(p)}</div></a>')
+
+def card_link(p):
+    # A second link inside a card (cards are already <a> tags, so this opens via JS instead of a nested <a>)
+    if not p.get("card_link"): return ""
+    t, u = p["card_link"]
+    return (f'<span class="card-ext mono" role="link" tabindex="0" data-href="{u}" '
+            f'onclick="event.preventDefault();event.stopPropagation();window.open(this.dataset.href,\'_blank\',\'noopener\')" '
+            f'onkeydown="if(event.key===\'Enter\'){{event.preventDefault();event.stopPropagation();window.open(this.dataset.href,\'_blank\',\'noopener\')}}">{E(t)} ↗</span>')
 
 def home():
     strip_p = next((p for p in PROJECTS if p.get("strip")), None)
