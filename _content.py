@@ -246,27 +246,26 @@ PROJECTS = [
 "slug": "clearlecture", "cat": "build", "status": "building", "featured": True, "logo": "clearlecture-logo.svg",
 "title": "ClearLecture",
 "kicker": "Live captions for lectures when your professor has a strong accent. Miss a line? Tap it and hear it again in your AirPods.",
-"card": "Live lecture captions for students with accented professors. Tap any line or hit “Replay last” and it reads it into your AirPods. Free, no install.",
+"card": "Live lecture captions for students with accented professors. Tap any line or hit “Replay last” and it reads it into your AirPods. No install.",
 "when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
-"stack": ["Web app", "Browser speech recognition", "Whisper (in-browser)", "Text-to-speech", "GitHub Pages"],
-"links": [("Try ClearLecture", "https://andrewmish12.github.io/clearlecture/"), ("See the code", "https://github.com/andrewmish12/clearlecture")],
+"stack": ["Web app", "Browser speech recognition", "Whisper (in-browser)", "Text-to-speech"],
 "sections": [
 ("Why I’m building it",
 "<p>A lot of students have a hard time following professors with strong accents. You miss one sentence, then you’re lost for the next five minutes. ClearLecture shows live captions on your phone or laptop, and if you miss a line, you tap it and it plays back in your AirPods.</p>"),
 ("How it works",
 "<ul class='feat'>"
-"<li><b>Two engines</b>: Quick uses the browser’s built-in speech recognition. Accurate runs Whisper, an open-source speech model, right in the browser, so it stays free. Accurate is built for laptops.</li>"
+"<li><b>Two engines</b>: Quick uses the browser’s built-in speech recognition. Accurate runs Whisper, an open-source speech model, right in the browser, so it costs nothing to run. Accurate is built for laptops.</li>"
 "<li><b>Replay any line</b>: tap a caption or hit “Replay last” to hear it read aloud in your AirPods.</li>"
 "<li><b>Read aloud live</b>: it can read every line as it comes in, and skips ahead so it never falls behind the professor.</li>"
 "<li><b>Accent setting</b>, saved right in the link, plus course vocabulary highlighting, caption size, a mic level check and a transcript download.</li>"
-"<li><b>No install, no account.</b> Works in Chrome, Edge and Safari.</li>"
+"<li><b>No install.</b> Works in Chrome, Edge and Safari.</li>"
 "</ul>" + VIBE),
 ],
 "demo": None,
-"results": [("$0","to use, on purpose"),("2","speech engines"),("0","installs or accounts")],
+"results": [("$0","to run"),("2","speech engines"),("0","installs needed")],
 "honest":
 "<p>Accents are the whole problem, and they’re hard. On a test with an Indian accent, the default US setting did badly. Switching the accent setting to India did much better. In a real lecture, accuracy was still weak and the read-aloud voice was too fast and robotic.</p>"
-"<p>I want it to stay free, so instead of paying for a speech API, I added Whisper running in the browser, ranked the most natural voices first and slowed the default speed down. The Accurate engine still needs a real lecture test. On iPhone, it also stops listening when the screen locks.</p>",
+"<p>I want it to cost me nothing to run, so instead of paying for a speech API, I added Whisper running in the browser, ranked the most natural voices first and slowed the default speed down. The Accurate engine still needs a real lecture test. On iPhone, it also stops listening when the screen locks.</p>",
 "next": "<p>Test the Accurate engine in a real lecture with AirPods, get it in front of students who need it, and build a native app if people use it. Always check a class’s recording policy first.</p>",
 },
 # ================================================================ FINANCE HUB
