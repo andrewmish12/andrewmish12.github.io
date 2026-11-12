@@ -254,7 +254,7 @@ PROJECTS = [
 "<p>A lot of students have a hard time following professors with strong accents. You miss one sentence, then you’re lost for the next five minutes. ClearLecture shows live captions on your phone or laptop, and if you miss a line, you tap it and it plays back in your AirPods.</p>"),
 ("How it works",
 "<ul class='feat'>"
-"<li><b>Two engines</b>: Quick uses the browser’s built-in speech recognition. Accurate runs Whisper, an open-source speech model, right in the browser, so it costs nothing to run. Accurate is built for laptops.</li>"
+"<li><b>Two engines</b>: Fast uses the browser’s built-in speech recognition. Accurate runs Whisper, an open-source speech model, right in the browser, so it costs nothing to run. Accurate is built for laptops.</li>"
 "<li><b>Replay any line</b>: tap a caption or hit “Replay last” to hear it read aloud in your AirPods.</li>"
 "<li><b>Read aloud live</b>: it can read every line as it comes in, and skips ahead so it never falls behind the professor.</li>"
 "<li><b>Accent setting</b>, saved right in the link, plus course vocabulary highlighting, caption size, a mic level check and a transcript download.</li>"
