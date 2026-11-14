@@ -17,7 +17,7 @@ PROFILE = {
 STATS = [
     ("4+", "hospitals where discharge teams start the day with work my scripts already did overnight"),
     ("~10 hrs", "of manual work my automations take off discharge teams every week"),
-    ("15+", "Claude tools that help care navigators write notes, audit charts and find placements"),
+    ("3+ hrs", "a day saved per care navigator by Navigator AI, the census app our team designed"),
     ("~4×", "fewer automation breakdowns: from about twice a week to about twice a month"),
 ]
 
@@ -79,7 +79,7 @@ PROJECTS = [
 ("Nightly archive & reset scripts", "Archive each day's notes, then clear the inputs, across several hospital sites. Tested on a copy first"),
 ("Daily active-patient report", "Built the original report, grouped by tier and medically-ready status. It saved care navigators hours of digging"),
 ("Daily metrics pipeline", "Calculates census, length of stay and discharges every morning, so leadership tracks them without building reports by hand"),
-("Census app, early versions", "Helped build the early versions of the team's census app, now built out by an outside developer"),
+("Navigator AI", "The census app our team designed and built early versions of. It saves care navigators 3+ hours a day"),
 ("Daily PDF worklists", "Morning reports emailed at 7:30 AM. I adapted the set for a second hospital"),
 ("Claude AI tools", "15+ tools built with care navigators for notes, audits and search"),
 ("AppSheet app", "Mobile data-entry app on top of a tracking sheet, built for a care manager"),
@@ -100,7 +100,7 @@ PROJECTS = [
 "<div class='build'><h4>Nightly archive & reset scripts</h4><p>Apps Script jobs that save each day's charting notes to an archive and clear the input columns for the next day, across several hospital sites. I rewrote one site's archive to skip inactive patients and unchanged notes. For another site, I built a reset that keeps one tier's notes, plus a test that runs on a copy of the sheet (12 of 12 checks passed) and a one-click restore from the archive. Later I caught a second bug: the reset was running on weekends and wiping Friday's notes. I fixed it and restored the rows from the archive.</p></div>"
 "<div class='build'><h4>Daily active-patient report</h4><p>I built the original version of the team’s daily active-patient report: every patient grouped by triage tier and whether they’re medically ready to leave. Before it, care navigators dug through the census by hand to find who needed attention. It saved them hours.</p></div>"
 "<div class='build'><h4>Daily metrics pipeline</h4><p>An Apps Script job that runs every morning and calculates census, length of stay and discharges, for all patients and for complex cases, broken out by unit. Leadership uses it to track length of stay without anyone building a report by hand.</p></div>"
-"<div class='build'><h4>Census app, early versions</h4><p>I helped build the early versions of the team’s census web app for hospital navigators. An outside developer now builds it out, and I built the Mixpanel dashboard that tracks how much it’s used.</p></div>"
+"<div class='build'><h4>Navigator AI</h4><p>Navigator AI is the census app our care navigators work in every day, and it saves them 3+ hours a day. Our team designed all of it and built the early versions; we brought in a development partner to code the production app because we didn’t have the engineers. It grew out of the daily active-patient report I built, and I built the Mixpanel dashboard that tracks how much it’s used.</p></div>"
 "<div class='build'><h4>Daily PDF worklists</h4><p>Morning worklist PDFs, emailed automatically at 7:30 AM. I adapted an existing set of reports for a second hospital. The test runs covered 28 patients.</p></div>"
 "<div class='build'><h4>Claude AI tools</h4><p>15+ Claude tools built with care navigators: a case-note assistant, a progress-note auditor, a search tool for internal resources and a long-term-care placement navigator.</p></div>"
 "<div class='build'><h4>AppSheet data-entry app</h4><p>A mobile app on top of a care-coordination sheet: a list of active patients, a notes form, a one-tap discharge button, and a new-patient form that checks for duplicate IDs. It's a working prototype; it's not rolled out yet.</p></div>"
@@ -113,7 +113,7 @@ PROJECTS = [
 "</div>"),
 ],
 "mock": [MOCK_WORKLIST, MOCK_SLACK],
-"results": [("~10 hrs","of manual work saved every week"),("4+","hospitals running my automations"),("~4×","fewer breakdowns (2/week → 2/month)"),("15+","Claude tools for care navigators"),("50+","manual steps automated")],
+"results": [("3+ hrs","a day saved per care navigator by Navigator AI"),("~10 hrs","of manual work saved every week"),("4+","hospitals running my automations"),("~4×","fewer breakdowns (2/week → 2/month)"),("15+","Claude tools for care navigators"),("50+","manual steps automated")],
 "honest":
 "<p>My job is figuring out what the team actually needs and making sure what ships works. When a fix came back at 223 lines for a 12-line problem, I sent it back. When something was called tested and it wasn't, I made it run on a copy of the sheet first.</p>"
 "<p>That testing matters because this is real work for real people. Once, a reset cleared notes it shouldn't have, because the original script had a rule about which days to skip that got missed. We restored everything from the archive, and since then every change runs on a copy first.</p>"
