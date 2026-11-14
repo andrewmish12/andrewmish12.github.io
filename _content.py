@@ -18,7 +18,7 @@ STATS = [
     ("4+", "hospitals where discharge teams start the day with work my scripts already did overnight"),
     ("50+", "manual steps automated, from nightly note resets to referral PDFs that send themselves"),
     ("15+", "Claude tools that help care navigators write notes, audit charts and find placements"),
-    ("774", "contract records fixed so the team's contract app stopped crashing"),
+    ("~4×", "fewer automation breakdowns: from about twice a week to about twice a month"),
 ]
 
 CATS = {
@@ -107,7 +107,7 @@ PROJECTS = [
 "</div>"),
 ],
 "mock": [MOCK_WORKLIST, MOCK_SLACK],
-"results": [("50+","automations, tools & fixes"),("15+","Claude tools"),("4+","hospital sites")],
+"results": [("4+","hospitals running my automations"),("50+","manual steps automated"),("15+","Claude tools for care navigators"),("~4×","fewer breakdowns (2/week → 2/month)")],
 "honest":
 "<p>My job is figuring out what the team actually needs and making sure what ships works. When a fix came back at 223 lines for a 12-line problem, I sent it back. When something was called tested and it wasn't, I made it run on a copy of the sheet first.</p>"
 "<p>That testing matters because this is real work for real people. Once, a reset cleared notes it shouldn't have, because the original script had a rule about which days to skip that got missed. We restored everything from the archive, and since then every change runs on a copy first.</p>"
