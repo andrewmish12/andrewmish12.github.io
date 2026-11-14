@@ -178,18 +178,17 @@ def home():
     body = f'''{nav(True)}
 <section class="hero wrap">
  <div class="hero-txt">
-  <p class="mono dim boot">AI automation for hospital operations</p>
+  <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
   <h1>I'm Andrew Mish.</h1>
-  <p class="lead">I build the automations and AI tools a hospital discharge team runs on. At SilverStay, my work handles the daily grind for care teams at 4+ hospitals: overnight note resets, morning reports, referral paperwork that sends itself, and Claude tools for case notes and placements.</p>
-  <p class="hero-ask"><b>If your team repeats the same manual work every day, I can probably automate it.</b> Know a hospital, clinic or operations team buried in spreadsheets? Introduce me.</p>
+  <p class="lead">I love making my ideas real. I'm a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. Here's all of my work:</p>
   <div class="cta cta-grid"><a class="btn" href="silverstay.html">See my hospital work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}?subject=Automating%20our%20team%27s%20work">Email me</a></div>
-  <p class="hero-side dim">Also a freshman at Auburn, launching <a href="prereq.html">Prereq</a> through the New Venture Accelerator and building student apps like <a href="au-grades.html">AU Grades</a>.</p>
   <a class="li-link" href="{PROFILE["linkedin"]}" target="_blank" rel="noopener"><span class="li-ico">in</span>Connect with me on LinkedIn →</a>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
  <div class="hero-img"><img src="andrew.jpg" alt="Andrew Mish"></div>
 </section>
 <section class="wrap stats">{stats}</section>
+<section class="wrap ask-band rv"><p><b>If your team repeats the same manual work every day, I can automate it.</b> Know a hospital, clinic or operations team buried in spreadsheets? Introduce me.</p><a class="btn" href="mailto:{PROFILE["email"]}?subject=Automating%20our%20team%27s%20work">Get in touch</a></section>
 <section id="work" class="wrap sec">
  <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Featured work</h2><p class="dim">Every project gets its own page with what it does and what came of it. <span class="upd">Last updated {UPDATED}</span></p><p class="mono small dim legend">{E(STATUS_LEGEND)}</p></div>
  {strip}
