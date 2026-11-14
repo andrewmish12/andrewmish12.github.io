@@ -48,7 +48,7 @@ var done=false;document.addEventListener('visibilitychange',function(){if(docume
 def head(title, desc):
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{E(title)}</title><meta name="description" content="{E(desc)}">'
-            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="https://andrewmish12.github.io/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="og:type" content="website"><meta property="og:url" content="https://andrewmish12.github.io/"><meta name="twitter:card" content="summary_large_image">'
+            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="https://andrewmish12.github.io/og-card-v2.jpg"><meta property="og:site_name" content="Andrew Mish"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="og:type" content="website"><meta property="og:url" content="https://andrewmish12.github.io/"><meta name="twitter:card" content="summary_large_image">'
             f'<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230b0d12%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22monospace%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3EAM%3C/text%3E%3C/svg%3E">'
             f'{FONTS}<style>{CSS}</style></head><body>')
 
@@ -178,10 +178,12 @@ def home():
     body = f'''{nav(True)}
 <section class="hero wrap">
  <div class="hero-txt">
-  <p class="mono dim boot">LLM Implementation Engineer · Founder · Auburn University</p>
+  <p class="mono dim boot">AI automation for hospital operations</p>
   <h1>I'm Andrew Mish.</h1>
-  <p class="lead">I love making my ideas real. I'm a freshman at Auburn and an LLM Implementation Engineer Intern at SilverStay, where I automate hospital discharge work. On the side, I build apps I actually use and keep 100+ business ideas in my notes app. I vibe code with AI and prompt-engineer until it works. Here's all of my work:</p>
-  <div class="cta cta-grid"><a class="btn" href="#work">See the work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}">Email me</a></div>
+  <p class="lead">I build the automations and AI tools a hospital discharge team runs on. At SilverStay, my work handles the daily grind for care teams at 4+ hospitals: overnight note resets, morning reports, referral paperwork that sends itself, and Claude tools for case notes and placements.</p>
+  <p class="hero-ask"><b>If your team repeats the same manual work every day, I can probably automate it.</b> Know a hospital, clinic or operations team buried in spreadsheets? Introduce me.</p>
+  <div class="cta cta-grid"><a class="btn" href="silverstay.html">See my hospital work</a><a class="btn" href="Andrew_Mish_Resume.pdf" target="_blank" rel="noopener">My resume</a><a class="btn email" href="mailto:{PROFILE["email"]}?subject=Automating%20our%20team%27s%20work">Email me</a></div>
+  <p class="hero-side dim">Also a freshman at Auburn, launching <a href="prereq.html">Prereq</a> through the New Venture Accelerator and building student apps like <a href="au-grades.html">AU Grades</a>.</p>
   <a class="li-link" href="{PROFILE["linkedin"]}" target="_blank" rel="noopener"><span class="li-ico">in</span>Connect with me on LinkedIn →</a>
   <p class="now-line"><i></i>Now: LLM Implementation Engineer Intern at SilverStay · Freshman at Auburn</p>
  </div>
@@ -189,10 +191,10 @@ def home():
 </section>
 <section class="wrap stats">{stats}</section>
 <section id="work" class="wrap sec">
- <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Everything I've built</h2><p class="dim">Every project gets its own page with what it is, how it works, and what I'd do differently. <span class="upd">Last updated {UPDATED}</span></p><p class="mono small dim legend">{E(STATUS_LEGEND)}</p></div>
+ <div class="sec-head"><p class="mono dim">Portfolio</p><h2>Featured work</h2><p class="dim">Every project gets its own page with what it does and what came of it. <span class="upd">Last updated {UPDATED}</span></p><p class="mono small dim legend">{E(STATUS_LEGEND)}</p></div>
  {strip}
- <div class="filters mono">{chips}</div>
- <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats))}</div>
+ <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats[:FEATURED_N]))}</div>
+ <div class="see-all"><a class="btn" href="projects.html">See all {len(feats)} projects →</a></div>
 </section>
 <section id="experience" class="wrap sec">
  <div class="sec-head"><p class="mono dim">Experience</p><h2>Where I've worked</h2></div>
@@ -206,14 +208,30 @@ def home():
  <div class="sec-head"><p class="mono dim">About</p><h2>The short version</h2></div>
  <div class="about-grid">
   <div class="about-txt rv"><p>I'm a freshman at Auburn studying business (intended finance, with a real estate minor). Before that I spent four years in PLTW engineering at Archbishop Spalding, which is where I got hooked on taking an idea from my head into the real world.</p>
-  <p>At 17 I started at SilverStay building AI tools and automations for hospital discharge teams, and I haven't stopped building since. I'm not a traditional programmer. I vibe code: I figure out what needs to exist, direct AI to build it, and test it until it actually works. I care less about credentials and more about whether the thing works and whether people use it.</p>
+  <p>At 17 I started at SilverStay building AI tools and automations for hospital discharge teams, and I haven't stopped building since. I care less about credentials and more about two things: does it work, and do people use it.</p>
   <p>Outside of that: golf (2 years varsity, and one hole-in-one in a school match), guitar and piano, the gym, and whatever app I'm currently building.</p></div>
   <div class="about-side rv"><p class="mono small dim">education</p>{edu}<p class="mono small dim" style="margin-top:1.6rem">honors</p><ul class="honors">{hon}</ul></div>
  </div>
  <div class="skills rv">{sk}</div>
 </section>
 {footer()}'''
-    return head("Andrew Mish | Portfolio", "Andrew Mish's portfolio: AI tools, apps, engineering projects and business ventures.") + body
+    return head("Andrew Mish · Portfolio", "AI tools, automations and startups by Andrew Mish, LLM Implementation Engineer Intern at SilverStay and Auburn student.") + body
+
+FEATURED_N = 6  # cards shown on the home page; the rest live on projects.html
+
+def projects_page():
+    feats = [p for p in PROJECTS if p["cat"] != "job" and not p.get("strip")]
+    chips = '<button class="on" data-filter="all">All</button>' + "".join(
+        f'<button data-filter="{k}">{v}</button>' for k, v in CATS.items() if k != "job" and any(p["cat"] == k for p in feats))
+    body = f'''{nav()}
+<section class="wrap sec" style="padding-top:120px">
+ <p class="mono dim crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; All projects</p>
+ <div class="sec-head"><p class="mono dim">Portfolio</p><h2>All {len(feats)} projects</h2><p class="dim">Every project gets its own page with what it does and what came of it. <span class="upd">Last updated {UPDATED}</span></p><p class="mono small dim legend">{E(STATUS_LEGEND)}</p></div>
+ <div class="filters mono">{chips}</div>
+ <div class="grid">{"".join(card(p, i) for i, p in enumerate(feats))}</div>
+</section>
+{footer()}'''
+    return head("All projects · Andrew Mish", "Every project Andrew Mish has built: AI tools, apps, engineering projects and business ventures.") + body
 
 def project(p, i):
     order = PROJECTS
@@ -257,7 +275,7 @@ def project(p, i):
   <section class="psec honest rv"><p class="mono small">My honest take</p>{p["honest"]}</section>
   {nexts}{links}
  </div>
- <nav class="pn mono"><a href="{prev["slug"]}.html">← {E(prev["title"])}</a><a href="index.html#work">all work</a><a href="{nxt["slug"]}.html">{E(nxt["title"])} →</a></nav>
+ <nav class="pn mono"><a href="{prev["slug"]}.html">← {E(prev["title"])}</a><a href="projects.html">all projects</a><a href="{nxt["slug"]}.html">{E(nxt["title"])} →</a></nav>
 </article>
 {footer()}'''
     return head(f'{p["title"]} | Andrew Mish', p["kicker"]) + body
@@ -284,6 +302,7 @@ def curly(h):
 
 if __name__ == "__main__":
     open(os.path.join(ROOT, "index.html"), "w").write(curly(home()))
+    open(os.path.join(ROOT, "projects.html"), "w").write(curly(projects_page()))
     for i, p in enumerate(PROJECTS):
         open(os.path.join(ROOT, p["slug"] + ".html"), "w").write(curly(project(p, i)))
     print("built", 1 + len(PROJECTS), "pages")

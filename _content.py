@@ -13,11 +13,12 @@ PROFILE = {
     "location": "Auburn, AL · Odenton, MD",
 }
 
+# Each stat = a number + what it means for the people using it (feedback: no contextless numbers).
 STATS = [
-    ("50+", "automations, tools and fixes shipped at SilverStay"),
-    ("15+", "Claude AI tools built with care navigators"),
-    ("4+", "hospital sites using my work"),
-    ("100+", "business ideas on my list"),
+    ("4+", "hospitals where discharge teams start the day with work my scripts already did overnight"),
+    ("50+", "manual steps automated, from nightly note resets to referral PDFs that send themselves"),
+    ("15+", "Claude tools that help care navigators write notes, audit charts and find placements"),
+    ("774", "contract records fixed so the team's contract app stopped crashing"),
 ]
 
 CATS = {
@@ -43,8 +44,7 @@ STATUS = {
 }
 STATUS_LEGEND = "Live = in real use now · Building = in progress, not in regular use yet · Paused = on hold · Completed = finished"
 
-VIBE = ("<p class='note-sm'>How I build: I don't write code by hand. I vibe code. I decide what to build, describe it to Claude, "
-        "test everything it gives me, and push back until it actually works.</p>")
+VIBE = ""  # removed Nov 14, 2026 (feedback: show what I built and what came of it, not how)
 
 def SHOT(src, cap, phone=True):
     return (f"<figure class='panel pimg{' phone-shot' if phone else ''}'><img src='{src}' alt='{cap}' loading='lazy'>"
@@ -109,7 +109,7 @@ PROJECTS = [
 "mock": [MOCK_WORKLIST, MOCK_SLACK],
 "results": [("50+","automations, tools & fixes"),("15+","Claude tools"),("4+","hospital sites")],
 "honest":
-"<p>I don't know how to code. I vibe code: I figure out what the team needs, describe it to Claude, and then my real job is testing it and pushing back. When Claude handed me a 223-line fix for a 12-line problem, I sent it back. When it said something was tested and it wasn't, I made it run the test on a copy of the sheet.</p>"
+"<p>My job is figuring out what the team actually needs and making sure what ships works. When a fix came back at 223 lines for a 12-line problem, I sent it back. When something was called tested and it wasn't, I made it run on a copy of the sheet first.</p>"
 "<p>That testing matters because this is real work for real people. Once, a reset cleared notes it shouldn't have, because the original script had a rule about which days to skip that got missed. We restored everything from the archive, and since then every change runs on a copy first.</p>"
 "<p>Healthcare also makes you careful. Every tool has to assume it's touching sensitive data, which slows things down, and honestly it should.</p>",
 "next": "<p>Roll the AppSheet app out to the care manager, get the post-rollout survey approved, and keep turning the team's most repetitive work into things that run on their own.</p>",
@@ -152,7 +152,7 @@ PROJECTS = [
 "title": "AU Dining",
 "kicker": "All three Auburn dining hall menus in one place, organized the way they should be, with calories and protein built in.",
 "card": "The Edge, Tiger Zone and Wellness Kitchen menus in one app, with calorie and protein filters and meal building. Two beta testers are using it now.",
-"when": "2026 – Present", "role": "Solo builder (vibe coded)",
+"when": "2026 – Present", "role": "Solo builder",
 "stack": ["Google Apps Script", "Auburn dining data", "Web app"],
 "sections": [
 ("Why I built it",
@@ -184,7 +184,7 @@ PROJECTS = [
 "title": "Tiger Transit+",
 "kicker": "A better way to ride Auburn's buses: a live bus map plus an AI trip planner you can just talk to.",
 "card": "Live Auburn bus map and an AI trip planner. Type \"I'm at the NVA, need to get to Lowder asap\" and it tells you when to leave and which bus to take.",
-"when": "2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
+"when": "2026 – Present", "role": "Solo builder",
 "stack": ["Claude Code", "Node.js", "Claude API", "Live bus data", "OpenStreetMap"],
 "sections": [
 ("Why I built it",
@@ -215,7 +215,7 @@ PROJECTS = [
 "title": "AU Grades",
 "kicker": "Every Canvas class, grade and due date in one dashboard, with an unofficial GPA, a \"what do I need?\" calculator and an AI tutor that reads my course files.",
 "card": "My Canvas grades, due dates and an unofficial GPA in one dashboard, plus an AI tutor, flashcards, and alerts the minute a new assignment posts.",
-"when": "2026 – Present", "role": "Solo builder (vibe coded)",
+"when": "2026 – Present", "role": "Solo builder",
 "stack": ["Google Apps Script", "Canvas API", "Gemini", "Google Calendar"],
 "sections": [
 ("Why I built it",
@@ -234,7 +234,7 @@ PROJECTS = [
 "</ul>" + VIBE),
 ],
 "demo": None,
-"results": [("1","dashboard for every class"),("15 min","checks for new assignments"),("Live","unofficial GPA")],
+"results": [("1","page instead of clicking into every class"),("15 min","to hear about a new assignment"),("Live","GPA, even when Canvas hides grades")],
 "honest":
 "<p>The AI was the hardest part. At first it sat on \"Reading your Canvas\" forever. I debugged it with logs, testing one Gemini model at a time, and found the default model was overloaded: it took 55 seconds just to fail. Even the fastest free model takes about 20 seconds to answer, so for now the AI tab shows a timer and a Stop button.</p>"
 "<p>I also wanted the Canvas token to refresh itself automatically. Claude pushed back: Auburn makes tokens expire after 30 days so a leaked one stops working, and auto-refreshing defeats that. I agreed, and built a one-minute Token button instead.</p>"
@@ -247,7 +247,7 @@ PROJECTS = [
 "title": "ClearLecture",
 "kicker": "Live captions for lectures when your professor has a strong accent. Miss a line? Tap it and hear it again in your AirPods.",
 "card": "Live lecture captions for students with accented professors. Tap any line or hit “Replay last” and it reads it into your AirPods. No install.",
-"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
+"when": "Nov 2026 – Present", "role": "Solo builder",
 "stack": ["Web app", "Browser speech recognition", "Whisper (in-browser)", "Text-to-speech"],
 "sections": [
 ("Why I’m building it",
@@ -274,7 +274,7 @@ PROJECTS = [
 "title": "Finance Hub",
 "kicker": "All my money in one private dashboard, with live net worth, built for $0.",
 "card": "All my money in one private dashboard: brokerages, bank, credit card and 401(k), with net worth that re-prices live while it’s open. Built for $0.",
-"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded with Claude Code)",
+"when": "Nov 2026 – Present", "role": "Solo builder",
 "stack": ["Google Apps Script", "SnapTrade API", "Plaid", "Finnhub", "clasp", "Claude Code"],
 "sections": [
 ("Why I built it",
@@ -288,10 +288,10 @@ PROJECTS = [
 "<li><b>Drill down</b>: Investments, Banking and Retirement sections. Tap an institution, then an account, then its holdings or transactions, with no page reloads.</li>"
 "<li><b>Demo mode</b> with fake data, so I can show it without showing my money.</li>"
 "</ul>"
-"<p>Every service is on a free tier, and the code blocks paid API calls entirely so it can’t spend money by accident. I wrote the spec in Cowork, then directed Claude Code to build it step by step.</p>" + VIBE),
+"<p>Every service is on a free tier, and the code blocks paid API calls entirely so it can’t spend money by accident.</p>" + VIBE),
 ],
 "demo": None,
-"results": [("$0","to run"),("60s","live re-pricing"),("0","real numbers on this page")],
+"results": [("1","link instead of checking four apps"),("60s","net worth re-prices while open"),("$0","to run")],
 "honest":
 "<p>SnapTrade retired an endpoint in the middle of my build, and it started returning “410 Gone.” Next time I’ll check API changelogs before building, not after.</p>"
 "<p>An Apps Script quirk also made the live app quietly show demo data. I fixed it and learned to test the real-data path, not just the demo. And free account data only refreshes once a day, so live net worth is really yesterday’s shares × today’s prices. Fine for me, wrong for day trading.</p>",
@@ -303,7 +303,7 @@ PROJECTS = [
 "title": "Claude Door",
 "kicker": "My own 24/7 AI assistant on Telegram. It knows my projects and priorities, and it texts me first.",
 "card": "A personal AI assistant I text on Telegram. It knows my projects and priorities, sends me a 7 AM brief, and works with my laptop closed. It costs me $0.",
-"when": "Nov 2026 – Present", "role": "Solo builder (vibe coded)",
+"when": "Nov 2026 – Present", "role": "Solo builder",
 "stack": ["Google Apps Script", "Telegram Bot API", "Claude API", "Google Calendar", "Gmail"],
 "sections": [
 ("Why I built it",
@@ -330,7 +330,7 @@ PROJECTS = [
 "title": "Automation Command Center",
 "kicker": "A SimCity-style night city where every automation I run is a district I can click into.",
 "card": "A living 3D map of my automation stack. Each district is a running project, and each building opens its dashboard.",
-"when": "2026", "role": "Solo builder (vibe coded)",
+"when": "2026", "role": "Solo builder",
 "stack": ["Muse", "Google Apps Script", "Plaid", "Claude", "Python"],
 "sections": [
 ("The idea",
@@ -339,7 +339,7 @@ PROJECTS = [
 "<p><strong>Trading Floor</strong>: my portfolio, refreshed hourly. <strong>Civic Center</strong>: a Canvas watchdog that pings me about upcoming assignments. <strong>Fitness District</strong>: SweatBuddies verdicts and forfeit tracking. <strong>Bakery Row</strong>: orders and payments for a sourdough side business. <strong>Capitol</strong>: the congressional trade tracker. <strong>News Tower</strong>: a twice-daily news briefing. <strong>Storage Watch</strong>: a weekly Mac cleanup scan. The Media District (social content) is paused for now.</p>"),
 ],
 "demo": None,
-"results": [("8", "districts on the map"), ("1", "click from city to any dashboard"), ("0", "spreadsheets of scheduled jobs")],
+"results": [("8", "automations I can check at a glance"), ("1", "click from the city to any dashboard")],
 "honest":
 "<p>The building statuses are set by hand for now. Wiring live telemetry into each district is the next step. And the city doesn't have a name yet. Naming it is somehow the hardest part of the whole project.</p>",
 "next": "<p>Wire real automation health into the map, swap the weak money view for my new <a href='finance-hub.html'>Finance Hub</a>, then name the city.</p>",
@@ -374,7 +374,7 @@ PROJECTS = [
 "title": "Congressional Trade Tracker",
 "kicker": "An automated system that watches public congressional stock-trade filings and emails me instructions to hand to Claude.",
 "card": "Checks House disclosure filings every 6 hours, reads the PDFs, and emails me a prompt to paste into Claude, which handles the trade after I confirm.",
-"when": "2026", "role": "Solo builder (vibe coded)",
+"when": "2026", "role": "Solo builder",
 "stack": ["Google Apps Script", "OCR", "Google Sheets", "Claude"],
 "sections": [
 ("The idea",
@@ -400,7 +400,7 @@ PROJECTS = [
 "title": "SweatBuddies",
 "kicker": "A two-person workout accountability app with photo check-ins, weekly goals, and real stakes if you slack off.",
 "card": "Photo-proof workouts, streaks, weekly goals, and an IOU system: miss your goal and you owe your partner.",
-"when": "2025 – Present", "role": "Solo builder (vibe coded)",
+"when": "2025 – Present", "role": "Solo builder",
 "stack": ["Google Apps Script", "Google Sheets", "Google Drive"],
 "sections": [
 ("Why I built it",
@@ -415,7 +415,7 @@ PROJECTS = [
 "</ul>" + VIBE),
 ],
 "demo": None,
-"results": [("2","users (on purpose)"),("Daily","actual use"),("14","max workouts / week")],
+"results": [("Daily","we actually use it"),("1","IOU owed for every missed goal"),("0","excuses without photo proof")],
 "honest":
 "<p>This is the one I actually use every day, and that's what made it good. Every bug I found came from real use. Two workouts in one day only counted once. The progress ring stayed at zero because Google Sheets was quietly converting my dates. Small bugs, but you only find them by using your own product.</p>",
 "next": "<p>Maybe open it up to more pairs. For now it does exactly what we need.</p>",
@@ -427,7 +427,7 @@ PROJECTS = [
 "title": "Lineup",
 "kicker": "Text-message booking for barbers. A client texts like they'd text their barber, and Lineup books them into an open slot on the barber's calendar.",
 "card": "AI booking for barbers. Clients text “can I get a fade Saturday at 2?” and Lineup checks the barber’s calendar, books it, or offers the closest open times.",
-"when": "2025 – Present", "role": "Founder, solo builder (vibe coded)",
+"when": "2025 – Present", "role": "Founder, solo builder",
 "stack": ["Twilio", "WhatsApp", "Claude API", "Google Apps Script", "Google Calendar", "Google Sheets"],
 "sections": [
 ("Why I’m building it",
@@ -516,8 +516,8 @@ PROJECTS = [
 "proof": ["<p class='note-sm'>Running in the iPhone simulator. The creators, deals and numbers are sample data.</p>" + PHONES(("collabify-welcome.jpg", "Welcome screen"), ("collabify-role.jpg", "Pick a side: business or creator"), ("collabify-discover.jpg", "Discover: swipe through local creators"), ("collabify-profile.jpg", "A creator’s profile, rate and past collaborations"), ("collabify-match.jpg", "It’s a match: both sides liked each other"), ("collabify-dashboard.jpg", "A business’s dashboard: active deals, reach and spend"))],
 "title": "Collabify",
 "kicker": "An iOS app to match small businesses with influencers for paid promotions. It's like a dating app for brand deals.",
-"card": "An iOS app prototype I vibe coded in Xcode, then pressure-tested hard enough to pause.",
-"when": "2025", "role": "Founder (vibe coded)",
+"card": "An iOS app prototype I built in Xcode, then pressure-tested hard enough to pause.",
+"when": "2025", "role": "Founder",
 "stack": ["SwiftUI", "Xcode", "iOS", "Claude"],
 "sections": [
 ("The idea",
@@ -714,7 +714,7 @@ INVOLVEMENT = [
 ]
 
 SKILLS = {
-"How I build": ["Vibe coding with Claude", "Testing & QA", "Prompting", "Plain-English specs"],
+"What I build": ["AI tools with Claude", "Workflow automation", "Testing & QA", "Plain-English specs"],
 "Tools I build on": ["Claude & Claude API", "Google Apps Script", "AppSheet", "Google Sheets", "Twilio", "ElevenLabs"],
 "Platforms": ["AWS", "Google Cloud", "DocuSign", "Slack", "Xcode", "Fusion 360"],
 "Business": ["Customer research", "Pitching", "Process improvement", "Training"],
